@@ -1,0 +1,278 @@
+{
+  "Index": {
+    "title": "Xin chào!"
+  },
+  "LocaleSwitcher": {
+    "label": "Thay đổi ngôn ngữ",
+    "locale": "{locale, select, vi {Tiếng Việt} en {Tiếng Anh} other {Unknown}}"
+  },
+  "Navbar": {
+    "Home": "Trang chủ",
+    "Product": "Sản phẩm",
+    "Contact": "Liên hệ",
+    "About": "Giới thiệu",
+    "Sign Up": "Đăng ký",
+    "Sign In": "Đăng nhập",
+    "Manage My Account": "Quản lý tài khoản",
+    "My Order": "Đơn hàng của tôi",
+    "My Cancellations": "Đơn hủy của tôi",
+    "My Reviews": "Đánh giá của tôi",
+    "Logout": "Đăng xuất"
+  },
+  "SignInPage": {
+    "Log in to Exclusive": "Đăng nhập tới Exclusive",
+    "Enter your details below": "Nhập thông tin chi tiết của bạn dưới đây"
+  },
+  "SignUpPage": {
+    "Create an account": "Tạo tài khoản",
+    "Enter your details below": "Nhập thông tin chi tiết của bạn dưới đây"
+  },
+  "Errors": {
+    "Last name is required": "Tên không hợp lệ",
+    "First name is required": "Họ không hợp lê",
+    "First name must be 3 or more characters long": "Họ phải có nhiều hơn 3 kí tự",
+    "Last name must be 2 or more characters long": "Tên phải có nhiều hơn 2 kí tự",
+    "Invalid email": "Email không hợp lệ",
+    "Email is required": "Email là bắt buộc",
+    "Password is required": "Nhập mật khẩu",
+    "Password must be at least 8 characters long": "Mật khẩu phải nhiều hơn 8 kí tự",
+    "Your name is required": "Tên của bạn là bắt buộc",
+    "Your name must be 5 or more characters long": "Tên của bạn phải có 5 ký tự trở lên",
+    "Your phone is required": "Số điện thoại của bạn là bắt buộc",
+    "Your phone must be 10 characters long": "Số điện thoại của bạn phải có 10 ký tự",
+    "Message is required": "Tin nhắn là bắt buộc",
+    "Message must be at least 8 characters long": "Tin nhắn phải có ít nhất 8 ký tự",
+    "Current password must be at least 8 characters long": "Mật khẩu hiện tại phải có ít nhất 8 ký tự",
+    "New password must be at least 8 characters long": "Mật khẩu mới phải có ít nhất 8 ký tự",
+    "Confirm password must be at least 8 characters long": "Xác nhận mật khẩu phải có ít nhất 8 ký tự",
+    "Coupon code must be length 8 characters": "Mã phiếu giảm giá phải có độ dài 8 ký tự",
+    "Street Address is required": "Tên đường là bắt buộc",
+    "City is required": "Tên thành phố là bắt buộc",
+    "Apartment is required": "Tên căn hộ là bắt buộc",
+    "Street Address must be 5 or more characters long": "Tên đường phải có 5 ký tự trở lên",
+    "City must be 5 or more characters long": "Tên thành phố phải có 5 ký tự trở lên",
+    "Apartment must be 5 or more characters long": "Tên căn hộ phải có 5 ký tự trở lên"
+  },
+  "ContactPage": {
+    "Call To Us": "Liên hệ với chúng tôi",
+    "Description": "Chúng tôi luôn sẵn sàng 24/7, 7 ngày một tuần",
+    "Phone": "SĐT: +8801611112222",
+    "Write To Us": "Viết thư cho chúng tôi",
+    "Fill out our form we will contact you within 24 hours": "Chúng tôi sẽ liên hệ bạn trong 24 giờ"
+  },
+  "CategorySection": {
+    "Categories": "Danh mục",
+    "Browse By Category": "Tìm kiếm theo danh mục",
+    "Phone": "Điện thoại",
+    "Smart Watch": "Đồng hồ thông minh",
+    "Camera": "Máy ảnh",
+    "Game Pad": "Máy chơi game",
+    "Headphone": "Tai nghe chụp đầu",
+    "Computer": "Máy tính"
+  },
+  "TopHeader": {
+    "Summer Sale For All Headphone And Free Express Delivery - OFF 50%!": "Giảm giá mùa hè cho tất cả tai nghe chụp đầu và giao hàng nhanh miễn phí - GIẢM GIÁ 50%!",
+    "Shop now": "Mua ngay"
+  },
+  "Search": {
+    "What are you looking for?": "Bạn đang tìm kiếm gì?"
+  },
+  "FlashSalesSection": {
+    "Today’s": "Hôm nay",
+    "Flash Sales": "Sự kiện giảm giá"
+  },
+  "Footer": {
+    "Subscribe": "Đăng ký",
+    "Get 10% off your first order": "Giảm 10% cho đơn hàng đầu tiên của bạn",
+    "Thu Duc, Ho Chi Minh City": "Thủ Đức, Thành phố Hồ Chí Minh",
+    "Account": "Tài khoản",
+    "My Account": "Tài khoản của tôi",
+    "Login": "Đăng nhập",
+    "Register": "Đăng ký",
+    "Cart": "Giỏ hàng",
+    "Wishlist": "Danh sách yêu thích",
+    "Shop": "Cửa hàng",
+    "Quick Link": "Liên kết nhanh",
+    "Privacy Policy": "Chính sách bảo mật",
+    "Terms Of Use": "Điều khoản sử dụng",
+    "Contact": "Liên hệ",
+    "Download App": "Tải ứng dụng",
+    "Save $3 with App New User Only": "Tiết kiệm $3 chỉ dành cho người dùng mới của ứng dụng"
+  },
+  "ProductCard": {
+    "Add To Cart": "Thêm giỏ hàng",
+    "NEW": "MỚI",
+    "Price": "Giá",
+    "Please login to add cart": "Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng",
+    "Added cart successfully": "Đã thêm vào giỏ hàng thành công"
+  },
+  "CountDown": {
+    "Days": "Ngày",
+    "Hours": "Giờ",
+    "Minutes": "Phút",
+    "Seconds": "Giây"
+  },
+  "BestSellerSection": {
+    "This Month": "Tháng này",
+    "Best Selling Products": "Sản phẩm bán chạy nhất",
+    "View All": "Xem tất cả"
+  },
+  "AdsSection": {
+    "Categories": "Danh mục",
+    "Enhance Your Music Experience": "Nâng cao trải nghiệm âm nhạc của bạn",
+    "Buy Now!": "Mua ngay!"
+  },
+  "OurProductSection": {
+    "Our Products": "Sản phẩm của chúng tôi",
+    "Explore Our Products": "Khám phá sản phẩm của chúng tôi",
+    "View All Products": "Xem tất cả sản phẩm"
+  },
+  "NewArrivalSection": {
+    "Featured": "Nổi bật",
+    "New Arrival": "Hàng mới về",
+    "PlayStation 5": "PlayStation 5",
+    "Black and White version of the PS5 coming out on sale": "Phiên bản trắng đen của PS5 đang được bán.",
+    "Shop Now": "Mua ngay",
+    "Women’s Collections": "Bộ sưu tập nữ",
+    "Featured woman collections that give you another vibe": "Bộ sưu tập nữ nổi bật mang đến cho bạn một cảm giác khác.",
+    "Speakers": "Loa",
+    "Amazon wireless speakers": "Loa không dây Amazon",
+    "Perfume": "Nước hoa",
+    "GUCCI INTENSE OUD EDP": "GUCCI INTENSE OUD EDP"
+  },
+  "ServicesSection": {
+    "FREE AND FAST DELIVERY": "GIAO HÀNG NHANH VÀ MIỄN PHÍ",
+    "Free delivery for all orders over $140": "Giao hàng miễn phí cho tất cả các đơn hàng trên $140",
+    "24/7 CUSTOMER SERVICE": "DỊCH VỤ KHÁCH HÀNG 24/7",
+    "Friendly 24/7 customer support": "Hỗ trợ khách hàng thân thiện 24/7",
+    "MONEY BACK GUARANTEE": "ĐẢM BẢO HOÀN TIỀN",
+    "We return money within 30 days": "Chúng tôi hoàn tiền trong vòng 30 ngày"
+  },
+  "AboutPage": {
+    "Our Story": "Our Story",
+    "Description": "Ra mắt vào năm 2015, Exclusive là nơi mua sắm trực tuyến hàng đầu Nam Á với sự hiện diện tích cực ở Bangladesh. Được hỗ trợ bởi nhiều giải pháp tiếp thị, dữ liệu và dịch vụ phù hợp, Exclusive có 10.500 đại lý và 300 thương hiệu và phục vụ 3 triệu khách hàng trên toàn khu vực.",
+    "MoreDescription": "Exclusive có hơn 1 triệu sản phẩm để cung cấp, tốc độ tăng trưởng rất nhanh. Độc quyền cung cấp nhiều loại tài sản khác nhau, từ người tiêu dùng.",
+    "Sellers active our site": "Người bán đang hoạt động trên trang web của chúng tôi",
+    "Monthly Product Sale": "Doanh số sản phẩm hàng tháng",
+    "Customer active in our site": "Khách hàng đang hoạt động trên trang web của chúng tôi",
+    "Annual gross sale in our site": "Tổng doanh thu hàng năm trên trang web của chúng tôi",
+    "Founder": "Người sáng lập & Chủ tịch",
+    "Managing Director": "Giám đốc điều hành",
+    "Product Designer": "Nhà thiết kế sản phẩm",
+    "FREE AND FAST DELIVERY": "GIAO HÀNG MIỄN PHÍ VÀ NHANH CHÓNG",
+    "Free delivery": "Miễn phí giao hàng cho tất cả các đơn hàng trên $140",
+    "CUSTOMER SERVICE": "DỊCH VỤ KHÁCH HÀNG 24/7",
+    "Friendly customer support": "Hỗ trợ khách hàng thân thiện 24/7",
+    "MONEY BACK GUARANTEE": "ĐẢM BẢO HOÀN TIỀN",
+    "We return money within 30 days": "Chúng tôi hoàn tiền trong vòng 30 ngày"
+  },
+  "NotFoundPage": {
+    "Description": "Trang bạn truy cập không tồn tại. Bạn có thể về trang chủ.",
+    "Back to home page": "Quay lại trang chủ"
+  },
+  "ProductDetailModal": {
+    "Price": "Giá",
+    "Shop now": "Mua ngay"
+  },
+  "AccountNavbar": {
+    "Manage My Account": "Quản lý tài khoản của tôi",
+    "My Profile": "Hồ sơ của tôi",
+    "Address Book": "Địa chỉ giao hàng",
+    "My Payment Options": "Các tùy chọn thanh toán của tôi",
+    "My Order": "Đơn hàng của tôi",
+    "My Completed": "Danh sách hoàn thành",
+    "My Returns": "Danh sách đổi trả",
+    "My Cancellations": "Danh sách hủy bỏ"
+  },
+  "Form": {
+    "fields": {
+      "firstName": "Họ",
+      "lastName": "Tên",
+      "email": "Email",
+      "address": "Địa chỉ",
+      "password": "Mật khẩu",
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmNewPassword": "Xác nhận mật khẩu mới",
+      "yourName": "Tên của bạn",
+      "yourEmail": "Email của bạn",
+      "yourPhone": "Số điện thoại của bạn",
+      "message": "Tin nhắn của bạn",
+      "couponCode": "Mã giảm giá",
+      "PlaceOrder": "Đặt hàng"
+    },
+    "buttons": {
+      "logIn": "Đăng nhập",
+      "createAccount": "Tạo tài khoản",
+      "sendMessage": "Gởi tin nhắn",
+      "cancel": "Hủy",
+      "save": "Lưu thay đổi",
+      "applyCoupon": "Áp dụng mã",
+      "PlaceOrder": "Đặt hàng",
+      "buyNow": "Mua ngay"
+    },
+    "links": {
+      "forgotPassword": "Quên mật khẩu"
+    },
+    "texts": {
+      "questionLogin": "Đã có tài khoản"
+    }
+  },
+  "MyProfilePage": {
+    "Edit your profile": "Chỉnh sửa hồ sơ"
+  },
+  "CartTable": {
+    "Product": "Sản phẩm",
+    "Price": "Giá",
+    "Quantity": "Số lượng",
+    "Subtotal": "Tạm tính",
+    "Return To Shop": "Quay lại mua sắm",
+    "Update Cart": "Cập nhật giỏ hàng",
+    "Update cart failed": "Cập nhật giỏ hàng thất bại",
+    "Update cart success": "Cập nhật giỏ hàng thành công"
+  },
+  "CartPage": {
+    "Cart Total": "Tổng giỏ hàng",
+    "Subtotal": "Tạm tính",
+    "Total": "Tổng cộng",
+    "Process to checkout": "Tiến hành thanh toán",
+    "Shipping": "Chi phí vận chuyển"
+  },
+  "CheckOutPage": {
+    "Billing Details": "Chi tiết hóa đơn"
+  },
+  "CheckOutForm": {
+    "PlaceOrder": "Đặt hàng",
+    "Subtotal": "Tạm tính",
+    "Total": "Tổng cộng",
+    "Shipping": "Chi phí vận chuyển",
+    "Bank": "Ngân hàng",
+    "Cash on delivery": "Thanh toán khi giao hàng",
+    "recipientFirstName": "Họ và chữ lót",
+    "recipientLastName": "Tên",
+    "recipientCity": "Tỉnh / Thành phố",
+    "recipientDistrict": "Quận / Huyện",
+    "recipientAddress": "Địa chỉ",
+    "recipientEmail": "Email",
+    "recipientPhone": "Số điện thoại",
+    "OrderPlacedSuccessfully": "Đặt hàng thành công"
+  },
+  "ProductDetailPage": {
+    "In Stock": "Còn hàng",
+    "Sold Out": "Hết hàng",
+    "Description": "Vỏ bọc tay cầm PlayStation 5 Chất liệu vinyl chất lượng cao với keo dính có kênh không khí giúp lắp đặt dễ dàng không bong bóng và tháo gỡ không để lại vết. Nhạy cảm với áp lực.",
+    "Related Item": "Sản phẩm liên quan",
+    "Colours": "Màu sắc",
+    "Size": "Kích thước",
+    "Buy Now": "Mua ngay",
+    "Free Delivery": "Giao hàng miễn phí",
+    "Enter your postal code for Delivery Availability": "Nhập mã bưu điện của bạn để kiểm tra tình trạng giao hàng",
+    "Return Delivery": "Hoàn trả hàng",
+    "Free 30 Days Delivery Returns Details": "Miễn phí hoàn trả trong vòng 30 ngày. Chi tiết",
+    "Reviews": "Đánh giá"
+  },
+  "WishListSection": {
+    "Wishlist": "Danh sách yêu thích",
+    "Move all to cart": "Di chuyển tất cả tới giỏ hàng"
+  }
+}

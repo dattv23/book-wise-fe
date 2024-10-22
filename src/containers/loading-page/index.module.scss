@@ -1,0 +1,194 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  display: flex;
+  height: 100vh;
+  transition:
+    background-color var(--trans-dur),
+    color var(--trans-dur);
+}
+
+.bike {
+  display: block;
+  margin: auto;
+  width: 16em;
+  height: auto;
+
+  &__body,
+  &__front,
+  &__handlebars,
+  &__pedals,
+  &__pedals-spin,
+  &__seat,
+  &__spokes,
+  &__spokes-spin,
+  &__tire {
+    animation: bikeBody 3s ease-in-out infinite;
+    stroke: var(--primary);
+    transition: stroke var(--trans-dur);
+  }
+
+  &__front {
+    animation-name: bikeFront;
+  }
+
+  &__handlebars {
+    animation-name: bikeHandlebars;
+  }
+
+  &__pedals {
+    animation-name: bikePedals;
+  }
+
+  &__pedals-spin {
+    animation-name: bikePedalsSpin;
+  }
+
+  &__seat {
+    animation-name: bikeSeat;
+  }
+
+  &__spokes,
+  &__tire {
+    stroke: currentColor;
+  }
+
+  &__spokes {
+    animation-name: bikeSpokes;
+  }
+
+  &__spokes-spin {
+    animation-name: bikeSpokesSpin;
+  }
+
+  &__tire {
+    animation-name: bikeTire;
+  }
+}
+
+/* Animations */
+@keyframes bikeBody {
+  from {
+    stroke-dashoffset: 79;
+  }
+  33%,
+  67% {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -79;
+  }
+}
+
+@keyframes bikeFront {
+  from {
+    stroke-dashoffset: 19;
+  }
+  33%,
+  67% {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -19;
+  }
+}
+
+@keyframes bikeHandlebars {
+  from {
+    stroke-dashoffset: 10;
+  }
+  33%,
+  67% {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+@keyframes bikePedals {
+  from {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: -25.133;
+  }
+  33%,
+  67% {
+    animation-timing-function: ease-out;
+    stroke-dashoffset: -21.991;
+  }
+  to {
+    stroke-dashoffset: -25.133;
+  }
+}
+
+@keyframes bikePedalsSpin {
+  from {
+    transform: rotate(0.1875turn);
+  }
+  to {
+    transform: rotate(3.1875turn);
+  }
+}
+
+@keyframes bikeSeat {
+  from {
+    stroke-dashoffset: 5;
+  }
+  33%,
+  67% {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -5;
+  }
+}
+
+@keyframes bikeSpokes {
+  from {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: -31.416;
+  }
+  33%,
+  67% {
+    animation-timing-function: ease-out;
+    stroke-dashoffset: -23.562;
+  }
+  to {
+    stroke-dashoffset: -31.416;
+  }
+}
+
+@keyframes bikeSpokesSpin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(3turn);
+  }
+}
+
+@keyframes bikeTire {
+  from {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: 56.549;
+    transform: rotate(0);
+  }
+  33% {
+    stroke-dashoffset: 0;
+    transform: rotate(0.33turn);
+  }
+  67% {
+    animation-timing-function: ease-out;
+    stroke-dashoffset: 0;
+    transform: rotate(0.67turn);
+  }
+  to {
+    stroke-dashoffset: -56.549;
+    transform: rotate(1turn);
+  }
+}

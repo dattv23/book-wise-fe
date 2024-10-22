@@ -1,0 +1,279 @@
+{
+  "Index": {
+    "title": "Hello!"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, vi {Vietnamese} en {English} other {Unknown}}"
+  },
+  "Navbar": {
+    "Home": "Home",
+    "Product": "Product",
+    "Contact": "Contact",
+    "About": "About",
+    "Sign Up": "Sign Up",
+    "Sign In": "Sign In",
+    "Manage My Account": "Manage My Account",
+    "My Order": "My Order",
+    "My Cancellations": "My Cancellations",
+    "My Reviews": "My Reviews",
+    "Logout": "Logout"
+  },
+  "SignInPage": {
+    "Log in to Exclusive": "Log in to Exclusive",
+    "Enter your details below": "Enter your details below"
+  },
+  "SignUpPage": {
+    "Create an account": "Create an Account",
+    "Enter your details below": "Enter your details below"
+  },
+  "Errors": {
+    "Last name is required": "Last name is required",
+    "First name is required": "First name is required",
+    "First name must be 3 or more characters long": "First name must be 3 or more characters long",
+    "Last name must be 2 or more characters long": "Last name must be 2 or more characters long",
+    "Email is required": "Email is required",
+    "Invalid email": "Invalid email",
+    "Password is required": "Password is required",
+    "Password must be at least 8 characters long": "Password must be at least 8 characters long",
+    "Your name is required": "Your name is required",
+    "Your name must be 5 or more characters long": "Your name must be 5 or more characters long",
+    "Your phone is required": "'Your phone is required",
+    "Your phone must be 10 characters long": "Your phone must be 10 characters long",
+    "Message is required": "Message is required",
+    "Message must be at least 8 characters long": "Message must be at least 8 characters long",
+    "Current password must be at least 8 characters long": "Current password must be at least 8 characters long",
+    "New password must be at least 8 characters long": "New password must be at least 8 characters long",
+    "Confirm password must be at least 8 characters long": "Confirm password must be at least 8 characters long",
+    "Coupon code must be length 8 characters": "Coupon code must be length 8 characters",
+    "Street Address is required": "Street Address is required",
+    "City is required": "City is required",
+    "Apartment is required": "Apartment is required",
+    "Street Address must be 5 or more characters long": "Street Address must be 5 or more characters long",
+    "City must be 5 or more characters long": "City must be 5 or more characters long",
+    "Apartment must be 5 or more characters long": "Apartment must be 5 or more characters long"
+  },
+  "ContactPage": {
+    "Call To Us": "Call To Us",
+    "Description": "We are available 24/7, 7 days a week.",
+    "Phone": "Phone: +8801611112222",
+    "Write To Us": "Write To Us",
+    "Fill out our form we will contact you within 24 hours": "Fill out our form we will contact you within 24 hours."
+  },
+  "CategorySection": {
+    "Categories": "Categories",
+    "Browse By Category": "Browse By Category",
+    "Phone": "Phone",
+    "Smart Watch": "Smart Watch",
+    "Camera": "Camera",
+    "Game Pad": "Game Pad",
+    "Headphone": "Headphone",
+    "Computer": "Computer"
+  },
+  "TopHeader": {
+    "Summer Sale For All Headphone And Free Express Delivery - OFF 50%!": "Summer Sale For All Headphone And Free Express Delivery - OFF 50%!",
+    "Shop now": "Shop now"
+  },
+  "Search": {
+    "What are you looking for?": "What are you looking for?"
+  },
+  "FlashSalesSection": {
+    "Today’s": "Today’s",
+    "Flash Sales": "Flash Sales"
+  },
+  "Footer": {
+    "Subscribe": "Subscribe",
+    "Get 10% off your first order": "Get 10% off your first order",
+    "Thu Duc, Ho Chi Minh City": "Thu Duc, Ho Chi Minh City",
+    "Account": "Account",
+    "My Account": "My Account",
+    "Login": "Login",
+    "Register": "Register",
+    "Cart": "Cart",
+    "Wishlist": "Wishlist",
+    "Shop": "Shop",
+    "Quick Link": "Quick Link",
+    "Privacy Policy": "Privacy Policy",
+    "Terms Of Use": "Terms Of Use",
+    "Contact": "Contact",
+    "Download App": "Download App",
+    "Save $3 with App New User Only": "Save $3 with App New User Only"
+  },
+  "ProductCard": {
+    "Add To Cart": "Add To Cart",
+    "NEW": "NEW",
+    "Price": "Price",
+    "Please login to add cart": "Please login to add cart",
+    "Added cart successfully": "Added cart successfully"
+  },
+  "CountDown": {
+    "Days": "Days",
+    "Hours": "Hours",
+    "Minutes": "Minutes",
+    "Seconds": "Seconds"
+  },
+  "BestSellerSection": {
+    "This Month": "This Month",
+    "Best Selling Products": "Best Selling Products",
+    "View All": "View All"
+  },
+  "AdsSection": {
+    "Categories": "Categories",
+    "Enhance Your Music Experience": "Enhance Your Music Experience",
+    "Buy Now!": "Buy Now!"
+  },
+  "OurProductSection": {
+    "Our Products": "Our Products",
+    "Explore Our Products": "Explore Our Products",
+    "View All Products": "View All Products"
+  },
+  "NewArrivalSection": {
+    "Featured": "Featured",
+    "New Arrival": "New Arrival",
+    "PlayStation 5": "PlayStation 5",
+    "Black and White version of the PS5 coming out on sale": "Black and White version of the PS5 coming out on sale.",
+    "Shop Now": "Shop Now",
+    "Women’s Collections": "Women’s Collections",
+    "Featured woman collections that give you another vibe": "Featured woman collections that give you another vibe.",
+    "Speakers": "Speakers",
+    "Amazon wireless speakers": "Amazon wireless speakers",
+    "Perfume": "Perfume",
+    "GUCCI INTENSE OUD EDP": "GUCCI INTENSE OUD EDP"
+  },
+  "ServicesSection": {
+    "FREE AND FAST DELIVERY": "FREE AND FAST DELIVERY",
+    "Free delivery for all orders over $140": "Free delivery for all orders over $140",
+    "24/7 CUSTOMER SERVICE": "24/7 CUSTOMER SERVICE",
+    "Friendly 24/7 customer support": "Friendly 24/7 customer support",
+    "MONEY BACK GUARANTEE": "MONEY BACK GUARANTEE",
+    "We return money within 30 days": "We return money within 30 days"
+  },
+  "AboutPage": {
+    "Our Story": "Our Story",
+    "Description": "Launced in 2015, Exclusive is South Asia premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region.",
+    "MoreDescription": "Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging  from consumer.",
+    "Sellers active our site": "Sellers active our site",
+    "Monthly Product Sale": "Monthly Product Sale",
+    "Customer active in our site": "Customer active in our site",
+    "Annual gross sale in our site": "Annual gross sale in our site",
+    "Founder": "Founder & Chairman",
+    "Managing Director": "Managing Director",
+    "Product Designer": "Product Designer",
+    "FREE AND FAST DELIVERY": "FREE AND FAST DELIVERY",
+    "Free delivery": "Free delivery for all orders over $140",
+    "CUSTOMER SERVICE": "24/7 CUSTOMER SERVICE",
+    "Friendly customer support": "Friendly 24/7 customer support",
+    "MONEY BACK GUARANTEE": "MONEY BACK GUARANTEE",
+    "We return money within 30 days": "We return money within 30 days"
+  },
+  "NotFoundPage": {
+    "Description": "Your visited page not found. You may go home page.",
+    "Back to home page": "Back to home page"
+  },
+  "ProductDetailModal": {
+    "Price": "Price",
+    "Shop now": "Shop now"
+  },
+  "AccountNavbar": {
+    "Manage My Account": "Manage My Account",
+    "My Profile": "My Profile",
+    "Address Book": "Address Book",
+    "My Payment Options": "My Payment Options",
+    "My Order": "My Order",
+    "My Completed": "My Completed",
+    "My Returns": "My Returns",
+    "My Cancellations": "My Cancellations"
+  },
+  "Form": {
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "address": "Address",
+      "password": "Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "yourName": "Your Name",
+      "yourEmail": "Your Email",
+      "yourPhone": "Your Phone",
+      "message": "Your Message",
+      "couponCode": "Coupon Code",
+      "PlaceOrder": "Place Order"
+    },
+    "buttons": {
+      "logIn": "Log In",
+      "createAccount": "Create Account",
+      "sendMessage": "Send Message",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "applyCoupon": "Apply Coupon",
+      "buyNow": "Buy Now"
+    },
+    "links": {
+      "forgotPassword": "Forgot Password"
+    },
+    "texts": {
+      "questionLogin": "Already have an account"
+    }
+  },
+  "MyProfilePage": {
+    "Edit your profile": "Edit your profile"
+  },
+  "CartTable": {
+    "Product": "Product",
+    "Price": "Price",
+    "Quantity": "Quantity",
+    "Subtotal": "Subtotal",
+    "Return To Shop": "Return To Shop",
+    "Update Cart": "Update Cart",
+    "Update cart failed": "Update cart failed",
+    "Update cart success": "Update cart success"
+  },
+  "CartPage": {
+    "Cart Total": "Cart Total",
+    "Subtotal": "Subtotal",
+    "Total": "Total",
+    "Process to checkout": "Process to checkout",
+    "Shipping": "Shipping"
+  },
+  "CheckOutPage": {
+    "Billing Details": "Billing Details"
+  },
+  "CheckOutForm": {
+    "PlaceOrder": "Place Order",
+    "Subtotal": "Subtotal",
+    "Total": "Total",
+    "Shipping": "Shipping",
+    "Bank": "Bank",
+    "Cash on delivery": "Cash on delivery",
+    "recipientFirstName": "First Name",
+    "recipientLastName": "Last Name",
+    "recipientCity": "City",
+    "recipientDistrict": "District",
+    "recipientAddress": "Address",
+    "recipientEmail": "Email",
+    "recipientPhone": "Phone",
+    "email": "Email",
+    "phone": "Phone Number",
+    "OrderPlacedSuccessfully": "OrderPlacedSuccessfully"
+  },
+  "ProductDetailPage": {
+    "In Stock": "In Stock",
+    "Sold Out": "Sold Out",
+    "Description": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
+    "Related Item": "Related Item",
+    "Buy Now": "Buy Now",
+    "Colours": "Colours",
+    "Size": "Size",
+    "Free Delivery": "Free Delivery",
+    "Enter your postal code for Delivery Availability": "Enter your postal code for Delivery Availability",
+    "Return Delivery": "Return Delivery",
+    "Free 30 Days Delivery Returns Details": "Free 30 Days Delivery Returns Details",
+    "Reviews": "Reviews"
+  },
+  "WishListSection": {
+    "Wishlist": "Wishlist",
+    "Move all to cart": "Move all to cart"
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "product": {
+      "id": 4,
+      "name": "IPS LCD Gaming Monitor",
+      "image": "/images/products/screen.png",
+      "price": 400,
+      "discount": 30,
+      "rate": 5,
+      "number_of_rate": 99,
+      "status": "available",
+      "description": "27-inch IPS LCD monitor with a 144Hz refresh rate for smooth gaming visuals."
+    },
+    "quantity": 1
+  },
+  {
+    "id": 2,
+    "product": {
+      "id": 8,
+      "name": "GP11 Shooter USB Gamepad",
+      "image": "/images/products/fantech.png",
+      "price": 660,
+      "discount": 0,
+      "rate": 4,
+      "number_of_rate": 55,
+      "status": "available",
+      "description": "USB gamepad with precise controls and a comfortable grip for extended play sessions."
+    },
+    "quantity": 2
+  }
+]
