@@ -1,16 +1,16 @@
-import Logo from './logo'
-import SearchBar from './search-bar'
-import IconGroup from './icon-group'
-import Account from './account'
+import Logo from '@/components/shared/logo'
+import NavBar from '@/components/shared/nav-bar'
+import CartButton from '@/components/shared/cart-button'
+import MyAccount from '@/components/shared/my-account/MyAccount'
 
 const Header: React.FC = () => {
   return (
-    <header className='flex items-center justify-between px-14 py-2'>
+    <header className='flex items-center justify-between bg-[#f4f3f8] px-14 py-2'>
       <Logo />
-      <SearchBar />
-      <div className='flex items-center gap-4'>
-        <IconGroup />
-        <Account />
+      <NavBar />
+      <div className='flex items-center gap-2'>
+        <CartButton />
+        <MyAccount />
       </div>
     </header>
   )
