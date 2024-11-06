@@ -23,6 +23,8 @@ const BreadcrumbNav: React.FC = () => {
   const pathName = usePathname()
   const breadcrumbItems = pathName.split('/').filter(Boolean)
 
+  if (breadcrumbItems.length === 0) return
+
   return (
     <Breadcrumb>
       <BreadcrumbList>

@@ -11,7 +11,7 @@ import { Book } from '@/@types/book.type'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
-type BookCardProps = {
+type ProductCardProps = {
   book: Book
 }
 
@@ -31,7 +31,7 @@ const ActionGroup: React.FC = () => {
   )
 }
 
-const BookCard: React.FC<BookCardProps> = ({ book }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ book }) => {
   const { id, title, author, imageUrl, price, rating } = book
 
   const [isHover, setIsHover] = useState<boolean>(false)
@@ -60,4 +60,4 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
   )
 }
 
-export default BookCard
+export default ProductCard

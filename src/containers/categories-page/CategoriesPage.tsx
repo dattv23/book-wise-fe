@@ -1,10 +1,10 @@
+import HeroSection from '@/components/shared/hero-section'
 import BooksDisplayedSection from './books-displayed-section'
-import CategorySection from './category-section'
 
 const CategoriesPage: React.FC = () => {
   return (
     <main>
-      <CategorySection />
+      <HeroSection subtitle='Khám phá những cuốn sách yêu thích của bạn 📚' title='Danh mục' />
       <BooksDisplayedSection />
     </main>
   )
