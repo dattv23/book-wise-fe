@@ -1,7 +1,13 @@
-import React from 'react'
+import BooksDisplayedSection from './books-displayed-section'
+import CategorySection from './category-section'
 
-const CategoriesPage = () => {
-  return <div>CategoriesPage</div>
+const CategoriesPage: React.FC = () => {
+  return (
+    <main>
+      <CategorySection />
+      <BooksDisplayedSection />
+    </main>
+  )
 }
 
 export default CategoriesPage

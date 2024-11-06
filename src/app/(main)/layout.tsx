@@ -6,6 +6,8 @@ import '@public/styles/globals.css'
 import Header from '@/components/layout/client/header'
 import Footer from '@/components/layout/client/footer'
 
+import { envServerConfig } from '@/lib/envServer'
+
 const robotoRegular = localFont({
   src: '../../../public/fonts/RobotoRegular.ttf',
   variable: '--font-roboto-regular',
@@ -28,9 +30,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const isDev = envServerConfig.NODE_ENV === 'development'
+
   return (
     <html lang='en'>
-      <body className={`${robotoRegular.variable} ${openSansRegular.variable} antialiased`}>
+      <body
+        className={`${robotoRegular.variable} ${openSansRegular.variable} antialiased`}
+        suppressHydrationWarning={isDev}
+      >
         <Header />
         {children}
         <Footer />
