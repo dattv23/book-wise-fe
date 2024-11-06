@@ -1,10 +1,9 @@
+import RatingStars from '@/components/shared/rating-stars'
 import { Checkbox } from '@/components/ui/checkbox'
-import { renderStar } from '@/lib/utils'
-import React from 'react'
 
 const ratings = ['5', '4', '3', '2', '1']
 
-const RatingsFilter = () => {
+const RatingsFilter: React.FC = () => {
   return (
     <div className='flex flex-col gap-4 rounded-md bg-[#f4f3f8] p-4'>
       <h3 className='text-2xl font-semibold'>Lọc theo đánh giá</h3>
@@ -17,7 +16,7 @@ const RatingsFilter = () => {
               htmlFor={item}
               className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
             >
-              {renderStar(+item)}
+              <RatingStars rating={+item} />
             </label>
           </li>
         ))}

@@ -5,4 +5,5 @@ export type Book = {
   price: number
   rating: number
   imageUrl: string
+  description: string
 }

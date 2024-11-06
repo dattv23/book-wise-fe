@@ -5,11 +5,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { HeartIcon, SearchIcon, ShoppingCartIcon } from 'lucide-react'
 
-import { renderStar } from '@/lib/utils'
 import { Book } from '@/@types/book.type'
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import RatingStars from '@/components/shared/rating-stars'
 
 type ProductCardProps = {
   book: Book
@@ -52,7 +52,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ book }) => {
         <CardTitle className='text-xl font-bold'>{title}</CardTitle>
         <CardDescription className='flex flex-col items-center gap-2'>
           <span>by {author}</span>
-          <span className='flex gap-2'>{renderStar(rating)}</span>
+          <RatingStars rating={rating} />
           <span className='text-sm text-gray-600'>{price} VND</span>
         </CardDescription>
       </CardContent>

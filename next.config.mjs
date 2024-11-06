@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { domains: ['www.claudeusercontent.com'] }
+  images: { domains: ['picsum.photos'] }
 }
 
 export default nextConfig

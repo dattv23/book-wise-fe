@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
@@ -39,17 +40,24 @@ const BreadcrumbNav: React.FC = () => {
         {breadcrumbItems.map((item, index) => {
           const link = `/${breadcrumbItems.slice(0, index + 1).join('/')}`
           return (
-            <BreadcrumbItem key={index}>
-              {index === breadcrumbItems.length - 1 ? (
-                <BreadcrumbPage className='capitalize'>{translators[item]}</BreadcrumbPage>
-              ) : (
-                <BreadcrumbLink asChild>
-                  <Link href={link} className='capitalize'>
-                    {item}
-                  </Link>
-                </BreadcrumbLink>
+            <React.Fragment key={index}>
+              <BreadcrumbItem key={index}>
+                {index === breadcrumbItems.length - 1 ? (
+                  <BreadcrumbPage className='capitalize'>{translators[item] ?? item}</BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink asChild>
+                    <Link href={link} className='capitalize'>
+                      {translators[item] ?? item}
+                    </Link>
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+              {index !== breadcrumbItems.length - 1 && (
+                <BreadcrumbSeparator key={`arrow-${index}`}>
+                  <ArrowRightIcon />
+                </BreadcrumbSeparator>
               )}
-            </BreadcrumbItem>
+            </React.Fragment>
           )
         })}
       </BreadcrumbList>
