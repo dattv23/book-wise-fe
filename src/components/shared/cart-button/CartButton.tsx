@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button'
 import CartItem from '@/components/shared/cart-item'
 import { cart } from '@/mocks/cart'
+import Link from 'next/link'
 
 const CartButton: React.FC = () => {
   const data = cart
@@ -22,9 +23,9 @@ const CartButton: React.FC = () => {
   return (
     <Drawer>
       <DrawerTrigger>
-        <Button size={'icon'}>
+        <div className='inline-flex h-9 w-9 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'>
           <ShoppingCartIcon />
-        </Button>
+        </div>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
@@ -63,12 +64,10 @@ const CartButton: React.FC = () => {
           </div>
         </div>
         <DrawerFooter>
-          <Button>Thanh toán</Button>
-          <DrawerClose>
-            <Button variant='outline' className='w-full'>
-              Đóng
-            </Button>
-          </DrawerClose>
+          <Button>
+            <Link href={'/checkout'}>Thanh toán</Link>
+          </Button>
+          <DrawerClose>Đóng</DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
