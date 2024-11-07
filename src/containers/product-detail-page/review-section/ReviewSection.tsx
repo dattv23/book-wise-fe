@@ -9,13 +9,13 @@ type ReviewSectionProps = {
 
 const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
   return (
-    <section className='mx-14 py-8'>
+    <section className='mx-4 py-8 md:mx-14'>
       {/* Header Section */}
       <div className='mb-8 flex justify-between'>
         <div>
           <h2 className='mb-2 text-2xl font-bold'>Đánh giá của khách hàng</h2>
           <div className='flex items-center gap-4'>
-            <div className='flex items-center gap-2'>
+            <div className='flex flex-col items-center justify-between gap-2 md:flex-row'>
               <span className='text-3xl font-bold'>4.5</span>
               <RatingStars rating={4.5} />
             </div>

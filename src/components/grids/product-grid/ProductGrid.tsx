@@ -8,7 +8,7 @@ type ProductGridProps = {
 
 const ProductGrid: React.FC<ProductGridProps> = ({ books }) => {
   return (
-    <div className='my-4 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4'>
+    <div className='m-2 grid grid-cols-2 gap-2 sm:m-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4'>
       {books.map((book) => (
         <ProductCard key={book.id} book={book} />
       ))}

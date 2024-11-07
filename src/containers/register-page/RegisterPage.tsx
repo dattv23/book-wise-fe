@@ -7,7 +7,7 @@ import RegisterForm from '@/components/forms/register-form'
 
 const RegisterPage: React.FC = () => {
   return (
-    <main className='m-auto max-w-96 space-y-2'>
+    <main className='m-auto max-w-96 space-y-2 px-4'>
       <div className='space-y-2'>
         <h1 className='text-4xl'>Đăng ký</h1>
         <p>Hi, Chào mừng bạn đến với BookWise 🫰</p>

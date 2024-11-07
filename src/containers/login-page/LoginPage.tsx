@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 
 const LoginPage: React.FC = () => {
   return (
-    <main className='m-auto max-w-96 space-y-4'>
+    <main className='m-auto max-w-96 space-y-4 px-4'>
       <div className='space-y-2'>
         <h1 className='text-4xl'>Đăng nhập</h1>
         <p>Hi, Chào mừng bạn trở lại 🫰</p>

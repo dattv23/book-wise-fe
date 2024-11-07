@@ -14,7 +14,7 @@ type InfoSectionProps = {
 
 const InfoSection: React.FC<InfoSectionProps> = ({ author, description, price, imageUrl, rating, title }) => {
   return (
-    <section className='mx-14 mt-8 flex flex-wrap justify-center gap-6 py-8'>
+    <section className='mx-4 mt-8 flex flex-wrap justify-center gap-6 py-8 md:mx-14'>
       <Image
         src={imageUrl}
         alt={title}
