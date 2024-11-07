@@ -2,11 +2,11 @@ import FeatureCard from '@/components/cards/feature-card'
 
 const FeaturesSection: React.FC = () => {
   return (
-    <div className='mb-16 grid grid-cols-4 gap-8'>
-      <FeatureCard icon='🚚' title='Free Shipping' description='For Orders Over $100' />
-      <FeatureCard icon='🔄' title='Exchange Offers' description='Book Exchange Policies' />
-      <FeatureCard icon='📚' title='My Subscriptions' description='Access Exclusive Books' />
-      <FeatureCard icon='💬' title='Help & Support' description='Contact Our Team 24/7' />
+    <div className='mb-16 grid grid-cols-2 gap-8 md:grid-cols-4'>
+      <FeatureCard icon='🚚' title='Miễn phí vận chuyển' description={`Đối với đơn hàng trên 1.000.000 đ`} />
+      <FeatureCard icon='🔄' title='Ưu đãi đổi trả' description='Chính sách trao đổi sách' />
+      <FeatureCard icon='📚' title='Quyền lợi đăng ký' description='Truy cập sách độc quyền' />
+      <FeatureCard icon='💬' title='Trợ giúp & Hỗ trợ' description='Liên hệ với nhóm của chúng tôi 24/7' />
     </div>
   )
 }

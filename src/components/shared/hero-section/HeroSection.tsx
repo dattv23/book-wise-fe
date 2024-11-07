@@ -9,8 +9,8 @@ type HeroSectionProps = {
 const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitle }) => {
   return (
     <section className='relative flex h-72 flex-col items-center justify-between bg-[#f4f3f8] p-12'>
-      <p className='font-semibold capitalize'>{subtitle}</p>
-      <h1 className='text-8xl font-bold capitalize'>{title}</h1>
+      <p className='text-center font-semibold capitalize'>{subtitle}</p>
+      <h1 className='text-center text-6xl font-bold capitalize md:text-8xl'>{title}</h1>
       <BreadcrumbNav />
       <SearchBar className='absolute -bottom-5 w-96' />
     </section>

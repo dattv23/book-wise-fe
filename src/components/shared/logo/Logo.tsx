@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Logo: React.FC = () => {
   return (
-    <Link href='/' className='flex gap-2'>
+    <Link href='/' className='hidden gap-2 md:flex'>
       <Image src={'/images/logo-icon.png'} alt='logo-icon' width={48} height={48} sizes='48' />
       <div>
         <p className='text-2xl'>BookWise</p>

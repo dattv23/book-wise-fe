@@ -8,7 +8,7 @@ import { InstagramLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from '@radix-ui/
 
 const Footer: React.FC = () => {
   return (
-    <footer className='flex flex-col gap-6 bg-[#0e0e2a] px-14 py-8 text-white'>
+    <footer className='flex flex-col gap-6 bg-[#0e0e2a] px-6 py-8 text-white md:px-14'>
       <div className='flex items-center justify-between'>
         <Logo />
         <NavBar />

@@ -4,7 +4,7 @@ import YearsFilter from '@/components/filters/years-filter'
 
 const SidebarFilter: React.FC = () => {
   return (
-    <aside className='flex w-[300px] flex-col gap-4'>
+    <aside className='flex w-full flex-col gap-4'>
       <CategoriesFilter />
       <YearsFilter />
       <RatingsFilter />

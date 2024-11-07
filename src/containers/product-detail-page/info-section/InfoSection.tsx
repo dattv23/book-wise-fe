@@ -14,9 +14,15 @@ type InfoSectionProps = {
 
 const InfoSection: React.FC<InfoSectionProps> = ({ author, description, price, imageUrl, rating, title }) => {
   return (
-    <section className='mx-14 mt-8 flex flex-wrap gap-6 py-8'>
-      <Image src={imageUrl} alt={title} width={300} height={400} className='flex-[0.3] rounded-xl object-fill shadow' />
-      <div className='flex flex-[0.3] flex-col gap-6 py-10'>
+    <section className='mx-14 mt-8 flex flex-wrap justify-center gap-6 py-8'>
+      <Image
+        src={imageUrl}
+        alt={title}
+        width={300}
+        height={400}
+        className='w-full rounded-xl object-fill shadow md:flex-[0.3]'
+      />
+      <div className='flex w-full flex-col gap-6 md:flex-[0.3] md:py-10'>
         <h4 className='text-4xl'>{title}</h4>
         <p>Tác giả {author}</p>
         <p>
@@ -32,7 +38,7 @@ const InfoSection: React.FC<InfoSectionProps> = ({ author, description, price, i
           <Button>Mua ngay</Button>
         </div>
       </div>
-      <div className='mx-14 flex flex-[0.4] flex-col gap-4 py-8'>
+      <div className='flex flex-col gap-4 py-8 md:flex-[0.4]'>
         <h4 className='text-3xl font-bold'>Mô tả sản phẩm</h4>
         <hr />
         <p>{description}</p>

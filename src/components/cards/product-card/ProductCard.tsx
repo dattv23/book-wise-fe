@@ -53,7 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ book }) => {
         <CardDescription className='flex flex-col items-center gap-2'>
           <span>by {author}</span>
           <RatingStars rating={rating} />
-          <span className='text-sm text-gray-600'>{price} VND</span>
+          <span className='text-sm text-gray-600'>{price.toLocaleString('vi-VN')} đ</span>
         </CardDescription>
       </CardContent>
     </Card>
