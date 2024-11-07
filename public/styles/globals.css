@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-roboto-regular), var(--font-open-sans-regular);
+  font-family: var(--font-roboto);
 }
 
 @layer utilities {

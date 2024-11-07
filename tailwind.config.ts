@@ -9,8 +9,7 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      robotoRegular: ['var(--font-roboto-regular)'],
-      openSansRegular: ['var(--font-open-sans-regular)']
+      roboto: ['var(--font-roboto)']
     },
     extend: {
       colors: {

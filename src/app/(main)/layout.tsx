@@ -9,15 +9,14 @@ import Footer from '@/components/layout/client/footer'
 import { envServerConfig } from '@/lib/envServer'
 
 const robotoRegular = localFont({
-  src: '../../../public/fonts/RobotoRegular.ttf',
-  variable: '--font-roboto-regular',
-  weight: '100 900'
-})
-
-const openSansRegular = localFont({
-  src: '../../../public/fonts/OpenSansRegular.ttf',
-  variable: '--font-open-sans-regular',
-  weight: '100 900'
+  src: [
+    { path: '../../../public/fonts/Roboto/Roboto-Thin.ttf', weight: '100' },
+    { path: '../../../public/fonts/Roboto/Roboto-Light.ttf', weight: '300' },
+    { path: '../../../public/fonts/Roboto/Roboto-Regular.ttf', weight: '400' },
+    { path: '../../../public/fonts/Roboto/Roboto-Medium.ttf', weight: '500' },
+    { path: '../../../public/fonts/Roboto/Roboto-Bold.ttf', weight: '700' }
+  ],
+  variable: '--font-roboto'
 })
 
 export const metadata: Metadata = {
@@ -34,10 +33,7 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
-      <body
-        className={`${robotoRegular.variable} ${openSansRegular.variable} antialiased`}
-        suppressHydrationWarning={isDev}
-      >
+      <body className={`${robotoRegular.variable} antialiased`} suppressHydrationWarning={isDev}>
         <Header />
         {children}
         <Footer />
