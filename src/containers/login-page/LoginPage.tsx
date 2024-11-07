@@ -16,7 +16,7 @@ const LoginPage: React.FC = () => {
         <GoogleIcon />
         <span>Đăng nhập với Google</span>
       </Button>
-      <div className='flex w-full items-center gap-3'>
+      <div className='flex w-full items-center justify-between gap-3'>
         <hr className='w-20' />
         <span className='w-fit text-gray-400'>hoặc Đăng nhập với Email</span>
         <hr className='w-20' />
