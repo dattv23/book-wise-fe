@@ -1,12 +1,26 @@
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import React from 'react'
+'use client'
 
-const MyAccount = () => {
+import { Button } from '@/components/ui/button'
+import { useAuthStore } from '@/store/auth.store'
+import Link from 'next/link'
+
+const MyAccount: React.FC = () => {
+  const { user } = useAuthStore()
+
   return (
-    <Button variant={'outline'} className='border-primary text-primary'>
-      <Link href={'/auth/login'}>Đăng nhập</Link>
-    </Button>
+    <>
+      {user ? (
+        <p>
+          Xin chào, <span className='font-bold'>{user.name}</span>
+        </p>
+      ) : (
+        <Link href={'/auth/login'}>
+          <Button variant={'outline'} className='border-primary text-primary'>
+            Đăng nhập
+          </Button>
+        </Link>
+      )}
+    </>
   )
 }
 

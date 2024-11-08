@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
       </Button>
       <ul
         className={cn(
-          'gap-4 text-black md:flex',
+          'gap-4 md:flex',
           isToggled
             ? 'absolute left-0 top-11 z-10 flex w-32 flex-col rounded-md border border-primary bg-white p-4 text-left'
             : 'hidden md:flex'

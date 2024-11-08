@@ -1,13 +1,18 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+
 import { loginSchema } from '@/validations/auth.validation'
+import { loginAction } from '@/server-actions'
+import { useToast } from '@/hooks/use-toast'
+import { useAuthStore } from '@/store/auth.store'
 
 const LoginForm: React.FC = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -17,11 +22,30 @@ const LoginForm: React.FC = () => {
       password: ''
     }
   })
+  const { toast } = useToast()
+  const { setUser } = useAuthStore()
+  const router = useRouter()
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+    loginAction(values)
+      .then((result) => {
+        const { isSuccess, message, data } = result
+        if (!isSuccess || !data) {
+          throw new Error(message)
+        }
+        setUser(data)
+        toast({
+          title: 'Đăng nhập thành công!',
+          description: 'Chào mừng bạn đến với BookWise 🫰!'
+        })
+        router.push('/')
+      })
+      .catch((error) => {
+        toast({
+          title: 'Đăng nhập thất bại!',
+          description: error ?? 'Đã có lỗi xảy ra ở hệ thống. Vui lòng thử lại sau!'
+        })
+      })
   }
 
   return (

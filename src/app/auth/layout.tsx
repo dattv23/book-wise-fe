@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import '@public/styles/globals.css'
 import AuthHeader from '@/components/layout/auth/header'
+import { Toaster } from '@/components/ui/toaster'
 
 const robotoRegular = localFont({
   src: [
@@ -29,6 +30,7 @@ export default function AuthLayout({
       <body className={`${robotoRegular.variable} antialiased`}>
         <AuthHeader />
         {children}
+        <Toaster />
       </body>
     </html>
   )

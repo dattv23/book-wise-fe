@@ -5,6 +5,7 @@ import '@public/styles/globals.css'
 
 import Header from '@/components/layout/client/header'
 import Footer from '@/components/layout/client/footer'
+import { Toaster } from '@/components/ui/toaster'
 
 import { envServerConfig } from '@/lib/envServer'
 
@@ -37,6 +38,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   )
