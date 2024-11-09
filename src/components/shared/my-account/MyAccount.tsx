@@ -1,18 +1,38 @@
 'use client'
 
+import Link from 'next/link'
+import { LogOutIcon } from 'lucide-react'
+
 import { Button } from '@/components/ui/button'
 import { useAuthStore } from '@/store/auth.store'
-import Link from 'next/link'
+import { logoutAction } from '@/server-actions'
+import { useToast } from '@/hooks/use-toast'
 
 const MyAccount: React.FC = () => {
-  const { user } = useAuthStore()
+  const { user, clear } = useAuthStore()
+  const { toast } = useToast()
+
+  async function handleLogout() {
+    const { success } = await logoutAction()
+    if (!success) {
+      toast({ variant: 'destructive', title: 'Đăng xuất thất bại!' })
+      return
+    }
+    clear()
+    toast({ title: 'Đăng xuất thành công!' })
+  }
 
   return (
     <>
       {user ? (
-        <p>
-          Xin chào, <span className='font-bold'>{user.name}</span>
-        </p>
+        <div className='flex items-center gap-2'>
+          <p>
+            Xin chào, <span className='font-bold'>{user.name}</span>
+          </p>
+          <Button size={'icon'} variant={'outline'} onClick={handleLogout}>
+            <LogOutIcon />
+          </Button>
+        </div>
       ) : (
         <Link href={'/auth/login'}>
           <Button variant={'outline'} className='border-primary text-primary'>
