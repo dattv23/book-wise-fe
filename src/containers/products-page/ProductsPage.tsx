@@ -7,7 +7,7 @@ const ProductsPage: React.FC = () => {
   return (
     <main>
       <HeroSection title='Cửa hàng' subtitle='Tất cả những cuốn sách yêu thích của bạn ở một nơi 📚' />
-      <div className='mx-4 mt-4 flex flex-wrap-reverse gap-6 py-8 md:mx-14 md:mt-8'>
+      <div className='mx-4 mt-4 flex flex-wrap gap-2 py-8 md:mx-14 md:mt-8 lg:flex-nowrap'>
         <SidebarFilter />
         <div>
           <BestSellerSection />

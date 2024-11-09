@@ -29,7 +29,7 @@ const MyAccount: React.FC = () => {
           <p>
             Xin chào, <span className='font-bold'>{user.name}</span>
           </p>
-          <Button size={'icon'} variant={'outline'} onClick={handleLogout}>
+          <Button size={'icon'} variant={'outline'} className='bg-inherit text-inherit' onClick={handleLogout}>
             <LogOutIcon />
           </Button>
         </div>
