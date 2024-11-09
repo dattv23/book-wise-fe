@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
 import { z } from 'zod'
 
 import { Input } from '@/components/ui/input'
@@ -13,7 +14,6 @@ import { loginSchema } from '@/validations/auth.validation'
 import { loginAction } from '@/server-actions'
 import { useToast } from '@/hooks/use-toast'
 import { useAuthStore } from '@/store/auth.store'
-import { useState } from 'react'
 
 const LoginForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)

@@ -1,13 +1,18 @@
 'use client'
 
 import { z } from 'zod'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { registerSchema } from '@/validations/auth.validation'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { useToast } from '@/hooks/use-toast'
+import { useAuthStore } from '@/store/auth.store'
+import { registerAction } from '@/server-actions'
 
 const RegisterForm: React.FC = () => {
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -18,11 +23,44 @@ const RegisterForm: React.FC = () => {
       password: ''
     }
   })
+  const router = useRouter()
+  const { toast } = useToast()
+  const { setUser } = useAuthStore()
+  const [isLoading, setIsLoading] = useState(false)
 
-  function onSubmit(values: z.infer<typeof registerSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof registerSchema>) {
+    try {
+      setIsLoading(true)
+
+      const result = await registerAction(values)
+
+      if (!result.success) {
+        toast({
+          variant: 'destructive',
+          title: 'Đăng ký thất bại!',
+          description: result.error
+        })
+        return
+      }
+      const { data: loginResult } = result
+      if (loginResult) {
+        setUser(loginResult.data.user)
+      }
+      toast({
+        title: 'Đăng ký thành công!',
+        description: 'Chào mừng bạn đến với BookWise 🫰!'
+      })
+      router.push('/')
+      router.refresh()
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Lỗi hệ thống',
+        description: 'Đã có lỗi xảy ra. Vui lòng thử lại sau!'
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -70,7 +108,7 @@ const RegisterForm: React.FC = () => {
             </FormItem>
           )}
         />
-        <Button type='submit' className='w-full'>
+        <Button type='submit' className='w-full' disabled={isLoading}>
           Đăng ký
         </Button>
       </form>
