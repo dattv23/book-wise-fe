@@ -13,8 +13,11 @@ import { loginSchema } from '@/validations/auth.validation'
 import { loginAction } from '@/server-actions'
 import { useToast } from '@/hooks/use-toast'
 import { useAuthStore } from '@/store/auth.store'
+import { useState } from 'react'
 
 const LoginForm: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -26,26 +29,39 @@ const LoginForm: React.FC = () => {
   const { setUser } = useAuthStore()
   const router = useRouter()
 
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    loginAction(values)
-      .then((result) => {
-        const { isSuccess, message, data } = result
-        if (!isSuccess || !data) {
-          throw new Error(message)
-        }
-        setUser(data)
+  async function onSubmit(values: z.infer<typeof loginSchema>) {
+    try {
+      setIsLoading(true)
+
+      const result = await loginAction(values)
+
+      if (!result.success) {
         toast({
-          title: 'Đăng nhập thành công!',
-          description: 'Chào mừng bạn đến với BookWise 🫰!'
-        })
-        router.push('/')
-      })
-      .catch((error) => {
-        toast({
+          variant: 'destructive',
           title: 'Đăng nhập thất bại!',
-          description: error ?? 'Đã có lỗi xảy ra ở hệ thống. Vui lòng thử lại sau!'
+          description: result.error
         })
+        return
+      }
+      const { data: loginResult } = result
+      if (loginResult) {
+        setUser(loginResult.data.user)
+      }
+      toast({
+        title: 'Đăng nhập thành công!',
+        description: 'Chào mừng bạn đến với BookWise 🫰!'
       })
+      router.push('/')
+      router.refresh()
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Lỗi hệ thống',
+        description: 'Đã có lỗi xảy ra. Vui lòng thử lại sau!'
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -79,7 +95,7 @@ const LoginForm: React.FC = () => {
             </FormItem>
           )}
         />
-        <Button type='submit' className='w-full'>
+        <Button type='submit' className='w-full' disabled={isLoading}>
           Đăng nhập
         </Button>
       </form>

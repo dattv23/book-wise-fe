@@ -5,34 +5,59 @@ import { cookies } from 'next/headers'
 
 import { loginSchema } from '@/validations/auth.validation'
 import { envServerConfig } from '@/lib/envServer'
-import { LoginResponse } from '@/@types'
+import { ActionResponse, LoginResponse } from '@/@types'
 
-const loginAction = async (data: z.infer<typeof loginSchema>) => {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/auth/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  const result = (await res.json()) as LoginResponse
-  const { statusCode, message } = result
-  if (statusCode !== 200) {
-    return { isSuccess: false, message, errors: result.errors }
-  }
-  const {
-    data: {
-      user,
-      tokens: { access, refresh }
+const loginAction = async (formData: z.infer<typeof loginSchema>): Promise<ActionResponse<LoginResponse>> => {
+  try {
+    const res = await fetch(`${envServerConfig.DOMAIN_API}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+
+    const result = (await res.json()) as LoginResponse
+    const { statusCode, message } = result
+
+    if (statusCode !== 200) {
+      return {
+        success: false,
+        error: message || 'Đăng nhập thất bại'
+      }
     }
-  } = result
-  const cookieStore = cookies()
-  cookieStore.set('access_token', access.token, { expires: new Date(access.expires), httpOnly: true })
-  cookieStore.set('refresh_token', refresh.token, { expires: new Date(access.expires), httpOnly: true })
-  return {
-    isSuccess: true,
-    message,
-    data: user
+
+    const {
+      data: {
+        tokens: { access, refresh }
+      }
+    } = result
+
+    const cookieStore = cookies()
+    cookieStore.set('access_token', access.token, {
+      expires: new Date(access.expires),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax'
+    })
+
+    cookieStore.set('refresh_token', refresh.token, {
+      expires: new Date(refresh.expires),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax'
+    })
+
+    return {
+      success: true,
+      data: result
+    }
+  } catch (error) {
+    return {
+      success: false,
+      error: 'Đã có lỗi xảy ra. Vui lòng thử lại sau!'
+    }
   }
 }
 

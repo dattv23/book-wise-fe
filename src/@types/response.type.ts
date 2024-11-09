@@ -1,5 +1,11 @@
 import { User } from './user.type'
 
+export type ActionResponse<T> = {
+  success: boolean
+  data?: T
+  error?: string
+}
+
 type ApiResponse<T> = {
   statusCode: number
   message: string
