@@ -1,7 +1,9 @@
 import { Review } from '@/@types'
+
+import { convertDateFormat } from '@/lib/helpers'
 import Pagination from '@/components/shared/pagination'
+import ReviewDialog from '@/components/dialogs/review-dialog'
 import RatingStars from '@/components/shared/rating-stars/RatingStars'
-import { Button } from '@/components/ui/button'
 
 type ReviewSectionProps = {
   reviews: Review[]
@@ -14,15 +16,19 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
       <div className='mb-8 flex justify-between'>
         <div>
           <h2 className='mb-2 text-2xl font-bold'>Đánh giá của khách hàng</h2>
-          <div className='flex items-center gap-4'>
-            <div className='flex flex-col items-center justify-between gap-2 md:flex-row'>
-              <span className='text-3xl font-bold'>4.5</span>
-              <RatingStars rating={4.5} />
+          {reviews.length === 0 ? (
+            <span>Hiện chưa có đánh giá nào.</span>
+          ) : (
+            <div className='flex items-center gap-4'>
+              <div className='flex flex-col items-center justify-between gap-2 md:flex-row'>
+                <span className='text-3xl font-bold'>5</span>
+                <RatingStars rating={5} />
+              </div>
+              <span className='text-gray-500'>Dựa trên {reviews.length} lượt đánh giá</span>
             </div>
-            <span className='text-gray-500'>Dựa trên {reviews.length} lượt đánh giá</span>
-          </div>
+          )}
         </div>
-        <Button>Viết đánh giá</Button>
+        <ReviewDialog />
       </div>
 
       {/* Reviews List */}
@@ -31,10 +37,10 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
           <div key={review.id} className='border-b border-gray-200 pb-6'>
             <div className='mb-2 flex items-start justify-between'>
               <div>
-                <h3 className='mb-1 font-semibold'>{review.user}</h3>
+                <h3 className='mb-1 font-semibold'>{review.user.name}</h3>
                 <RatingStars rating={review.rating} />
               </div>
-              <span className='text-sm text-gray-500'>{review.date}</span>
+              <span className='text-sm text-gray-500'>{convertDateFormat(review.createdAt)}</span>
             </div>
             <p className='mt-2 text-gray-700'>{review.comment}</p>
           </div>
@@ -42,7 +48,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
       </div>
 
       {/* Pagination */}
-      <Pagination />
+      {reviews.length > 0 && <Pagination />}
     </section>
   )
 }

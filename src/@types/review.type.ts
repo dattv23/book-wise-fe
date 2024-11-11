@@ -1,7 +1,15 @@
+import { Book } from './book.type'
+import { User } from './user.type'
+
 export type Review = {
-  id: number
-  user: string
+  id: string
   rating: number
   comment: string
-  date: string
+  createdAt: string
+  updatedAt: string
+  isDeleted: boolean
+  userId: string
+  bookId: string
+  book: Pick<Book, 'id' | 'info'>
+  user: Pick<User, 'id' | 'name'>
 }
