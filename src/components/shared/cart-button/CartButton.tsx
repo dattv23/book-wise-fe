@@ -17,12 +17,12 @@ import Link from 'next/link'
 
 const CartButton: React.FC = () => {
   const data = cart
-  const subTotal = data.reduce((acc, curr) => acc + curr.product.price * curr.quantity, 0)
+  const subTotal = data.reduce((acc, curr) => acc + curr.product.info.currentPrice * curr.quantity, 0)
   const shippingCosts = 50000
 
   return (
     <Drawer>
-      <DrawerTrigger>
+      <DrawerTrigger aria-label='cart-button'>
         <div className='inline-flex h-9 w-9 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'>
           <ShoppingCartIcon />
         </div>
@@ -33,8 +33,8 @@ const CartButton: React.FC = () => {
           {data.length === 0 && <DrawerDescription>Không có sản phẩm nào trong giỏ hàng</DrawerDescription>}
           {data.length > 0 && (
             <DrawerDescription>
-              {data.length} sản phẩm - {data.reduce((acc, curr) => acc + curr.product.price, 0).toLocaleString('vi-VN')}{' '}
-              đ
+              {data.length} sản phẩm -{' '}
+              {data.reduce((acc, curr) => acc + curr.product.info.originalPrice, 0).toLocaleString('vi-VN')} đ
             </DrawerDescription>
           )}
         </DrawerHeader>

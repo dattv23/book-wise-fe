@@ -22,17 +22,17 @@ const Footer: React.FC = () => {
       <hr className='border-primary opacity-30' />
       <div className='flex items-center justify-between'>
         <p>
-          <span className='mr-2 text-primary'>© 2024 dattv23</span>
+          <span className='mr-2'>© 2024 dattv23</span>
           Copyright All Right Reserved
         </p>
         <div className='flex gap-2'>
-          <Button size={'icon'}>
+          <Button size={'icon'} aria-label='twitter-button-link'>
             <TwitterLogoIcon />
           </Button>
-          <Button size={'icon'}>
+          <Button size={'icon'} aria-label='instagram-button-link'>
             <InstagramLogoIcon />
           </Button>
-          <Button size={'icon'}>
+          <Button size={'icon'} aria-label='linkedin-button-link'>
             <LinkedInLogoIcon />
           </Button>
         </div>

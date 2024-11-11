@@ -10,15 +10,16 @@ type CartItemProps = {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ book, quantity }) => {
+  const { info } = book
   return (
     <div className='flex gap-3'>
-      <Image width={80} height={64} src={book.imageUrl} alt={book.title} className='h-16 w-20 rounded object-cover' />
+      <Image width={80} height={64} src={info.imageUrl} alt={info.title} className='h-16 w-20 rounded object-cover' />
       <div className='flex-1'>
         <div className='flex justify-between'>
           <div>
-            <h3 className='font-medium'>{book.title}</h3>
+            <h3 className='font-medium'>{info.title}</h3>
           </div>
-          <p className='font-medium text-primary'>{(book.price * quantity).toLocaleString('vi-VN')} đ</p>
+          <p className='font-medium text-primary'>{(info.currentPrice * quantity).toLocaleString('vi-VN')} đ</p>
         </div>
         <div className='mt-2 flex items-center justify-between'>
           <div className='space-x-2'>

@@ -3,7 +3,7 @@ import { cart } from '@/mocks/cart'
 
 const OrderSummary: React.FC = () => {
   const data = cart
-  const subTotal = data.reduce((acc, curr) => acc + curr.product.price * curr.quantity, 0)
+  const subTotal = data.reduce((acc, curr) => acc + curr.product.info.currentPrice * curr.quantity, 0)
   const shippingCosts = 50000
 
   return (
