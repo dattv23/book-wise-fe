@@ -1,15 +1,19 @@
-import { categories } from '@/mocks/categories'
 import Link from 'next/link'
+import { Category } from '@/@types'
 
-const CategoriesFilter: React.FC = () => {
+type CategoriesFilterProps = {
+  data: Category[]
+}
+
+const CategoriesFilter: React.FC<CategoriesFilterProps> = ({ data }) => {
   return (
     <div className='flex flex-col gap-4 rounded-md bg-[#f4f3f8] p-4'>
       <h3 className='text-2xl font-semibold'>Các danh mục</h3>
       <hr />
       <ul>
-        {categories.map((item) => (
+        {data.map((item) => (
           <li key={item.id}>
-            <Link href={`categories/${item.slug}`} className='hover:text-primary'>
+            <Link href={`categories/${item.id}`} className='hover:text-primary'>
               {item.name}
             </Link>
           </li>

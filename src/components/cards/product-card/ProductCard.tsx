@@ -8,8 +8,8 @@ import { HeartIcon, SearchIcon, ShoppingCartIcon } from 'lucide-react'
 import { Book } from '@/@types/book.type'
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
 import RatingStars from '@/components/shared/rating-stars'
+import { Button } from '@/components/ui/button'
 
 type ProductCardProps = {
   book: Book
@@ -32,7 +32,10 @@ const ActionGroup: React.FC = () => {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ book }) => {
-  const { id, title, author, imageUrl, price, rating } = book
+  const {
+    id,
+    info: { title, imageUrl, author, currentPrice }
+  } = book
 
   const [isHover, setIsHover] = useState<boolean>(false)
 
@@ -52,8 +55,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ book }) => {
         <CardTitle className='text-xl font-bold'>{title}</CardTitle>
         <CardDescription className='flex flex-col items-center gap-2'>
           <span>by {author}</span>
-          <RatingStars rating={rating} />
-          <span className='text-sm text-gray-600'>{price.toLocaleString('vi-VN')} đ</span>
+          <RatingStars rating={5} />
+          <span className='text-sm text-gray-600'>{currentPrice.toLocaleString('vi-VN')} đ</span>
         </CardDescription>
       </CardContent>
     </Card>

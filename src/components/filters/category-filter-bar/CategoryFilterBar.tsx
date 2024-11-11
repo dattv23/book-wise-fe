@@ -1,19 +1,24 @@
+import { ApiResponse, Category } from '@/@types'
 import { Button } from '@/components/ui/button'
-import React from 'react'
+import { envServerConfig } from '@/lib/envServer'
 
-const filterList = [
-  { id: 1, name: 'Tất cả', value: '' },
-  { id: 2, name: 'Phát triển bản thân', value: 'phat-trien-ban-than' },
-  { id: 3, name: 'Kinh doanh', value: 'kinh-doanh' },
-  { id: 4, name: 'Trinh thám', value: 'trinh-tham' },
-  { id: 5, name: 'Khoa học', value: 'khoa-hoc' },
-  { id: 6, name: 'Giáo dục', value: 'giao-duc' }
-]
+async function getCategories() {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/categories`)
 
-const CategoryFilterBar = () => {
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
+const CategoryFilterBar = async () => {
+  const { data } = (await getCategories()) as ApiResponse<Category[]>
+
   return (
     <div className='flex max-w-xl flex-wrap items-center justify-center gap-4'>
-      {filterList.map((item) => (
+      {data.map((item) => (
         <Button key={item.id} variant={'outline'}>
           {item.name}
         </Button>

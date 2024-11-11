@@ -1,11 +1,23 @@
 import ProductGrid from '@/components/grids/product-grid'
-import { books } from '@/mocks/books'
+import { envServerConfig } from '@/lib/envServer'
 
-const FeaturedBooksSection: React.FC = () => {
+async function getFeaturedBooksData() {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/books`)
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
+const FeaturedBooksSection: React.FC = async () => {
+  const { data } = await getFeaturedBooksData()
+
   return (
     <section>
       <h2 className='mb-8 text-3xl font-bold'>Featured Books</h2>
-      <ProductGrid books={books.slice(0, 4)} />
+      <ProductGrid books={data.slice(0, 4)} />
     </section>
   )
 }

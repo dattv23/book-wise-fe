@@ -6,7 +6,7 @@ export type ActionResponse<T> = {
   error?: string
 }
 
-type ApiResponse<T> = {
+export type ApiResponse<T> = {
   statusCode: number
   message: string
   data: T

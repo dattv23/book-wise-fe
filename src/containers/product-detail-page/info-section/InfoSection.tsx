@@ -2,17 +2,10 @@ import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
 import RatingStars from '@/components/shared/rating-stars'
+import { Book } from '@/@types'
 
-type InfoSectionProps = {
-  imageUrl: string
-  title: string
-  author: string
-  rating: number
-  price: number
-  description: string
-}
-
-const InfoSection: React.FC<InfoSectionProps> = ({ author, description, price, imageUrl, rating, title }) => {
+const InfoSection: React.FC<Book> = ({ info }) => {
+  const { title, imageUrl, author, currentPrice } = info
   return (
     <section className='mx-4 mt-8 flex flex-wrap justify-center gap-6 py-8 md:mx-14'>
       <Image
@@ -29,8 +22,8 @@ const InfoSection: React.FC<InfoSectionProps> = ({ author, description, price, i
           <span className='font-bold'>Trạng thái: </span>
           <span className='text-primary'>Còn hàng</span>
         </p>
-        <RatingStars rating={rating} />
-        <span className='text-3xl text-primary'>{price.toLocaleString('vi-VN')} đ</span>
+        <RatingStars rating={5} />
+        <span className='text-3xl text-primary'>{currentPrice.toLocaleString('vi-VN')} đ</span>
         <div className='flex gap-2'>
           <Button variant={'outline'} className='border-primary text-primary'>
             Thêm vào giỏ
@@ -41,7 +34,8 @@ const InfoSection: React.FC<InfoSectionProps> = ({ author, description, price, i
       <div className='flex flex-col gap-4 py-8 md:flex-[0.4]'>
         <h4 className='text-3xl font-bold'>Mô tả sản phẩm</h4>
         <hr />
-        <p>{description}</p>
+        {/* <p>{description}</p> */}
+        <p>Chưa có mô tả sản phẩm</p>
       </div>
     </section>
   )
