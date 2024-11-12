@@ -12,6 +12,8 @@ import RatingStars from '@/components/shared/rating-stars'
 import { Button } from '@/components/ui/button'
 import { useCartStore } from '@/store/cart.store'
 import { useToast } from '@/hooks/use-toast'
+import { useFavoriteStore } from '@/store/favorite.store'
+import { cn } from '@/lib/utils'
 
 type ProductCardProps = {
   product: Product
@@ -25,6 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const [isHover, setIsHover] = useState<boolean>(false)
   const { addItem, checkIsExist } = useCartStore()
+  const { add: addToFavorite, remove: removeFromFavorite, find } = useFavoriteStore()
   const { toast } = useToast()
 
   const handleAddProductToCart = useCallback(() => {
@@ -44,6 +47,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     })
   }, [product, checkIsExist, addItem, toast])
 
+  const handleAddToFavorite = () => {
+    const checkIsExist = find(product.id)
+    if (!checkIsExist) {
+      addToFavorite(product)
+      return
+    }
+    removeFromFavorite(product.id)
+  }
+
   return (
     <Card onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       <CardHeader className='relative flex items-center'>
@@ -60,8 +72,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <Button size={'icon'} onClick={handleAddProductToCart}>
               <ShoppingCartIcon />
             </Button>
-            <Button size={'icon'}>
-              <HeartIcon />
+            <Button size={'icon'} onClick={handleAddToFavorite}>
+              <HeartIcon className={cn(find(product.id) && 'fill-red-400 text-red-400')} />
             </Button>
           </div>
         )}
