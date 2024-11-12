@@ -1,4 +1,4 @@
-import { Book } from './book.type'
+import { Product } from './product.type'
 import { User } from './user.type'
 
 export type Review = {
@@ -9,7 +9,7 @@ export type Review = {
   updatedAt: string
   isDeleted: boolean
   userId: string
-  bookId: string
-  book: Pick<Book, 'id' | 'info'>
+  productId: string
+  product: Pick<Product, 'id' | 'info'>
   user: Pick<User, 'id' | 'name'>
 }

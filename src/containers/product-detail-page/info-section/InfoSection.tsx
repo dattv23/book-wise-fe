@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
 import RatingStars from '@/components/shared/rating-stars'
-import { Book } from '@/@types'
+import { Product } from '@/@types'
 
-const InfoSection: React.FC<Book> = ({ info }) => {
+const InfoSection: React.FC<Product> = ({ info }) => {
   const { title, imageUrl, author, currentPrice } = info
   return (
     <section className='mx-4 mt-8 flex flex-wrap justify-center gap-6 py-8 md:mx-14'>

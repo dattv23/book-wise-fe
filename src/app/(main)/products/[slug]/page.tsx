@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 
 import { envServerConfig } from '@/lib/envServer'
-import { ApiResponse, Book, Review } from '@/@types'
+import { ApiResponse, Product, Review } from '@/@types'
 
 const ProductDetailPage = dynamic(() => import('@/containers/product-detail-page'))
 
@@ -34,7 +34,7 @@ type ProductDetailProp = {
 }
 
 const ProductDetail: React.FC<ProductDetailProp> = async ({ params }) => {
-  const { data: product } = (await getProductData(params.slug)) as ApiResponse<Book>
+  const { data: product } = (await getProductData(params.slug)) as ApiResponse<Product>
   const { data: reviews } = (await getReviews(params.slug)) as ApiResponse<Review[]>
 
   return <ProductDetailPage data={product} reviews={reviews} />

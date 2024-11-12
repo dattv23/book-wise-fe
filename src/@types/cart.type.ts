@@ -1,8 +1,6 @@
-import { Book } from './book.type'
+import { Product } from './product.type'
 
 export type CartItem = {
-  id: string
-  userId: string
-  product: Book
+  product: Product
   quantity: number
 }

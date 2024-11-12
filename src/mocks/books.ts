@@ -1,6 +1,6 @@
-import { Book } from '@/@types'
+import { Product } from '@/@types'
 
-export const books: Book[] = [
+export const books: Product[] = [
   {
     id: '1',
     info: {

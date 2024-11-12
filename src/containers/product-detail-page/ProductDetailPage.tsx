@@ -1,4 +1,4 @@
-import { Book } from '@/@types/book.type'
+import { Product } from '@/@types/product.type'
 
 import HeroSection from '@/components/shared/hero-section'
 import InfoSection from './info-section'
@@ -6,7 +6,7 @@ import ReviewSection from './review-section'
 import { Review } from '@/@types'
 
 type ProductDetailPageProps = {
-  data: Book
+  data: Product
   reviews: Review[]
 }
 

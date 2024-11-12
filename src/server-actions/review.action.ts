@@ -9,7 +9,7 @@ import { ActionResponse, ApiResponse, Review } from '@/@types'
 
 const reviewAction = async (
   formData: z.infer<typeof reviewSchema>,
-  bookId: string
+  productId: string
 ): Promise<ActionResponse<Review>> => {
   try {
     const cookieStore = cookies()
@@ -21,7 +21,7 @@ const reviewAction = async (
         Accept: 'application/json',
         Authorization: `Bearer ${token?.value}`
       },
-      body: JSON.stringify({ ...formData, bookId })
+      body: JSON.stringify({ ...formData, productId })
     })
 
     const result = (await res.json()) as ApiResponse<Review>

@@ -1,16 +1,16 @@
 import ProductCard from '@/components/cards/product-card'
 
-import { Book } from '@/@types/book.type'
+import { Product } from '@/@types/product.type'
 
 type ProductGridProps = {
-  books: Book[]
+  products: Product[]
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ books }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   return (
     <div className='m-2 grid grid-cols-2 gap-2 sm:m-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4'>
-      {books.map((book) => (
-        <ProductCard key={book.id} book={book} />
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   )

@@ -2,42 +2,47 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { HeartIcon, SearchIcon, ShoppingCartIcon } from 'lucide-react'
 
-import { Book } from '@/@types/book.type'
+import { Product } from '@/@types/product.type'
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import RatingStars from '@/components/shared/rating-stars'
 import { Button } from '@/components/ui/button'
+import { useCartStore } from '@/store/cart.store'
+import { useToast } from '@/hooks/use-toast'
 
 type ProductCardProps = {
-  book: Book
+  product: Product
 }
 
-const ActionGroup: React.FC = () => {
-  return (
-    <>
-      <Button size={'icon'}>
-        <SearchIcon />
-      </Button>
-      <Button size={'icon'}>
-        <ShoppingCartIcon />
-      </Button>
-      <Button size={'icon'}>
-        <HeartIcon />
-      </Button>
-    </>
-  )
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ book }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const {
     id,
     info: { title, imageUrl, author, currentPrice }
-  } = book
+  } = product
 
   const [isHover, setIsHover] = useState<boolean>(false)
+  const { addItem, checkIsExist } = useCartStore()
+  const { toast } = useToast()
+
+  const handleAddProductToCart = useCallback(() => {
+    if (checkIsExist(product.id)) {
+      toast({
+        title: 'Thêm sản phẩm vào giỏ hàng',
+        description: 'Sản phẩm đã được thêm vào giỏ hàng',
+        variant: 'default'
+      })
+      return
+    }
+    addItem(product)
+    toast({
+      title: 'Thêm sản phẩm vào giỏ hàng',
+      description: 'Sản phẩm đã được thêm vào giỏ hàng',
+      variant: 'default'
+    })
+  }, [product, checkIsExist, addItem, toast])
 
   return (
     <Card onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
@@ -47,7 +52,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ book }) => {
         </Link>
         {isHover && (
           <div className='absolute right-4 top-4 flex flex-col gap-2'>
-            <ActionGroup />
+            <Link href={`/products/${id}`}>
+              <Button size={'icon'}>
+                <SearchIcon />
+              </Button>
+            </Link>
+            <Button size={'icon'} onClick={handleAddProductToCart}>
+              <ShoppingCartIcon />
+            </Button>
+            <Button size={'icon'}>
+              <HeartIcon />
+            </Button>
           </div>
         )}
       </CardHeader>

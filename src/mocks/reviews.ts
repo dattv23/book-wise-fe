@@ -1,4 +1,5 @@
 import { Review } from '@/@types'
+import { books } from './books'
 
 export const reviews: Review[] = [
   {
@@ -9,18 +10,8 @@ export const reviews: Review[] = [
     updatedAt: '2024-03-15T00:00:00Z',
     isDeleted: false,
     userId: 'user1',
-    bookId: 'book1',
-    book: {
-      id: 'book1',
-      info: {
-        title: 'Of White and Shady',
-        author: 'Robert Willardson',
-        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
-        soldQuantity: 120,
-        currentPrice: 360000,
-        originalPrice: 400000
-      }
-    },
+    productId: books[0].id,
+    product: books[0],
     user: {
       id: 'user1',
       name: 'John Smith'
@@ -34,18 +25,8 @@ export const reviews: Review[] = [
     updatedAt: '2024-03-10T00:00:00Z',
     isDeleted: false,
     userId: 'user2',
-    bookId: 'book2',
-    book: {
-      id: 'book2',
-      info: {
-        title: 'Of White and Shady',
-        author: 'Robert Willardson',
-        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
-        soldQuantity: 120,
-        currentPrice: 360000,
-        originalPrice: 400000
-      }
-    },
+    productId: books[1].id,
+    product: books[1],
     user: {
       id: 'user2',
       name: 'Sarah Johnson'

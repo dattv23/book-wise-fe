@@ -1,7 +1,6 @@
 import { Review } from '@/@types'
 
 import { convertDateFormat } from '@/lib/helpers'
-import Pagination from '@/components/shared/pagination'
 import ReviewDialog from '@/components/dialogs/review-dialog'
 import RatingStars from '@/components/shared/rating-stars/RatingStars'
 
@@ -48,7 +47,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
       </div>
 
       {/* Pagination */}
-      {reviews.length > 0 && <Pagination />}
+      {/* {reviews.length > 0 && <Pagination />} */}
     </section>
   )
 }
