@@ -59,8 +59,8 @@ const CartDrawer: React.FC = () => {
             </DrawerHeader>
             <div className='space-y-4 p-4 pb-0'>
               <div className='space-y-4'>
-                {cart.map((item) => (
-                  <CartItem product={item.product} quantity={item.quantity} key={item.product.bookId} />
+                {cart.map((item, id) => (
+                  <CartItem product={item.product} quantity={item.quantity} key={id} />
                 ))}
               </div>
               <hr />
