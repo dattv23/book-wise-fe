@@ -1,6 +1,6 @@
 import { Product } from './product.type'
 
 export type CartItem = {
-  product: Product
+  product: Pick<Product, 'bookId' | 'info'>
   quantity: number
 }

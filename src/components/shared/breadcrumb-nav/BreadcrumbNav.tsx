@@ -43,12 +43,10 @@ const BreadcrumbNav: React.FC = () => {
             <React.Fragment key={index}>
               <BreadcrumbItem key={index}>
                 {index === breadcrumbItems.length - 1 ? (
-                  <BreadcrumbPage className='capitalize'>{translators[item] ?? item}</BreadcrumbPage>
+                  <BreadcrumbPage>{translators[item] ?? item}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
-                    <Link href={link} className='capitalize'>
-                      {translators[item] ?? item}
-                    </Link>
+                    <Link href={link}>{translators[item] ?? item}</Link>
                   </BreadcrumbLink>
                 )}
               </BreadcrumbItem>

@@ -1,6 +1,6 @@
 export type Product = {
   id: string
-  bookId: number
+  bookId: string
   info: Info
   details: Details
   description: string

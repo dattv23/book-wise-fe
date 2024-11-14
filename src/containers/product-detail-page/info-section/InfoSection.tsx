@@ -3,9 +3,12 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import RatingStars from '@/components/shared/rating-stars'
 import { Product } from '@/@types'
+import CartButton from '@/components/shared/cart-button'
 
-const InfoSection: React.FC<Product> = ({ info, description }) => {
+const InfoSection: React.FC<Product> = (product) => {
+  const { info, description } = product
   const { title, imageUrl, author, currentPrice } = info
+
   return (
     <section className='mx-4 mt-8 flex flex-wrap justify-center gap-6 py-8 md:mx-14'>
       <Image
@@ -25,9 +28,9 @@ const InfoSection: React.FC<Product> = ({ info, description }) => {
         <RatingStars rating={5} />
         <span className='text-3xl text-primary'>{currentPrice.toLocaleString('vi-VN')} đ</span>
         <div className='flex gap-2'>
-          <Button variant={'outline'} className='border-primary text-primary'>
+          <CartButton product={product} variant={'outline'} className='border-primary text-primary'>
             Thêm vào giỏ
-          </Button>
+          </CartButton>
           <Button>Mua ngay</Button>
         </div>
       </div>

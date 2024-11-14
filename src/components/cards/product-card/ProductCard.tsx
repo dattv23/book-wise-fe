@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { HeartIcon, SearchIcon, ShoppingCartIcon } from 'lucide-react'
 
 import { Product } from '@/@types/product.type'
@@ -10,10 +10,9 @@ import { Product } from '@/@types/product.type'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import RatingStars from '@/components/shared/rating-stars'
 import { Button } from '@/components/ui/button'
-import { useCartStore } from '@/store/cart.store'
-import { useToast } from '@/hooks/use-toast'
 import { useFavoriteStore } from '@/store/favorite.store'
 import { cn } from '@/lib/utils'
+import CartButton from '@/components/shared/cart-button'
 
 type ProductCardProps = {
   product: Product
@@ -26,26 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   } = product
 
   const [isHover, setIsHover] = useState<boolean>(false)
-  const { addItem, checkIsExist } = useCartStore()
   const { add: addToFavorite, remove: removeFromFavorite, find } = useFavoriteStore()
-  const { toast } = useToast()
-
-  const handleAddProductToCart = useCallback(() => {
-    if (checkIsExist(product.id)) {
-      toast({
-        title: 'Thêm sản phẩm vào giỏ hàng',
-        description: 'Sản phẩm đã được thêm vào giỏ hàng',
-        variant: 'default'
-      })
-      return
-    }
-    addItem(product)
-    toast({
-      title: 'Thêm sản phẩm vào giỏ hàng',
-      description: 'Sản phẩm đã được thêm vào giỏ hàng',
-      variant: 'default'
-    })
-  }, [product, checkIsExist, addItem, toast])
 
   const handleAddToFavorite = () => {
     const checkIsExist = find(product.id)
@@ -69,11 +49,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <SearchIcon />
               </Button>
             </Link>
-            <Button size={'icon'} onClick={handleAddProductToCart}>
+            <CartButton size={'icon'} product={product}>
               <ShoppingCartIcon />
-            </Button>
+            </CartButton>
             <Button size={'icon'} onClick={handleAddToFavorite}>
-              <HeartIcon className={cn(find(product.id) && 'fill-red-400 text-red-400')} />
+              <HeartIcon className={cn(find(product.bookId) && 'fill-red-400 text-red-400')} />
             </Button>
           </div>
         )}

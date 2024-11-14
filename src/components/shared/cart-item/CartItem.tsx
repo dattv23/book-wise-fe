@@ -9,7 +9,7 @@ import { useCartStore } from '@/store/cart.store'
 import { toast } from '@/hooks/use-toast'
 
 type CartItemProps = {
-  product: Product
+  product: Pick<Product, 'bookId' | 'info'>
   quantity: number
 }
 
@@ -25,7 +25,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
       })
       return
     }
-    updateQuantity(product.id, quantity - 1)
+    updateQuantity(product.bookId, quantity - 1)
   }
 
   const handleIncrease = () => {
@@ -36,7 +36,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
       })
       return
     }
-    updateQuantity(product.id, quantity + 1)
+    updateQuantity(product.bookId, quantity + 1)
   }
 
   return (
@@ -54,16 +54,28 @@ const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
             <Button variant='ghost' size='icon' className='h-8 w-8'>
               <Heart size={16} />
             </Button>
-            <Button variant='ghost' size='icon' className='h-8 w-8' onClick={() => removeItem(product.id)}>
+            <Button variant='ghost' size='icon' className='h-8 w-8' onClick={() => removeItem(product.bookId)}>
               <Trash2 size={16} />
             </Button>
           </div>
           <div className='flex items-center gap-2'>
-            <Button variant='outline' size='icon' className='h-8 w-8' onClick={handleDecrease}>
+            <Button
+              variant='outline'
+              size='icon'
+              className='h-8 w-8'
+              onClick={handleDecrease}
+              disabled={quantity === 1}
+            >
               <Minus size={16} />
             </Button>
             <span className='text-primary'>{quantity}</span>
-            <Button variant='outline' size='icon' className='h-8 w-8' onClick={handleIncrease}>
+            <Button
+              variant='outline'
+              size='icon'
+              className='h-8 w-8'
+              onClick={handleIncrease}
+              disabled={quantity === 999}
+            >
               <Plus size={16} />
             </Button>
           </div>

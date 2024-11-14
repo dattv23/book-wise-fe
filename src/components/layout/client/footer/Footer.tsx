@@ -1,5 +1,5 @@
 import SubscribeForm from '@/components/forms/subscribe-form'
-import CartButton from '@/components/shared/cart-button'
+import CartDrawer from '@/components/shared/cart-drawer'
 import Logo from '@/components/shared/logo'
 import MyAccount from '@/components/shared/my-account/MyAccount'
 import NavBar from '@/components/shared/nav-bar'
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <Logo />
         <NavBar />
         <div className='flex items-center gap-2'>
-          <CartButton />
+          <CartDrawer />
           <MyAccount />
         </div>
       </div>

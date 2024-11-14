@@ -1,6 +1,6 @@
 import Logo from '@/components/shared/logo'
 import NavBar from '@/components/shared/nav-bar'
-import CartButton from '@/components/shared/cart-button'
+import CartDrawer from '@/components/shared/cart-drawer'
 import MyAccount from '@/components/shared/my-account/MyAccount'
 
 const Header: React.FC = () => {
@@ -9,7 +9,7 @@ const Header: React.FC = () => {
       <Logo />
       <NavBar />
       <div className='flex items-center gap-2'>
-        <CartButton />
+        <CartDrawer />
         <MyAccount />
       </div>
     </header>

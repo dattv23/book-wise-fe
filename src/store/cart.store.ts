@@ -26,22 +26,22 @@ export const useCartStore = create<CartStore>()(
         },
         addItem: (product: Product) => {
           const { cart } = get()
-          set({ cart: [...cart, { product, quantity: 1 }] })
+          set({ cart: [...cart, { product: { bookId: product.bookId, info: product.info }, quantity: 1 }] })
         },
         removeItem: (productId: string) => {
           const { cart } = get()
-          set({ cart: cart.filter((item) => item.product.id !== productId) })
+          set({ cart: cart.filter((item) => item.product.bookId !== productId) })
         },
         removeAll: () => set({ cart: [] }),
         updateQuantity: (productId: string, newQuantity: number) => {
           const { cart } = get()
           set({
-            cart: cart.map((item) => (item.product.id === productId ? { ...item, quantity: newQuantity } : item))
+            cart: cart.map((item) => (item.product.bookId === productId ? { ...item, quantity: newQuantity } : item))
           })
         },
         checkIsExist: (productId: string) => {
           const { cart } = get()
-          return cart.some((item) => item.product.id === productId)
+          return cart.some((item) => item.product.bookId === productId)
         }
       }),
       {
