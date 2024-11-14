@@ -1,10 +1,29 @@
 import { Category } from '@/@types/category.type'
 
 export const categories: Category[] = [
-  { id: '1', name: 'Tất cả' },
-  { id: '2', name: 'Phát triển bản thân' },
-  { id: '3', name: 'Kinh doanh' },
-  { id: '4', name: 'Trinh thám' },
-  { id: '5', name: 'Khoa học' },
-  { id: '6', name: 'Giáo dục' }
+  {
+    categoryId: '2',
+    name: 'Phát triển bản thân',
+    slug: ''
+  },
+  {
+    categoryId: '3',
+    name: 'Kinh doanh',
+    slug: ''
+  },
+  {
+    categoryId: '4',
+    name: 'Trinh thám',
+    slug: ''
+  },
+  {
+    categoryId: '5',
+    name: 'Khoa học',
+    slug: ''
+  },
+  {
+    categoryId: '6',
+    name: 'Giáo dục',
+    slug: ''
+  }
 ]

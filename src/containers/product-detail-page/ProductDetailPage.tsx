@@ -1,22 +1,22 @@
+import dynamic from 'next/dynamic'
+
 import { Product } from '@/@types/product.type'
 
 import HeroSection from '@/components/shared/hero-section'
-import InfoSection from './info-section'
-import ReviewSection from './review-section'
-import { Review } from '@/@types'
+const InfoSection = dynamic(() => import('./info-section'))
+const ReviewSection = dynamic(() => import('./review-section'))
 
 type ProductDetailPageProps = {
   data: Product
-  reviews: Review[]
 }
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ data, reviews }) => {
+const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ data }) => {
   return (
     <main>
       <HeroSection subtitle='Tất cả những cuốn sách yêu thích của bạn ở một nơi 📚' title={data.info.title} />
       <InfoSection {...data} />
       <hr className='mx-4 md:mx-14' />
-      <ReviewSection reviews={reviews} />
+      <ReviewSection bookId={data.bookId} />
     </main>
   )
 }

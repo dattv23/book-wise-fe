@@ -1,14 +1,31 @@
-import { Review } from '@/@types'
+import { ApiResponse, Review } from '@/@types'
 
 import { convertDateFormat } from '@/lib/helpers'
+import { envServerConfig } from '@/lib/envServer'
+
 import ReviewDialog from '@/components/dialogs/review-dialog'
 import RatingStars from '@/components/shared/rating-stars/RatingStars'
 
 type ReviewSectionProps = {
-  reviews: Review[]
+  bookId: number
 }
 
-const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
+async function getReviews(bookId: number) {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/reviews?bookId=${bookId}`, { cache: 'no-cache' })
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    return { data: [] }
+  }
+
+  return res.json()
+}
+
+const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId }) => {
+  const { data: reviews } = (await getReviews(bookId)) as ApiResponse<Review[]>
+  const sumRating = reviews.reduce((acc, review) => acc + review.rating, 0)
+  const averageRating = sumRating / reviews.length
+
   return (
     <section className='mx-4 py-8 md:mx-14'>
       {/* Header Section */}
@@ -20,8 +37,8 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
           ) : (
             <div className='flex items-center gap-4'>
               <div className='flex flex-col items-center justify-between gap-2 md:flex-row'>
-                <span className='text-3xl font-bold'>5</span>
-                <RatingStars rating={5} />
+                <span className='text-3xl font-bold'>{averageRating}</span>
+                <RatingStars rating={averageRating} />
               </div>
               <span className='text-gray-500'>Dựa trên {reviews.length} lượt đánh giá</span>
             </div>

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { ShoppingCartIcon } from 'lucide-react'
 import {
   Drawer,
@@ -14,7 +15,6 @@ import {
 
 import { Button } from '@/components/ui/button'
 import CartItem from '@/components/shared/cart-item'
-import Link from 'next/link'
 import { useCartStore } from '@/store/cart.store'
 
 const CartButton: React.FC = () => {

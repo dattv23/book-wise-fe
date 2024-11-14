@@ -10,6 +10,6 @@ export type Review = {
   isDeleted: boolean
   userId: string
   productId: string
-  product: Pick<Product, 'id' | 'info'>
-  user: Pick<User, 'id' | 'name'>
+  product: Pick<Product, 'bookId' | 'info'>
+  user: Pick<User, 'userId' | 'name'>
 }

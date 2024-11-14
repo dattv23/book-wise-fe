@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic'
 
 import { envServerConfig } from '@/lib/envServer'
-import { ApiResponse, Product, Review } from '@/@types'
+import { ApiResponse, Product } from '@/@types'
+import { notFound } from 'next/navigation'
 
 const ProductDetailPage = dynamic(() => import('@/containers/product-detail-page'))
 
@@ -10,18 +11,7 @@ async function getProductData(slug: string) {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
-
-  return res.json()
-}
-
-async function getReviews(slug: string) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/reviews?bookId=${slug}`, { cache: 'no-cache' })
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    return { data: [] }
+    return notFound()
   }
 
   return res.json()
@@ -35,9 +25,8 @@ type ProductDetailProp = {
 
 const ProductDetail: React.FC<ProductDetailProp> = async ({ params }) => {
   const { data: product } = (await getProductData(params.slug)) as ApiResponse<Product>
-  const { data: reviews } = (await getReviews(params.slug)) as ApiResponse<Review[]>
 
-  return <ProductDetailPage data={product} reviews={reviews} />
+  return <ProductDetailPage data={product} />
 }
 
 export default ProductDetail

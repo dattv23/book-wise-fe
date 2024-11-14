@@ -17,7 +17,7 @@ const FeaturedBooksSection: React.FC = async () => {
   return (
     <section>
       <h2 className='mb-8 text-3xl font-bold'>Featured Books</h2>
-      <ProductGrid products={data.slice(0, 4)} />
+      <ProductGrid data={data.slice(0, 4)} />
     </section>
   )
 }

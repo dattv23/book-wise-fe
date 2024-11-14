@@ -9,7 +9,7 @@ const ProductListSection: React.FC = () => {
         <span>Hiển thị sản phẩm 1-9 trên {books.length} kết quả</span>
         <ProductFilterCombobox />
       </div>
-      <ProductGrid products={books.slice(5, books.length)} />
+      <ProductGrid data={books.slice(5, books.length)} />
     </section>
   )
 }

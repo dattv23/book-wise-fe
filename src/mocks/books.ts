@@ -22,7 +22,9 @@ export const books: Product[] = [
       pageCount: '350'
     },
     createdAt: '2023-01-10',
-    updatedAt: '2023-02-15'
+    updatedAt: '2023-02-15',
+    bookId: 0,
+    description: ''
   },
   {
     id: '2',
@@ -45,6 +47,8 @@ export const books: Product[] = [
       pageCount: '400'
     },
     createdAt: '2023-01-15',
-    updatedAt: '2023-02-20'
+    updatedAt: '2023-02-20',
+    bookId: 0,
+    description: ''
   }
 ]

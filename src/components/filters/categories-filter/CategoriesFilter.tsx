@@ -12,8 +12,8 @@ const CategoriesFilter: React.FC<CategoriesFilterProps> = ({ data }) => {
       <hr />
       <ul>
         {data.map((item) => (
-          <li key={item.id}>
-            <Link href={`categories/${item.id}`} className='hover:text-primary'>
+          <li key={item.categoryId}>
+            <Link href={`categories/${item.slug}`} className='hover:text-primary'>
               {item.name}
             </Link>
           </li>

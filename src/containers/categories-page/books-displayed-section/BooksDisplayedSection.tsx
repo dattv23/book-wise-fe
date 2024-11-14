@@ -1,25 +1,14 @@
-import CategoryFilterBar from '@/components/filters/category-filter-bar'
+import { Product } from '@/@types'
 import ProductGrid from '@/components/grids/product-grid'
-import { envServerConfig } from '@/lib/envServer'
-import { ApiResponse, Product } from '@/@types'
 
-async function getBooks() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/books`)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-
-  return res.json()
+type BooksDisplayedSectionProps = {
+  data: Product[]
 }
 
-const BooksDisplayedSection: React.FC = async () => {
-  const { data } = (await getBooks()) as ApiResponse<Product[]>
-
+const BooksDisplayedSection: React.FC<BooksDisplayedSectionProps> = async ({ data }) => {
   return (
-    <section className='flex flex-col items-center gap-2 py-12'>
-      <CategoryFilterBar />
-      <ProductGrid products={data} />
+    <section className='py-12'>
+      <ProductGrid data={data} />
     </section>
   )
 }

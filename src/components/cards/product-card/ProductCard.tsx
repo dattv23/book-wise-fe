@@ -21,7 +21,7 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const {
-    id,
+    bookId,
     info: { title, imageUrl, author, currentPrice }
   } = product
 
@@ -59,12 +59,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <Card onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       <CardHeader className='relative flex items-center'>
-        <Link href={`/products/${id}`}>
+        <Link href={`/products/${bookId}`}>
           <Image src={imageUrl} width={200} height={300} alt={title} className='rounded-md' />
         </Link>
         {isHover && (
           <div className='absolute right-4 top-4 flex flex-col gap-2'>
-            <Link href={`/products/${id}`}>
+            <Link href={`/products/${bookId}`}>
               <Button size={'icon'}>
                 <SearchIcon />
               </Button>

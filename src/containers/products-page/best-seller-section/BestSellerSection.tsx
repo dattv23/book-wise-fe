@@ -18,7 +18,7 @@ const BestSellerSection: React.FC = async () => {
   return (
     <section>
       <h2 className='text-4xl font-bold'>Sách bán chạy nhất</h2>
-      <ProductGrid products={data.slice(0, 4)} />
+      <ProductGrid data={data.slice(0, 4)} />
     </section>
   )
 }

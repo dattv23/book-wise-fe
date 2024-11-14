@@ -13,7 +13,7 @@ export const reviews: Review[] = [
     productId: books[0].id,
     product: books[0],
     user: {
-      id: 'user1',
+      userId: 'user1',
       name: 'John Smith'
     }
   },
@@ -28,7 +28,7 @@ export const reviews: Review[] = [
     productId: books[1].id,
     product: books[1],
     user: {
-      id: 'user2',
+      userId: 'user2',
       name: 'Sarah Johnson'
     }
   }
