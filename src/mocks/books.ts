@@ -23,7 +23,7 @@ export const books: Product[] = [
     },
     createdAt: '2023-01-10',
     updatedAt: '2023-02-15',
-    bookId: 0,
+    bookId: '0',
     description: ''
   },
   {
@@ -48,7 +48,7 @@ export const books: Product[] = [
     },
     createdAt: '2023-01-15',
     updatedAt: '2023-02-20',
-    bookId: 0,
+    bookId: '1',
     description: ''
   }
 ]

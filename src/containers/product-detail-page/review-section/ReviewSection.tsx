@@ -7,10 +7,10 @@ import ReviewDialog from '@/components/dialogs/review-dialog'
 import RatingStars from '@/components/shared/rating-stars/RatingStars'
 
 type ReviewSectionProps = {
-  bookId: number
+  bookId: string
 }
 
-async function getReviews(bookId: number) {
+async function getReviews(bookId: string) {
   const res = await fetch(`${envServerConfig.DOMAIN_API}/reviews?bookId=${bookId}`, { cache: 'no-cache' })
 
   if (!res.ok) {

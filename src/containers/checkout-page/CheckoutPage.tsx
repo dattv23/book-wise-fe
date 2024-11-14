@@ -12,7 +12,7 @@ const CheckoutPage: React.FC = () => {
         <h3 className='text-xl font-semibold'>Giỏ hàng</h3>
         <div className='space-y-4 rounded-lg bg-[#f4f3f8] p-6'>
           {cart.map((item) => (
-            <CartItem product={item.product} quantity={item.quantity} key={item.product.id} />
+            <CartItem product={item.product} quantity={item.quantity} key={item.product.bookId} />
           ))}
         </div>
       </section>
