@@ -22,7 +22,9 @@ async function getReviews(bookId: string) {
 }
 
 const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId }) => {
-  const { data: reviews } = (await getReviews(bookId)) as ApiResponse<Review[]>
+  const {
+    data: { reviews }
+  } = (await getReviews(bookId)) as ApiResponse<{ reviews: Review[]; total: number }>
   const sumRating = reviews.reduce((acc, review) => acc + review.rating, 0)
   const averageRating = sumRating / reviews.length
 
