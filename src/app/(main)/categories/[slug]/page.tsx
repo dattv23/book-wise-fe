@@ -5,8 +5,8 @@ import { notFound } from 'next/navigation'
 
 const ProductCategoryPage = dynamic(() => import('@/containers/product-category-page'))
 
-async function getProducts(slug: string) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/categories/${slug}/books`)
+async function getProducts(slug: string, page: number) {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/categories/${slug}/books?page=${page}`)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -31,6 +31,10 @@ type ProductCategoryProps = {
   params: {
     slug: string
   }
+  searchParams?: Promise<{
+    query?: string
+    page?: string
+  }>
 }
 
 export async function generateStaticParams() {
@@ -41,13 +45,19 @@ export async function generateStaticParams() {
   }))
 }
 
-const ProductCategory: React.FC<ProductCategoryProps> = async ({ params }) => {
+const ProductCategory: React.FC<ProductCategoryProps> = async ({ params, ...props }) => {
+  const searchParams = await props.searchParams
+  const currentPage = Number(searchParams?.page) || 1
   const {
-    data: { name, books }
-  } = (await getProducts(params.slug)) as ApiResponse<{ name: string; books: Product[]; total: number }>
+    data: { name, books, totalPages }
+  } = (await getProducts(params.slug, currentPage)) as ApiResponse<{
+    name: string
+    books: Product[]
+    totalPages: number
+  }>
   const { data: categories } = (await getCategories()) as ApiResponse<Category[]>
 
-  return <ProductCategoryPage name={name} categories={categories} products={books} />
+  return <ProductCategoryPage name={name} categories={categories} products={books} totalPages={totalPages} />
 }
 
 export default ProductCategory

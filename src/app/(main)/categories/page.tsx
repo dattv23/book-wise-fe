@@ -16,8 +16,8 @@ async function getCategories() {
   return res.json()
 }
 
-async function getProducts() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/books`)
+async function getProducts(page: number) {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/books?page=${page}`)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -27,13 +27,23 @@ async function getProducts() {
   return res.json()
 }
 
-const Categories: React.FC = async () => {
-  const { data: categories } = (await getCategories()) as ApiResponse<Category[]>
-  const {
-    data: { books: products }
-  } = (await getProducts()) as ApiResponse<{ books: Product[] }>
+type CategoriesProps = {
+  searchParams?: Promise<{
+    query?: string
+    page?: string
+  }>
+}
 
-  return <CategoriesPage categories={categories} products={products} />
+const Categories: React.FC<CategoriesProps> = async (props) => {
+  const { data: categories } = (await getCategories()) as ApiResponse<Category[]>
+  const searchParams = await props.searchParams
+  const currentPage = Number(searchParams?.page) || 1
+
+  const {
+    data: { books: products, totalPages }
+  } = (await getProducts(currentPage)) as ApiResponse<{ books: Product[]; totalPages: number }>
+
+  return <CategoriesPage categories={categories} products={products} totalPages={totalPages} />
 }
 
 export default Categories

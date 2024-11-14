@@ -6,14 +6,15 @@ import { Category, Product } from '@/@types'
 type CategoriesPageProps = {
   categories: Category[]
   products: Product[]
+  totalPages: number
 }
 
-const CategoriesPage: React.FC<CategoriesPageProps> = ({ categories, products }) => {
+const CategoriesPage: React.FC<CategoriesPageProps> = ({ categories, products, totalPages }) => {
   return (
     <main className='flex flex-col'>
       <HeroSection subtitle='Khám phá những cuốn sách yêu thích của bạn 📚' title='Danh mục' />
       <FilterCategorySection data={categories} />
-      <BooksDisplayedSection data={products} />
+      <BooksDisplayedSection data={products} totalPages={totalPages} />
     </main>
   )
 }
