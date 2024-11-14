@@ -13,12 +13,14 @@ async function getBestSeller() {
 }
 
 const BestSellerSection: React.FC = async () => {
-  const { data } = (await getBestSeller()) as ApiResponse<Product[]>
+  const {
+    data: { books: products }
+  } = (await getBestSeller()) as ApiResponse<{ books: Product[] }>
 
   return (
     <section>
       <h2 className='text-4xl font-bold'>Sách bán chạy nhất</h2>
-      <ProductGrid data={data.slice(0, 4)} />
+      <ProductGrid data={products.slice(0, 4)} />
     </section>
   )
 }

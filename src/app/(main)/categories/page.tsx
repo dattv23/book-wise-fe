@@ -29,7 +29,9 @@ async function getProducts() {
 
 const Categories: React.FC = async () => {
   const { data: categories } = (await getCategories()) as ApiResponse<Category[]>
-  const { data: products } = (await getProducts()) as ApiResponse<Product[]>
+  const {
+    data: { books: products }
+  } = (await getProducts()) as ApiResponse<{ books: Product[] }>
 
   return <CategoriesPage categories={categories} products={products} />
 }

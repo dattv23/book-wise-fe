@@ -1,3 +1,4 @@
+import { ApiResponse, Product } from '@/@types'
 import ProductGrid from '@/components/grids/product-grid'
 import { envServerConfig } from '@/lib/envServer'
 
@@ -12,12 +13,14 @@ async function getFeaturedBooksData() {
 }
 
 const FeaturedBooksSection: React.FC = async () => {
-  const { data } = await getFeaturedBooksData()
+  const {
+    data: { books: products }
+  } = (await getFeaturedBooksData()) as ApiResponse<{ books: Product[] }>
 
   return (
     <section>
       <h2 className='mb-8 text-3xl font-bold'>Featured Books</h2>
-      <ProductGrid data={data.slice(0, 4)} />
+      <ProductGrid data={products.slice(0, 4)} />
     </section>
   )
 }
