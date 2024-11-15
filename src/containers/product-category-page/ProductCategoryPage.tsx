@@ -21,7 +21,7 @@ const ProductCategoryPage: React.FC<ProductCategoryPageProps> = ({ name, product
       </section>
       <section className='mx-2 py-12 md:mx-12'>
         <ProductGrid data={products} />
-        <Pagination totalPages={totalPages} />
+        {totalPages !== 0 && <Pagination totalPages={totalPages} />}
       </section>
     </main>
   )

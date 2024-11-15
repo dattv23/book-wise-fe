@@ -14,11 +14,11 @@ const MyAccount: React.FC = () => {
 
   async function handleLogout() {
     const { success } = await logoutAction()
+    clear()
     if (!success) {
       toast({ variant: 'destructive', title: 'Đăng xuất thất bại!' })
       return
     }
-    clear()
     toast({ title: 'Đăng xuất thành công!' })
   }
 

@@ -23,7 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
 
   const pageNumbers =
     totalPages < 6 || currentPage <= 3
-      ? Array.from({ length: 5 }, (_, index) => index + 1)
+      ? Array.from({ length: Math.min(totalPages, 5) }, (_, index) => index + 1)
       : Array.from({ length: 5 }, (_, index) => index + currentPage - 2)
 
   const handleChange = (pageNumber: number) => {

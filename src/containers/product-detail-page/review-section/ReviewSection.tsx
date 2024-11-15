@@ -71,7 +71,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId, currentPage
       </div>
 
       {/* Pagination */}
-      <Pagination totalPages={totalPages} />
+      {totalPages !== 0 && <Pagination totalPages={totalPages} />}
     </section>
   )
 }

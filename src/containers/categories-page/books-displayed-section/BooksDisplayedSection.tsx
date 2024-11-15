@@ -11,7 +11,7 @@ const BooksDisplayedSection: React.FC<BooksDisplayedSectionProps> = async ({ dat
   return (
     <section className='py-12'>
       <ProductGrid data={data} />
-      <Pagination totalPages={totalPages} />
+      {totalPages !== 0 && <Pagination totalPages={totalPages} />}
     </section>
   )
 }
