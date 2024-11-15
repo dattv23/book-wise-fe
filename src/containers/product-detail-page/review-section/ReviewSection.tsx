@@ -5,13 +5,15 @@ import { envServerConfig } from '@/lib/envServer'
 
 import ReviewDialog from '@/components/dialogs/review-dialog'
 import RatingStars from '@/components/shared/rating-stars/RatingStars'
+import Pagination from '@/components/shared/pagination'
 
 type ReviewSectionProps = {
   bookId: string
+  currentPageReview: number
 }
 
-async function getReviews(bookId: string) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/reviews?bookId=${bookId}`, { cache: 'no-cache' })
+async function getReviews(bookId: string, page: number) {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/reviews?bookId=${bookId}&page=${page}`, { cache: 'no-cache' })
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -21,15 +23,18 @@ async function getReviews(bookId: string) {
   return res.json()
 }
 
-const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId }) => {
+const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId, currentPageReview }) => {
   const {
-    data: { reviews }
-  } = (await getReviews(bookId)) as ApiResponse<{ reviews: Review[]; total: number }>
-  const sumRating = reviews.reduce((acc, review) => acc + review.rating, 0)
-  const averageRating = sumRating / reviews.length
+    data: { reviews, total, average, totalPages }
+  } = (await getReviews(bookId, currentPageReview)) as ApiResponse<{
+    reviews: Review[]
+    total: number
+    average: number
+    totalPages: number
+  }>
 
   return (
-    <section className='mx-4 py-8 md:mx-14'>
+    <section className='mx-4 space-y-4 py-8 md:mx-14'>
       {/* Header Section */}
       <div className='mb-8 flex justify-between'>
         <div>
@@ -39,10 +44,10 @@ const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId }) => {
           ) : (
             <div className='flex items-center gap-4'>
               <div className='flex flex-col items-center justify-between gap-2 md:flex-row'>
-                <span className='text-3xl font-bold'>{averageRating}</span>
-                <RatingStars rating={averageRating} />
+                <span className='text-3xl font-bold'>{average}</span>
+                <RatingStars rating={average} />
               </div>
-              <span className='text-gray-500'>Dựa trên {reviews.length} lượt đánh giá</span>
+              <span className='text-gray-500'>Dựa trên {total} lượt đánh giá</span>
             </div>
           )}
         </div>
@@ -66,7 +71,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId }) => {
       </div>
 
       {/* Pagination */}
-      {/* {reviews.length > 0 && <Pagination />} */}
+      <Pagination totalPages={totalPages} />
     </section>
   )
 }

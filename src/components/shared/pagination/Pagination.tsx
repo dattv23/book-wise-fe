@@ -21,12 +21,10 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
     return `${pathname}?${params.toString()}`
   }
 
-  const pageNumbers = () => {
-    if (totalPages < 6 || currentPage <= 3) {
-      return Array.from({ length: 5 }, (_, index) => index + 1)
-    }
-    return Array.from({ length: 5 }, (_, index) => index + currentPage - 2)
-  }
+  const pageNumbers =
+    totalPages < 6 || currentPage <= 3
+      ? Array.from({ length: 5 }, (_, index) => index + 1)
+      : Array.from({ length: 5 }, (_, index) => index + currentPage - 2)
 
   const handleChange = (pageNumber: number) => {
     const url = createPageURL(pageNumber)
@@ -41,7 +39,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
             Trước
           </Button>
         </PaginationItem>
-        {pageNumbers().map((pageNumber) => (
+        {pageNumbers.map((pageNumber) => (
           <PaginationItem key={pageNumber}>
             <Button
               disabled={currentPage === pageNumber}

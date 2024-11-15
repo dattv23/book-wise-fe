@@ -21,12 +21,18 @@ type ProductDetailProp = {
   params: {
     slug: string
   }
+  searchParams?: Promise<{
+    query?: string
+    page?: string
+  }>
 }
 
-const ProductDetail: React.FC<ProductDetailProp> = async ({ params }) => {
+const ProductDetail: React.FC<ProductDetailProp> = async ({ params, ...props }) => {
+  const searchParams = await props.searchParams
+  const currentPageReview = Number(searchParams?.page) || 1
   const { data: product } = (await getProductData(params.slug)) as ApiResponse<Product>
 
-  return <ProductDetailPage data={product} />
+  return <ProductDetailPage data={product} currentPageReview={currentPageReview} />
 }
 
 export default ProductDetail
