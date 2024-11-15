@@ -51,7 +51,7 @@ body {
     --chart-4: 50 80% 55%; /* Chart color: light yellow */
     --chart-5: 27 87% 67%; /* Chart color: light orange */
 
-    --radius: 0.5rem; /* Default border radius for elements */
+    --radius: 0.5rem; /* Default border radius for elements */ --sidebar-background: 0 0% 98%; --sidebar-foreground: 240 5.3% 26.1%; --sidebar-primary: 240 5.9% 10%; --sidebar-primary-foreground: 0 0% 98%; --sidebar-accent: 240 4.8% 95.9%; --sidebar-accent-foreground: 240 5.9% 10%; --sidebar-border: 220 13% 91%; --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   /* Dark mode colors */
@@ -90,7 +90,7 @@ body {
     --chart-2: 0 0% 100%; /* Chart color: white */
     --chart-3: 260 48% 45%; /* Chart color: purple */
     --chart-4: 50 80% 55%; /* Chart color: light yellow */
-    --chart-5: 27 87% 67%; /* Chart color: light orange */
+    --chart-5: 27 87% 67%; /* Chart color: light orange */ --sidebar-background: 240 5.9% 10%; --sidebar-foreground: 240 4.8% 95.9%; --sidebar-primary: 224.3 76.3% 48%; --sidebar-primary-foreground: 0 0% 100%; --sidebar-accent: 240 3.7% 15.9%; --sidebar-accent-foreground: 240 4.8% 95.9%; --sidebar-border: 240 3.7% 15.9%; --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
