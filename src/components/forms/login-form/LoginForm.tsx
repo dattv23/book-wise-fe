@@ -44,13 +44,22 @@ const LoginForm: React.FC = () => {
         return
       }
       const { data: loginResult } = result
-      if (loginResult) {
-        setUser(loginResult.data.user)
+      if (!loginResult || !loginResult.data) {
+        toast({
+          title: 'Đăng nhập thất bại!',
+          variant: 'destructive'
+        })
+        return
       }
+      setUser(loginResult.data.user)
       toast({
         title: 'Đăng nhập thành công!',
         description: 'Chào mừng bạn đến với BookWise 🫰!'
       })
+      if (loginResult.data.user.role === 'ADMIN') {
+        router.push('/admin')
+        return
+      }
       router.push('/')
       router.refresh()
     } catch (error) {
