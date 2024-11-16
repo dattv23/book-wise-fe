@@ -15,12 +15,13 @@ type AlertDialogProps = {
   onClose: () => void
   onConfirm: () => void
   loading: boolean
+  children?: React.ReactNode
 }
 
-const AlertDialog: React.FC<AlertDialogProps> = ({ isOpen, onClose, onConfirm, loading }) => {
+const AlertDialog: React.FC<AlertDialogProps> = ({ isOpen, onClose, onConfirm, loading, children }) => {
   return (
     <AlertDialogShadcn open={isOpen}>
-      <AlertDialogTrigger>Open</AlertDialogTrigger>
+      {children && <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>}
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

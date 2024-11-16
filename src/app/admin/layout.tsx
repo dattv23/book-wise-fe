@@ -2,6 +2,7 @@ import '@public/styles/globals.css'
 import KBar from '@/components/kbar/Kbar'
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 import AppSidebar from '@/components/layout/admin/app-sidebar'
 import Header from '@/components/layout/admin/header'
@@ -22,17 +23,19 @@ export default function RootLayout({
   return (
     <html>
       <body className='overflow-hidden'>
-        <KBar>
-          <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
-            <SidebarInset>
-              <Header />
-              {/* page main content */}
-              {children}
-              {/* page main content ends */}
-            </SidebarInset>
-          </SidebarProvider>
-        </KBar>
+        <NuqsAdapter>
+          <KBar>
+            <SidebarProvider defaultOpen={defaultOpen}>
+              <AppSidebar />
+              <SidebarInset>
+                <Header />
+                {/* page main content */}
+                {children}
+                {/* page main content ends */}
+              </SidebarInset>
+            </SidebarProvider>
+          </KBar>
+        </NuqsAdapter>
       </body>
     </html>
   )

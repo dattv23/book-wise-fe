@@ -38,7 +38,7 @@ export const navItemsAdmin: NavItem[] = [
     items: [] // Empty array as there are no child items for Dashboard
   },
   {
-    title: 'User',
+    title: 'Users',
     url: '/admin/users',
     icon: 'client',
     shortcut: ['u', 'u'],
@@ -46,7 +46,7 @@ export const navItemsAdmin: NavItem[] = [
     items: [] // No child items
   },
   {
-    title: 'Product',
+    title: 'Products',
     url: '/admin/products',
     icon: 'book',
     shortcut: ['p', 'p'],
@@ -70,3 +70,6 @@ export const navItemsAdmin: NavItem[] = [
     items: [] // No child items
   }
 ]
+
+export const ACCESS_TOKEN = 'access_token'
+export const REFRESH_TOKEN = 'refresh_token'
