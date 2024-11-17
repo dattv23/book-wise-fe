@@ -1,6 +1,7 @@
 export type Product = {
   id: string
   bookId: string
+  categoryId: string
   info: Info
   details: Details
   description: string
@@ -12,7 +13,7 @@ type Details = {
   publisher: string
   publishingHouse: string
   bookVersion: null | string
-  publishDate: string
+  publishDate: Date
   dimensions: string
   translator: null | string
   coverType: string

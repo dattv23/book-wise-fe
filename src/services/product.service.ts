@@ -25,3 +25,13 @@ export const getProducts = async ({
     console.error('Error fetching products:', error)
   }
 }
+
+export const getProductById = async (productId: string) => {
+  try {
+    const { data } = await axiosInstance.get(`/books/${productId}`)
+    return data
+  } catch (error) {
+    // console.error(`Error fetching product ${productId}:`, error)
+    return null
+  }
+}
