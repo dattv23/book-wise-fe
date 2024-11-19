@@ -15,7 +15,7 @@ export const books: Product[] = [
       publisher: 'Penguin Books',
       publishingHouse: 'Penguin Random House',
       bookVersion: '1st Edition',
-      publishDate: '2023-01-01',
+      publishDate: new Date(Date.now()),
       dimensions: '20 x 13 cm',
       translator: null,
       coverType: 'Paperback',
@@ -24,7 +24,8 @@ export const books: Product[] = [
     createdAt: '2023-01-10',
     updatedAt: '2023-02-15',
     bookId: '0',
-    description: ''
+    description: '',
+    categoryId: '1'
   },
   {
     id: '2',
@@ -40,7 +41,7 @@ export const books: Product[] = [
       publisher: 'Chilton Books',
       publishingHouse: 'Chilton Publishing',
       bookVersion: '2nd Edition',
-      publishDate: '1969-10-15',
+      publishDate: new Date(Date.now()),
       dimensions: '24 x 16 cm',
       translator: null,
       coverType: 'Hardcover',
@@ -49,6 +50,7 @@ export const books: Product[] = [
     createdAt: '2023-01-15',
     updatedAt: '2023-02-20',
     bookId: '1',
-    description: ''
+    description: '',
+    categoryId: '2'
   }
 ]
