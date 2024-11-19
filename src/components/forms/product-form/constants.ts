@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 const INFO_FIELDS = [
-  { name: 'info.title' as const, label: 'Title', placeholder: 'Nhập tiêu đề sách', type: 'text' },
+  { name: 'info.title' as const, label: 'Tiêu đề sách', placeholder: 'Nhập tiêu đề sách', type: 'text' },
   { name: 'info.author' as const, label: 'Tác giả', placeholder: 'Nhập tên tác giả', type: 'text' },
   { name: 'info.originalPrice' as const, label: 'Giá gốc', placeholder: 'Nhập giá gốc', type: 'number' },
   { name: 'info.currentPrice' as const, label: 'Giá bán', placeholder: 'Nhập giá bán', type: 'number' }
@@ -19,4 +20,9 @@ const DETAILS_FIELDS = [
   { name: 'details.translator' as const, label: 'Người dịch', placeholder: 'Nhập tên người dịch', type: 'text' }
 ] as const
 
-export { INFO_FIELDS, DETAILS_FIELDS }
+enum PageTitle {
+  edit = 'Chỉnh sửa thông tin sách',
+  add = 'Thêm sách mới'
+}
+
+export { INFO_FIELDS, DETAILS_FIELDS, PageTitle }

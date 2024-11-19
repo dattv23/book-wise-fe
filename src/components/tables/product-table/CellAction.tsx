@@ -9,9 +9,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import { deleteProduct } from '@/server-actions/product.action'
 import { Edit, MoreHorizontal, Trash } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 interface CellActionProps {
   data: Product
@@ -23,7 +25,22 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
 
-  const onConfirm = async () => {}
+  const onConfirm = async () => {
+    setLoading(true)
+    try {
+      const result = await deleteProduct(data.bookId)
+      if (!result.success) {
+        toast.error(result.error || 'Đã có lỗi hệ thống!')
+        return
+      }
+      toast.success(`Xóa ${data.info.title} thành công!`)
+      router.refresh()
+    } catch {
+      toast.error('Đã có lỗi hệ thống!')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <>

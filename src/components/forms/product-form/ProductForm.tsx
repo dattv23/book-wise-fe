@@ -15,17 +15,21 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CalendarIcon } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { DETAILS_FIELDS, INFO_FIELDS } from './constants'
+import { DETAILS_FIELDS, INFO_FIELDS, PageTitle } from './constants'
 import { useMemo, useState } from 'react'
 import Image from 'next/image'
+import { toast } from 'sonner'
+import { addProduct, updateProduct, uploadImage } from '@/server-actions/product.action'
+import { useRouter } from 'next/navigation'
 
 type ProductFormProps = {
   initialData: Product | null
   pageTitle: string
   categories: Category[]
+  productId: string
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ initialData, pageTitle, categories }) => {
+const ProductForm: React.FC<ProductFormProps> = ({ initialData, pageTitle, categories, productId }) => {
   const defaultValues = useMemo(
     () => ({
       info: {
@@ -57,19 +61,77 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, pageTitle, categ
     values: defaultValues
   })
 
-  const onSubmit = (values: z.infer<typeof productSchema>) => {
-    console.log(values)
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+  const [isUploading, setIsUploading] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({})
+  const [previewImage, setPreviewImage] = useState<string>(defaultValues.info.imageUrl)
+
+  const onSubmit = async (values: z.infer<typeof productSchema>) => {
+    setIsLoading(true)
+    try {
+      let result
+      if (pageTitle === PageTitle.add) {
+        result = await addProduct(values)
+      } else {
+        result = await updateProduct(values, productId)
+      }
+      if (!result.success) {
+        toast.error(result.error || 'Đã có lỗi hệ thống!')
+        return
+      }
+      toast.success(`${pageTitle} thành công!`)
+      router.push('/admin/products')
+      router.refresh()
+    } catch {
+      toast.error('Đã có lỗi hệ thống!')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  const uploadFiles = async (files: File[]) => {
+  const handleUpload = async (files: File[]) => {
+    if (!files.length) return
+
     setIsUploading(true)
-    setTimeout(() => {
-      console.log(files)
-      setIsUploading(false)
-    }, 3000)
-  }
+    const file = files[0]
 
-  const [isUploading, setIsUploading] = useState<boolean>(false)
+    // Initialize progress
+    setUploadProgress((prev) => ({
+      ...prev,
+      [file.name]: 0
+    }))
+
+    try {
+      const formData = new FormData()
+      formData.append('image', file)
+      const response = await uploadImage(formData)
+
+      // Update progress to 100%
+      setUploadProgress((prev) => ({
+        ...prev,
+        [file.name]: 100
+      }))
+
+      if (!response.success || !response.data?.url) {
+        throw new Error(response.error || 'Lỗi trong quá trình tải hình ảnh lên!')
+      }
+
+      // Update form value with the image URL
+      form.setValue('info.imageUrl', response.data.url)
+      toast.success('Hình ảnh đã được tải lên thành công!')
+      setPreviewImage(response.data.url)
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Lỗi trong quá trình tải hình ảnh lên!')
+      throw error
+    } finally {
+      setIsUploading(false)
+      // Clear progress after a delay
+      setTimeout(() => {
+        setUploadProgress({})
+      }, 1000)
+    }
+  }
 
   return (
     <Card className='mx-auto w-full'>
@@ -81,24 +143,29 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, pageTitle, categ
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
             {/* Information */}
             <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
-              {defaultValues.info.imageUrl && (
-                <Image src={defaultValues.info.imageUrl} width={300} height={300} alt={defaultValues.info.title} />
+              {previewImage && (
+                <div className='flex items-center justify-center'>
+                  <Image src={previewImage} width={300} height={300} alt={defaultValues.info.title} />
+                </div>
               )}
               <FormField
                 control={form.control}
                 name='image'
-                render={({ field }) => (
+                render={() => (
                   <div className='space-y-6'>
                     <FormItem className='w-full'>
                       <FormLabel>Hình ảnh</FormLabel>
                       <FormControl>
                         <FileUploader
-                          value={field.value}
-                          onValueChange={field.onChange}
+                          value={[]}
+                          onValueChange={() => {}}
                           maxFiles={1}
                           maxSize={4 * 1024 * 1024}
-                          onUpload={uploadFiles}
+                          onUpload={handleUpload}
                           disabled={isUploading}
+                          accept={{ 'image/*': ['.jpeg', '.jpg', '.png', '.webp'] }}
+                          progresses={uploadProgress}
+                          multiple={false}
                         />
                       </FormControl>
                       <FormMessage />
@@ -210,7 +277,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, pageTitle, categ
                 )}
               />
             </div>
-            <Button type='submit' className='w-full'>
+            <Button type='submit' className='w-full' disabled={isLoading}>
               Gởi
             </Button>
           </form>

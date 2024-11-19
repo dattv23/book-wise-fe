@@ -16,26 +16,33 @@ type AlertDialogProps = {
   onConfirm: () => void
   loading: boolean
   children?: React.ReactNode
+  title?: string
+  description?: string
 }
 
-const AlertDialog: React.FC<AlertDialogProps> = ({ isOpen, onClose, onConfirm, loading, children }) => {
+const AlertDialog: React.FC<AlertDialogProps> = ({
+  isOpen,
+  title,
+  description,
+  onClose,
+  onConfirm,
+  loading,
+  children
+}) => {
   return (
     <AlertDialogShadcn open={isOpen}>
       {children && <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>}
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your account and remove your data from our
-            servers.
-          </AlertDialogDescription>
+          <AlertDialogTitle>{title ?? 'Bạn có chắc chắn thực hiện điều này?'}</AlertDialogTitle>
+          <AlertDialogDescription>{description ?? 'Không thể hoàn tác hành động này.'}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={loading} onClick={onClose}>
-            Cancel
+            Hủy bỏ
           </AlertDialogCancel>
           <AlertDialogAction disabled={loading} onClick={onConfirm}>
-            Continue
+            Tiếp tục
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
