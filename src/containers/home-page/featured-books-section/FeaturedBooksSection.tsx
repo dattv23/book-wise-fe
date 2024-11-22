@@ -1,5 +1,8 @@
+import { Suspense } from 'react'
+
 import { ApiResponse, Product } from '@/@types'
 import ProductGrid from '@/components/grids/product-grid'
+import ProductGridSkeleton from '@/components/skeletons/product-grid-skeleton'
 import { envServerConfig } from '@/lib/envServer'
 
 async function getFeaturedBooksData() {
@@ -20,7 +23,9 @@ const FeaturedBooksSection: React.FC = async () => {
   return (
     <section>
       <h2 className='mb-8 text-3xl font-bold'>Featured Books</h2>
-      <ProductGrid data={products.slice(0, 4)} />
+      <Suspense fallback={<ProductGridSkeleton />}>
+        <ProductGrid data={products.slice(0, 4)} />
+      </Suspense>
     </section>
   )
 }

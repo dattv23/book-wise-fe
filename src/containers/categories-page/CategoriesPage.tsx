@@ -1,7 +1,9 @@
-import HeroSection from '@/components/shared/hero-section'
-import BooksDisplayedSection from './books-displayed-section'
-import FilterCategorySection from './filter-category-section'
 import { Category, Product } from '@/@types'
+import dynamic from 'next/dynamic'
+
+const HeroSection = dynamic(() => import('@/components/shared/hero-section'))
+const BooksDisplayedSection = dynamic(() => import('./books-displayed-section'))
+const FilterCategorySection = dynamic(() => import('./filter-category-section'))
 
 type CategoriesPageProps = {
   categories: Category[]

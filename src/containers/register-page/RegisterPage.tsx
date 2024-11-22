@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 
 import { GoogleIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import RegisterForm from '@/components/forms/register-form'
+
+const RegisterForm = dynamic(() => import('@/components/forms/register-form'), { ssr: false })
 
 const RegisterPage: React.FC = () => {
   return (

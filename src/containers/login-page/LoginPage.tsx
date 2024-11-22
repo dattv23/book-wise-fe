@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 
-import LoginForm from '@/components/forms/login-form'
 import { GoogleIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
+import dynamic from 'next/dynamic'
+
+const LoginForm = dynamic(() => import('@/components/forms/login-form'), { ssr: false })
 
 const LoginPage: React.FC = () => {
   return (

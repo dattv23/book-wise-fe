@@ -1,9 +1,11 @@
+import { Suspense } from 'react'
 import { cookies } from 'next/headers'
 
 import { ApiResponse, Product } from '@/@types'
 import { envServerConfig } from '@/lib/envServer'
 
 import ProductGrid from '@/components/grids/product-grid'
+import ProductGridSkeleton from '@/components/skeletons/product-grid-skeleton'
 
 async function getRecommendations() {
   const cookieStore = cookies()
@@ -36,7 +38,9 @@ const RecommendationsSection: React.FC = async () => {
   return (
     <section>
       <h2 className='mb-8 text-3xl font-bold'>Recommended for you</h2>
-      <ProductGrid data={products} />
+      <Suspense fallback={<ProductGridSkeleton />}>
+        <ProductGrid data={products} />
+      </Suspense>
     </section>
   )
 }

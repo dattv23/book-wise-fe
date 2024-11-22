@@ -1,9 +1,11 @@
 import { cart } from '@/mocks/cart'
 import CartItem from '@/components/shared/cart-item'
-import ShippingInfo from './shipping-info'
-import OrderSummary from './order-summary'
-import PaymentMethod from './payment-method'
 import { Button } from '@/components/ui/button'
+import dynamic from 'next/dynamic'
+
+const ShippingInfo = dynamic(() => import('./shipping-info'))
+const OrderSummary = dynamic(() => import('./order-summary'))
+const PaymentMethod = dynamic(() => import('./payment-method'))
 
 const CheckoutPage: React.FC = () => {
   return (

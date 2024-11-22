@@ -1,9 +1,10 @@
 import { Category, Product } from '@/@types'
 import CategoryFilterBar from '@/components/filters/category-filter-bar'
+import dynamic from 'next/dynamic'
 
-import ProductGrid from '@/components/grids/product-grid'
-import HeroSection from '@/components/shared/hero-section'
-import Pagination from '@/components/shared/pagination'
+const ProductGrid = dynamic(() => import('@/components/grids/product-grid'))
+const HeroSection = dynamic(() => import('@/components/shared/hero-section'))
+const Pagination = dynamic(() => import('@/components/shared/pagination'), { ssr: false })
 
 type ProductCategoryPageProps = {
   name: string

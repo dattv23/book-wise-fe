@@ -1,7 +1,9 @@
-import HeroSection from '@/components/shared/hero-section'
-import SidebarFilter from './sidebar-filter'
-import BestSellerSection from './best-seller-section'
-import ProductListSection from './product-list-section'
+import dynamic from 'next/dynamic'
+
+const HeroSection = dynamic(() => import('@/components/shared/hero-section'))
+const SidebarFilter = dynamic(() => import('./sidebar-filter'))
+const BestSellerSection = dynamic(() => import('./best-seller-section'))
+const ProductListSection = dynamic(() => import('./product-list-section'))
 
 const ProductsPage: React.FC = () => {
   return (
