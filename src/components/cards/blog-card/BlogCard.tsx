@@ -12,7 +12,7 @@ export default function BlogCard({ data }: BlogCardProps) {
       className='group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-64 xl:h-96'
     >
       <Image
-        src={data.image_url}
+        src={data.imageUrl}
         loading='lazy'
         alt={data.title}
         className='absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110'
@@ -26,7 +26,7 @@ export default function BlogCard({ data }: BlogCardProps) {
         <span className='block text-sm text-gray-200'>{data.time}</span>
         <h2 className='mb-2 text-xl font-semibold text-white transition duration-100'>{data.title}</h2>
 
-        <span className='font-semibold text-indigo-300'>Read more</span>
+        <span className='font-semibold text-indigo-300'>Xem chi tiết</span>
       </div>
     </Link>
   )
