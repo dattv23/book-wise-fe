@@ -7,14 +7,17 @@ import { Button } from '@/components/ui/button'
 import { useAuthStore } from '@/store/auth.store'
 import { logoutAction } from '@/server-actions'
 import { useToast } from '@/hooks/use-toast'
+import { useCartStore } from '@/store/cart.store'
 
 const MyAccount: React.FC = () => {
   const { user, clear } = useAuthStore()
+  const { removeAll } = useCartStore()
   const { toast } = useToast()
 
   async function handleLogout() {
     const { success } = await logoutAction()
     clear()
+    removeAll()
     if (!success) {
       toast({ variant: 'destructive', title: 'Đăng xuất thất bại!' })
       return

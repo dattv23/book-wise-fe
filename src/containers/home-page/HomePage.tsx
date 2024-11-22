@@ -3,6 +3,7 @@ import BannerSection from './banner-section'
 import ImageGallery from './image-gallery'
 import FeaturesSection from './features-section'
 import FeaturedBooksSection from './featured-books-section'
+import RecommendationsSection from './recommendations-section'
 
 const HomePage: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage: React.FC = () => {
       <BannerSection />
       <ImageGallery />
       <FeaturesSection />
+      <RecommendationsSection />
       <FeaturedBooksSection />
     </main>
   )
