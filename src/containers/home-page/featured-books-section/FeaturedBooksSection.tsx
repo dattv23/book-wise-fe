@@ -21,8 +21,8 @@ const FeaturedBooksSection: React.FC = async () => {
   } = (await getFeaturedBooksData()) as ApiResponse<{ books: Product[] }>
 
   return (
-    <section>
-      <h2 className='mb-8 text-3xl font-bold'>Featured Books</h2>
+    <section className='mb-8'>
+      <h2 className='text-3xl font-bold'>Những cuốn sách đặc trưng</h2>
       <Suspense fallback={<ProductGridSkeleton />}>
         <ProductGrid data={products.slice(0, 4)} />
       </Suspense>

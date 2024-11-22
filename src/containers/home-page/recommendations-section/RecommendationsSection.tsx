@@ -35,11 +35,15 @@ const RecommendationsSection: React.FC = async () => {
   const { data: products } = (await getRecommendations()) as ApiResponse<Product[]>
 
   return (
-    <section>
-      <h2 className='mb-8 text-3xl font-bold'>Recommended for you</h2>
-      <Suspense fallback={<ProductGridSkeleton />}>
-        <ProductGrid data={products} />
-      </Suspense>
+    <section className='mb-8'>
+      <h2 className='text-3xl font-bold'>Những đề xuất dành cho bạn</h2>
+      {products.length === 0 ? (
+        'Chưa có sản phẩm đề xuất phù hợp! Hãy tích cực tương tác để chúng tôi có thể đề xuất những sản phầm phù hợp với bạn!'
+      ) : (
+        <Suspense fallback={<ProductGridSkeleton />}>
+          <ProductGrid data={products} />
+        </Suspense>
+      )}
     </section>
   )
 }
