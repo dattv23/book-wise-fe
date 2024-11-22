@@ -16,13 +16,10 @@ async function getRecommendations() {
     res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations`, {
       headers: {
         Authorization: `Bearer ${token.value}`
-      },
-      cache: 'no-cache'
+      }
     })
   } else {
-    res = await fetch(`${envServerConfig.DOMAIN_API}/books/top-selling`, {
-      cache: 'no-cache'
-    })
+    res = await fetch(`${envServerConfig.DOMAIN_API}/books/top-selling`)
   }
 
   if (!res.ok) {
@@ -31,6 +28,8 @@ async function getRecommendations() {
 
   return res.json()
 }
+
+export const revalidate = 60 * 60 * 24 // 24 hours clock
 
 const RecommendationsSection: React.FC = async () => {
   const { data: products } = (await getRecommendations()) as ApiResponse<Product[]>
