@@ -21,7 +21,7 @@ const reviewAction = async (
         Accept: 'application/json',
         Authorization: `Bearer ${token?.value}`
       },
-      body: JSON.stringify({ ...formData, productId })
+      body: JSON.stringify({ ...formData, bookId: productId })
     })
 
     const result = (await res.json()) as ApiResponse<Review>
