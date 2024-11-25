@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import type { Blog } from '@/@types'
 
-const BlogDetailPage = (blog: Blog) => {
-  const { imageUrl, title, time, details } = blog.blog
+const BlogDetailPage = ({ blog }: { blog: Blog }) => {
+  const { imageUrl, title, time, details } = blog
 
   const { description, subtitle, author, content } = details
   return (

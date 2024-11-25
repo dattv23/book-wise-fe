@@ -9,7 +9,7 @@ function getBlogData(id: string) {
 }
 
 const BlogDetail = ({ params }: { params: { id: string } }) => {
-  const blog = getBlogData(params.id)
+  const blog = getBlogData(params.id)!
   return <BlogDetailPage blog={blog} />
 }
 
