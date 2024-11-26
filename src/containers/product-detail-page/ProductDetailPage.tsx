@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 
 import { Product } from '@/@types/product.type'
 
-import HeroSection from '@/components/shared/hero-section'
+const HeroSection = dynamic(() => import('@/components/shared/hero-section'))
 const InfoSection = dynamic(() => import('./info-section'))
 const ReviewSection = dynamic(() => import('./review-section'))
 

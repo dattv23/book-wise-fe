@@ -1,8 +1,10 @@
-import React from 'react'
-import BannerSection from './banner-section'
-import ImageGallery from './image-gallery'
-import FeaturesSection from './features-section'
-import FeaturedBooksSection from './featured-books-section'
+import dynamic from 'next/dynamic'
+
+const BannerSection = dynamic(() => import('./banner-section'))
+const ImageGallery = dynamic(() => import('./image-gallery'))
+const FeaturesSection = dynamic(() => import('./features-section'))
+const FeaturedBooksSection = dynamic(() => import('./featured-books-section'))
+const RecommendationsSection = dynamic(() => import('./recommendations-section'))
 
 const HomePage: React.FC = () => {
   return (
@@ -10,6 +12,7 @@ const HomePage: React.FC = () => {
       <BannerSection />
       <ImageGallery />
       <FeaturesSection />
+      <RecommendationsSection />
       <FeaturedBooksSection />
     </main>
   )
