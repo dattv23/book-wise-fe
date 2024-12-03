@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import RatingStars from '@/components/shared/rating-stars'
 import { Product } from '@/@types'
 import CartButton from '@/components/shared/cart-button'
+import ExpandableText from '@/components/shared/expandable-text'
 
 const InfoSection: React.FC<Product> = (product) => {
   const { info, description } = product
@@ -37,7 +38,7 @@ const InfoSection: React.FC<Product> = (product) => {
       <div className='flex flex-col gap-4 py-8 md:flex-[0.4]'>
         <h4 className='text-3xl font-bold'>Mô tả sản phẩm</h4>
         <hr />
-        <p>{description}</p>
+        <ExpandableText text={description} />
       </div>
     </section>
   )

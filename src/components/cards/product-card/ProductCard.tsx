@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <Card onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       <CardHeader className='relative flex items-center'>
         <Link href={`/products/${bookId}`}>
-          <Image src={imageUrl} width={200} height={300} alt={title} className='rounded-md' />
+          <Image src={imageUrl} width={200} height={250} alt={title} className='h-[250px] rounded-md' />
         </Link>
         {isHover && (
           <div className='absolute right-4 top-4 flex flex-col gap-2'>
@@ -63,7 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <CardDescription className='flex flex-col items-center gap-2'>
           <span>by {author}</span>
           <RatingStars rating={5} />
-          <span className='text-sm text-gray-600'>{currentPrice.toLocaleString('vi-VN')} đ</span>
+          <span className='text-xl text-gray-600'>{currentPrice.toLocaleString('vi-VN')} đ</span>
         </CardDescription>
       </CardContent>
     </Card>

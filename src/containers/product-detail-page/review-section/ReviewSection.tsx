@@ -6,6 +6,7 @@ import { envServerConfig } from '@/lib/envServer'
 import ReviewDialog from '@/components/dialogs/review-dialog'
 import RatingStars from '@/components/shared/rating-stars/RatingStars'
 import Pagination from '@/components/shared/pagination'
+import ExpandableText from '@/components/shared/expandable-text'
 
 type ReviewSectionProps = {
   bookId: string
@@ -65,7 +66,9 @@ const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId, currentPage
               </div>
               <span className='text-sm text-gray-500'>{convertDateFormat(review.createdAt)}</span>
             </div>
-            <p className='mt-2 text-gray-700'>{review.comment}</p>
+            <div className='mt-2 text-gray-700'>
+              <ExpandableText text={review.comment} />
+            </div>
           </div>
         ))}
       </div>
