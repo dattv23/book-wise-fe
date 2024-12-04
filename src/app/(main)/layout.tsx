@@ -8,6 +8,8 @@ import Footer from '@/components/layout/client/footer'
 import { Toaster } from '@/components/ui/toaster'
 
 import { envServerConfig } from '@/lib/envServer'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 const robotoRegular = localFont({
   src: [
@@ -36,7 +38,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${robotoRegular.variable} antialiased`} suppressHydrationWarning={isDev}>
         <Header />
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />
         <Toaster />
       </body>

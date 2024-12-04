@@ -7,6 +7,8 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 import AppSidebar from '@/components/layout/admin/app-sidebar'
 import Header from '@/components/layout/admin/header'
 import { Toaster } from '@/components/ui/sonner'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 export const metadata: Metadata = {
   title: 'Book Wise',
@@ -31,7 +33,7 @@ export default function AdminLayout({
               <SidebarInset>
                 <Header />
                 {/* page main content */}
-                {children}
+                <Suspense fallback={<Loading />}>{children}</Suspense>
                 {/* page main content ends */}
               </SidebarInset>
             </SidebarProvider>
