@@ -1,7 +1,11 @@
+import type { CartItem } from '@/@types'
 import { Card } from '@/components/ui/card'
-import { cart } from '@/mocks/cart'
 
-const OrderSummary: React.FC = () => {
+type OrderSummaryProps = {
+  cart: CartItem[]
+}
+
+const OrderSummary: React.FC<OrderSummaryProps> = ({ cart }) => {
   const data = cart
   const subTotal = data.reduce((acc, curr) => acc + curr.product.info.currentPrice * curr.quantity, 0)
   const shippingCosts = 50000
@@ -20,7 +24,7 @@ const OrderSummary: React.FC = () => {
         </div>
         <div className='flex justify-between border-t pt-2 font-medium'>
           <span>Tổng tiền (Bao gồm VAT)</span>
-          <span>{(subTotal + shippingCosts).toLocaleString('vi-VN')} đ</span>
+          <span className='font-black text-primary'>{(subTotal + shippingCosts).toLocaleString('vi-VN')} đ</span>
         </div>
       </div>
     </Card>
