@@ -30,6 +30,10 @@ export const columns: ColumnDef<Product>[] = [
     header: 'Book ID'
   },
   {
+    accessorKey: 'Category.name',
+    header: 'Category'
+  },
+  {
     accessorKey: 'info.title',
     header: 'Name'
   },

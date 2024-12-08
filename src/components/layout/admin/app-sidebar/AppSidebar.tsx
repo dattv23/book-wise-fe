@@ -34,7 +34,7 @@ import { usePathname } from 'next/navigation'
 import * as React from 'react'
 
 export const company = {
-  name: 'Acme Inc',
+  name: 'BookWise',
   logo: GalleryVerticalEnd,
   plan: 'Enterprise'
 }
