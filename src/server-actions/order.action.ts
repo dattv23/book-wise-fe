@@ -1,11 +1,12 @@
 'use server'
 
-import { ActionResponse, ApiResponse } from '@/@types'
-import axiosInstance from '@/lib/axios'
-import { Order, orderSchema } from '@/validations/order.validation'
 import { z } from 'zod'
 
-export const createOrder = async (formData: Order): Promise<ActionResponse<Order>> => {
+import axiosInstance from '@/lib/axios'
+import { ActionResponse, ApiResponse } from '@/@types'
+import { Order, orderSchema } from '@/validations/order.validation'
+
+export const createOrder = async (formData: Order): Promise<ActionResponse<Order | string>> => {
   try {
     const { data: resData } = await axiosInstance.post('/orders', JSON.stringify(formData))
 

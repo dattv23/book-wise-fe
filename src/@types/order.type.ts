@@ -17,21 +17,21 @@ export type Order = {
 }
 
 export enum PaymentStatus {
-  PENDING,
-  COMPLETED,
-  FAILED,
-  REFUNDED
+  PENDING = 'PENDING',
+  COMPLETED = 'COMPLETED',
+  FAILED = 'FAILED',
+  REFUNDED = 'REFUNDED'
 }
 
 export enum OrderStatus {
-  PENDING,
-  SHIPPED,
-  DELIVERED,
-  COMPLETED,
-  CANCELED
+  PENDING = 'PENDING',
+  SHIPPED = 'SHIPPED',
+  DELIVERED = 'DELIVERED',
+  COMPLETED = 'COMPLETED',
+  CANCELED = 'CANCELED'
 }
 
 export enum PaymentMethod {
-  COD,
-  VN_PAY
+  COD = 'COD',
+  VN_PAY = 'VN_PAY'
 }

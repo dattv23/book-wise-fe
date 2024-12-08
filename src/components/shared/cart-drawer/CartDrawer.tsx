@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useState } from 'react'
 import { ShoppingCartIcon } from 'lucide-react'
 import {
   Drawer,
@@ -19,12 +20,15 @@ import { useCartStore } from '@/store/cart.store'
 
 const CartDrawer: React.FC = () => {
   const { cart } = useCartStore()
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const subTotal = cart.reduce((acc, curr) => acc + +curr.product.info.currentPrice * curr.quantity, 0)
   const shippingCosts = 50000
 
+  const handleDrawerClose = () => setIsDrawerOpen(false)
+
   return (
-    <Drawer>
-      <DrawerTrigger aria-label='cart-button'>
+    <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+      <DrawerTrigger aria-label='cart-button' onClick={() => setIsDrawerOpen(true)}>
         <div className='relative inline-flex h-9 w-9 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'>
           <ShoppingCartIcon />
           {cart.length !== 0 && (
@@ -83,10 +87,10 @@ const CartDrawer: React.FC = () => {
               </div>
             </div>
             <DrawerFooter>
-              <Button>
-                <Link href={'/checkout'}>Thanh toán</Link>
-              </Button>
-              <DrawerClose>Đóng</DrawerClose>
+              <Link href='/checkout' onClick={handleDrawerClose}>
+                <Button className='w-full'>Thanh toán</Button>
+              </Link>
+              <DrawerClose onClick={handleDrawerClose}>Đóng</DrawerClose>
             </DrawerFooter>
           </>
         )}

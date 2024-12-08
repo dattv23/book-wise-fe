@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useAuthStore } from '@/store/auth.store'
 import ShippingForm from '@/components/forms/shipping-form'
 import { useShippingInfoStore } from '@/store/shipping.store'
+import { useState } from 'react'
 
 // const address = {
 //   name: 'Truong Van Dat',
@@ -17,6 +18,10 @@ import { useShippingInfoStore } from '@/store/shipping.store'
 const ShippingInfo: React.FC = () => {
   const { user } = useAuthStore()
   const { address, phoneNumber } = useShippingInfoStore()
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+  const handleDialogClose = () => setIsDialogOpen(false)
+
   return (
     <Card className='p-4'>
       <div className='mb-4 flex items-start justify-between'>
@@ -25,7 +30,7 @@ const ShippingInfo: React.FC = () => {
           <h2 className='font-semibold'>Thông tin người nhận</h2>
         </div>
 
-        <Dialog>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger className='duration-150 hover:opacity-80'>
             <EditIcon />
           </DialogTrigger>
@@ -33,7 +38,7 @@ const ShippingInfo: React.FC = () => {
             <DialogHeader>
               <DialogTitle>Thay đổi thông tin nhận hàng.</DialogTitle>
             </DialogHeader>
-            <ShippingForm />
+            <ShippingForm onTriggerCloseDialog={handleDialogClose} />
           </DialogContent>
         </Dialog>
       </div>

@@ -18,7 +18,11 @@ const formSchema = z.object({
     .regex(/^\d+$/, { message: 'Số điện thoại chỉ được chứa số.' })
 })
 
-export default function ShippingForm() {
+type ShippingFormProps = {
+  onTriggerCloseDialog: () => void
+}
+
+export default function ShippingForm({ onTriggerCloseDialog }: ShippingFormProps) {
   const { address, phoneNumber, setShippingInfo } = useShippingInfoStore()
 
   // Define form.
@@ -33,6 +37,7 @@ export default function ShippingForm() {
   // Handle submit form
   function handleSubmitForm(data: z.infer<typeof formSchema>) {
     setShippingInfo(data)
+    onTriggerCloseDialog()
   }
 
   return (
