@@ -1,3 +1,4 @@
+import { PaymentMethod } from '@/@types'
 import { z } from 'zod'
 
 const itemSchema = z.object({
@@ -12,7 +13,7 @@ const orderSchema = z.object({
   total: z.number().nonnegative(),
   address: z.string().min(1),
   phoneNumber: z.string().regex(/^\d{10,15}$/, 'Số điện thoại không hợp lệ'),
-  paymentMethod: z.string()
+  paymentMethod: z.nativeEnum(PaymentMethod)
 })
 
 export type Order = z.infer<typeof orderSchema>

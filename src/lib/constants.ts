@@ -54,10 +54,10 @@ export const navItemsAdmin: NavItem[] = [
     items: [] // No child items
   },
   {
-    title: 'Invoices',
-    url: '/admin/invoices',
+    title: 'Orders',
+    url: '/admin/orders',
     icon: 'invoice',
-    shortcut: ['i', 'i'],
+    shortcut: ['o', 'o'],
     isActive: false,
     items: [] // No child items
   },

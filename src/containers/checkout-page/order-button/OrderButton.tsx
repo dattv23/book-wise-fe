@@ -7,6 +7,7 @@ import { useShippingInfoStore } from '@/store/shipping.store'
 import { createOrder } from '@/server-actions/order.action'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
+import { PaymentMethod } from '@/@types'
 
 export default function OrderButton() {
   const router = useRouter()
@@ -17,7 +18,11 @@ export default function OrderButton() {
   }))
   const { address, phoneNumber } = useShippingInfoStore()
   const searchParams = useSearchParams()
-  const paymentMethod = searchParams.get('paymentMethod') ?? 'COD'
+  const paymentMethod = (() => {
+    const method = searchParams.get('paymentMethod')
+    if (method === 'VN_PAY') return PaymentMethod.VN_PAY
+    return PaymentMethod.COD
+  })()
   const shippingCost = 50000
   const subTotal = cart.reduce((acc, curr) => acc + curr.product.info.currentPrice * curr.quantity, 0)
   const handleOrder = async () => {
