@@ -1,7 +1,7 @@
-import React from 'react'
+import CheckoutSuccessPage from '@/containers/checkout-page/checkout-success-page'
 
 const CheckoutSuccess = () => {
-  return <div>CheckoutSuccess</div>
+  return <CheckoutSuccessPage />
 }
 
 export default CheckoutSuccess

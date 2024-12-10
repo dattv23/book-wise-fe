@@ -1,0 +1,29 @@
+.circle {
+  stroke-dasharray: 597; /* Giảm một nửa */
+  stroke-dashoffset: 597; /* Giảm một nửa */
+  animation: dc 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.tick {
+  stroke-dasharray: 175; /* Giảm một nửa */
+  stroke-dashoffset: 175; /* Giảm một nửa */
+  animation: dt 0.8s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 0.95s;
+}
+@keyframes dc {
+  from {
+    stroke-dashoffset: 597;
+  }
+  to {
+    stroke-dashoffset: 1194;
+  }
+}
+@keyframes dt {
+  from {
+    stroke-dashoffset: 175;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

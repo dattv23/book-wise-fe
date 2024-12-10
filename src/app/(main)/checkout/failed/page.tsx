@@ -1,7 +1,7 @@
-import React from 'react'
+import CheckoutFailedPage from '@/containers/checkout-page/checkout-failed-page'
 
 const CheckoutFailed = () => {
-  return <div>CheckoutFailed</div>
+  return <CheckoutFailedPage />
 }
 
 export default CheckoutFailed
