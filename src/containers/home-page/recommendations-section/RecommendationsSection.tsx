@@ -12,7 +12,7 @@ async function getRecommendations() {
   const token = cookieStore.get('access_token')
 
   let res
-  if (token) {
+  if (token && token.value) {
     res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations`, {
       headers: {
         Authorization: `Bearer ${token.value}`
