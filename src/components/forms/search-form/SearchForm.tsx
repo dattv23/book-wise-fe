@@ -1,7 +1,7 @@
 import { ApiResponse, Product } from '@/@types'
 import { envServerConfig } from '@/lib/envServer'
 import { SearchIcon } from 'lucide-react'
-import { notFound, redirect } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 const SearchForm = () => {
@@ -20,7 +20,7 @@ const SearchForm = () => {
       data: { books }
     } = (await res.json()) as ApiResponse<{ books: Product[] }>
     if (books.length === 0) {
-      return notFound()
+      redirect('/products/not-found')
     }
     redirect(`/products/${books[0].bookId}`)
   }
