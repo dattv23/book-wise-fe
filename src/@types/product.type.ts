@@ -1,30 +1,36 @@
+import { Author } from './author.type'
+import { CartItem } from './cart.type'
+import { Category } from './category.type'
+import { Review } from './review.type'
+import { Specification } from './specification.type'
+import { Store } from './store.type'
+import { Wishlist } from './wishlist.type'
+
 export type Product = {
   id: string
-  bookId: string
+  sku: string
+  name: string
+  originalPrice: number
+  discount: number
+  thumbnailUrl: string
+  stockQuantity: number
+  shortDescription?: string
+  description?: string
+  galleryImages: string[]
+  originalId: number
+
+  storeId: string
   categoryId: string
-  info: Info
-  details: Details
-  description: string
+
   createdAt: string
   updatedAt: string
-}
 
-type Details = {
-  publisher: string
-  publishingHouse: string
-  bookVersion: null | string
-  publishDate: Date
-  dimensions: string
-  translator: null | string
-  coverType: string
-  pageCount: string
-}
-
-type Info = {
-  title: string
-  author: string
-  imageUrl: string
-  soldQuantity: number
-  currentPrice: number
-  originalPrice: number
+  // Optional relational fields
+  authors?: { author: Author }[]
+  category?: Category
+  store?: Store
+  reviews?: Review[]
+  specifications?: Specification[]
+  wishlistItems?: Wishlist[]
+  cartItems?: CartItem[]
 }

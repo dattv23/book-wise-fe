@@ -1,8 +1,9 @@
-export type Category = {
+export type Store = {
   id: string
   name: string
-  slug: string
+  link?: string
   originalId: number
+  managerId: string
   createdAt: string
   updatedAt: string
 }

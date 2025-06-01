@@ -13,13 +13,13 @@ async function getRecommendations() {
 
   let res
   if (token && token.value) {
-    res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations`, {
+    res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations/personalized`, {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
     })
   } else {
-    res = await fetch(`${envServerConfig.DOMAIN_API}/books/top-selling`)
+    res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations/products/popular`)
   }
 
   if (!res.ok) {
@@ -32,7 +32,8 @@ async function getRecommendations() {
 export const revalidate = 60 * 60 * 24 // 24 hours clock
 
 const RecommendationsSection: React.FC = async () => {
-  const { data: products } = (await getRecommendations()) as ApiResponse<Product[]>
+  const response = (await getRecommendations()) as ApiResponse<{ productId: string; score: number; product: Product }[]>
+  const products: Product[] = response.data.map((item) => item.product)
 
   return (
     <section className='mb-8'>

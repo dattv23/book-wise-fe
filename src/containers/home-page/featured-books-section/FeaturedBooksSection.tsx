@@ -6,7 +6,7 @@ import ProductGridSkeleton from '@/components/skeletons/product-grid-skeleton'
 import { envServerConfig } from '@/lib/envServer'
 
 async function getFeaturedBooksData() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/books`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/products`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
@@ -17,8 +17,8 @@ async function getFeaturedBooksData() {
 
 const FeaturedBooksSection: React.FC = async () => {
   const {
-    data: { books: products }
-  } = (await getFeaturedBooksData()) as ApiResponse<{ books: Product[] }>
+    data: { products: products }
+  } = (await getFeaturedBooksData()) as ApiResponse<{ products: Product[] }>
 
   return (
     <section className='mb-8'>

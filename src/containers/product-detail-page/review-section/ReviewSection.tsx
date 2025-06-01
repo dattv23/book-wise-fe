@@ -14,7 +14,22 @@ type ReviewSectionProps = {
 }
 
 async function getReviews(bookId: string, page: number) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/reviews?bookId=${bookId}&page=${page}`, { cache: 'no-cache' })
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/products/${bookId}/reviews?page=${page}`, {
+    cache: 'no-cache'
+  })
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    return { data: [] }
+  }
+
+  return res.json()
+}
+
+async function getAverageRating(bookId: string) {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/products/${bookId}/reviews/average`, {
+    cache: 'no-cache'
+  })
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -26,12 +41,18 @@ async function getReviews(bookId: string, page: number) {
 
 const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId, currentPageReview }) => {
   const {
-    data: { reviews, total, average, totalPages }
+    data: { reviews, total, limit }
   } = (await getReviews(bookId, currentPageReview)) as ApiResponse<{
     reviews: Review[]
     total: number
-    average: number
-    totalPages: number
+    limit: number
+    page: number
+  }>
+
+  const {
+    data: { averageRating }
+  } = (await getAverageRating(bookId)) as ApiResponse<{
+    averageRating: number
   }>
 
   return (
@@ -45,8 +66,8 @@ const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId, currentPage
           ) : (
             <div className='flex items-center gap-4'>
               <div className='flex flex-col items-center justify-between gap-2 md:flex-row'>
-                <span className='text-3xl font-bold'>{average}</span>
-                <RatingStars rating={average} />
+                <span className='text-3xl font-bold'>{averageRating.toFixed(2)}</span>
+                <RatingStars rating={averageRating} />
               </div>
               <span className='text-gray-500'>Dựa trên {total} lượt đánh giá</span>
             </div>
@@ -67,14 +88,14 @@ const ReviewSection: React.FC<ReviewSectionProps> = async ({ bookId, currentPage
               <span className='text-sm text-gray-500'>{convertDateFormat(review.createdAt)}</span>
             </div>
             <div className='mt-2 text-gray-700'>
-              <ExpandableText text={review.comment} />
+              <ExpandableText text={review.comment ?? ''} />
             </div>
           </div>
         ))}
       </div>
 
       {/* Pagination */}
-      {totalPages !== 0 && <Pagination totalPages={totalPages} />}
+      {total / limit !== 0 && <Pagination totalPages={total / limit} />}
     </section>
   )
 }

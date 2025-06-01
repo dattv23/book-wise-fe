@@ -19,7 +19,7 @@ async function getCategories() {
 }
 
 async function getProducts(page: number) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/books?page=${page}`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/products?page=${page}`)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -42,8 +42,8 @@ const Categories: React.FC<CategoriesProps> = async (props) => {
   const currentPage = Number(searchParams?.page) || 1
 
   const {
-    data: { books: products, totalPages }
-  } = (await getProducts(currentPage)) as ApiResponse<{ books: Product[]; totalPages: number }>
+    data: { products: products, totalPages }
+  } = (await getProducts(currentPage)) as ApiResponse<{ products: Product[]; totalPages: number }>
 
   return <CategoriesPage categories={categories} products={products} totalPages={totalPages} />
 }

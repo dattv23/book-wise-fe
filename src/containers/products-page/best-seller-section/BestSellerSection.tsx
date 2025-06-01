@@ -3,7 +3,7 @@ import ProductGrid from '@/components/grids/product-grid'
 import { envServerConfig } from '@/lib/envServer'
 
 async function getBestSeller() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/books/top-selling`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations/products/popular`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
@@ -13,7 +13,8 @@ async function getBestSeller() {
 }
 
 const BestSellerSection: React.FC = async () => {
-  const { data: products } = (await getBestSeller()) as ApiResponse<Product[]>
+  const response = (await getBestSeller()) as ApiResponse<{ productId: string; score: number; product: Product }[]>
+  const products: Product[] = response.data.map((item) => item.product)
 
   return (
     <section>

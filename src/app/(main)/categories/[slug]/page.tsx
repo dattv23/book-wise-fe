@@ -49,15 +49,15 @@ const ProductCategory: React.FC<ProductCategoryProps> = async ({ params, ...prop
   const searchParams = await props.searchParams
   const currentPage = Number(searchParams?.page) || 1
   const {
-    data: { name, books, totalPages }
+    data: { name, products, totalPages }
   } = (await getProducts(params.slug, currentPage)) as ApiResponse<{
     name: string
-    books: Product[]
+    products: Product[]
     totalPages: number
   }>
   const { data: categories } = (await getCategories()) as ApiResponse<Category[]>
 
-  return <ProductCategoryPage name={name} categories={categories} products={books} totalPages={totalPages} />
+  return <ProductCategoryPage name={name} categories={categories} products={products} totalPages={totalPages} />
 }
 
 export default ProductCategory

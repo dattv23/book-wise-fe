@@ -19,10 +19,7 @@ type ProductCardProps = {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const {
-    bookId,
-    info: { title, imageUrl, author, currentPrice }
-  } = product
+  const { id, thumbnailUrl, name, authors, originalPrice } = product
 
   const [isHover, setIsHover] = useState<boolean>(false)
   const { add: addToFavorite, remove: removeFromFavorite, find } = useFavoriteStore()
@@ -39,12 +36,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <Card onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       <CardHeader className='relative flex items-center'>
-        <Link href={`/products/${bookId}`}>
-          <Image src={imageUrl} width={200} height={250} alt={title} className='h-[250px] rounded-md' />
+        <Link href={`/products/${id}`}>
+          <Image src={thumbnailUrl} width={200} height={250} alt={name} className='h-[250px] rounded-md' />
         </Link>
         {isHover && (
           <div className='absolute right-4 top-4 flex flex-col gap-2'>
-            <Link href={`/products/${bookId}`}>
+            <Link href={`/products/${id}`}>
               <Button size={'icon'}>
                 <SearchIcon />
               </Button>
@@ -53,17 +50,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <ShoppingCartIcon />
             </CartButton>
             <Button size={'icon'} onClick={handleAddToFavorite}>
-              <HeartIcon className={cn(find(product.bookId) && 'fill-red-400 text-red-400')} />
+              <HeartIcon className={cn(find(product.id) && 'fill-red-400 text-red-400')} />
             </Button>
           </div>
         )}
       </CardHeader>
       <CardContent className='text-center'>
-        <CardTitle className='text-xl font-bold'>{title}</CardTitle>
+        <CardTitle className='text-xl font-bold'>{name}</CardTitle>
         <CardDescription className='flex flex-col items-center gap-2'>
-          <span>by {author}</span>
+          <span>by {authors ? authors[0].author.name : 'None'}</span>
           <RatingStars rating={5} />
-          <span className='text-xl text-gray-600'>{currentPrice.toLocaleString('vi-VN')} đ</span>
+          <span className='text-xl text-gray-600'>{originalPrice.toLocaleString('vi-VN')} đ</span>
         </CardDescription>
       </CardContent>
     </Card>
