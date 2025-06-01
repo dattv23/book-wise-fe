@@ -29,7 +29,7 @@ const ProductViewPage: React.FC<ProductViewPageProps> = async ({ productId }) =>
       initialData={product}
       pageTitle={pageTitle}
       categories={categories}
-      productId={product ? product.bookId : ''}
+      productId={product ? product.id : ''}
     />
   )
 }

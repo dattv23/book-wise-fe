@@ -5,7 +5,7 @@ import { devtools, persist } from 'zustand/middleware'
 import { Product } from '@/@types'
 
 type FavoriteStore = {
-  favorite: Pick<Product, 'bookId' | 'info'>[]
+  favorite: Product[]
   add: (product: Product) => void
   remove: (productId: string) => void
   removeAll: () => void
@@ -20,18 +20,18 @@ export const useFavoriteStore = create<FavoriteStore>()(
         add: (product: Product) => {
           const { favorite } = get()
           if (!favorite.includes(product)) {
-            set({ favorite: [...favorite, { bookId: product.bookId, info: product.info }] })
+            set({ favorite: [...favorite, product] })
           }
         },
         remove: (productId: string) => {
           const { favorite } = get()
-          const updatedFavorite = favorite.filter((item) => item.bookId !== productId)
+          const updatedFavorite = favorite.filter((item) => item.id !== productId)
           set({ favorite: updatedFavorite })
         },
         removeAll: () => set({ favorite: [] }),
         find: (productId: string): boolean => {
           const { favorite } = get()
-          return favorite.some((item) => item.bookId === productId)
+          return favorite.some((item) => item.id === productId)
         }
       }),
       {

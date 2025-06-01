@@ -1,4 +1,9 @@
-import type { Author } from '@/@types'
+type Author = {
+  id: string
+  name: string
+  imageUrl: string
+  yearOfBirth: number
+}
 
 export const authors: Author[] = [
   {

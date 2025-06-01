@@ -9,7 +9,7 @@ const SearchForm = () => {
     'use server'
     const value = formData.get('searchValue')?.toString()
     if (!value) return
-    const res = await fetch(`${envServerConfig.DOMAIN_API}/books?search=${value}`, {
+    const res = await fetch(`${envServerConfig.DOMAIN_API}/products?search=${value}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -17,12 +17,12 @@ const SearchForm = () => {
       }
     })
     const {
-      data: { books }
-    } = (await res.json()) as ApiResponse<{ books: Product[] }>
-    if (books.length === 0) {
+      data: { products }
+    } = (await res.json()) as ApiResponse<{ products: Product[] }>
+    if (products.length === 0) {
       redirect('/products/not-found')
     }
-    redirect(`/products/${books[0].bookId}`)
+    redirect(`/products/${products[0].id}`)
   }
 
   return (

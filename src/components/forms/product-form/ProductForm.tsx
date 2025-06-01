@@ -30,31 +30,30 @@ type ProductFormProps = {
 }
 
 const ProductForm: React.FC<ProductFormProps> = ({ initialData, pageTitle, categories, productId }) => {
-  const defaultValues = useMemo(
-    () => ({
+  const defaultValues = useMemo(() => {
+    return {
       info: {
-        title: initialData?.info.title || '',
-        author: initialData?.info.author || '',
-        imageUrl: initialData?.info.imageUrl || '',
-        originalPrice: initialData?.info.originalPrice || 0,
-        currentPrice: initialData?.info.currentPrice || 0,
-        soldQuantity: initialData?.info.soldQuantity || 0
+        title: initialData?.name || '',
+        author: initialData?.authors?.[0]?.author.name || '',
+        imageUrl: initialData?.thumbnailUrl || '',
+        soldQuantity: 0,
+        currentPrice: initialData ? Math.round(initialData.originalPrice * (1 - initialData.discount / 100)) : 0,
+        originalPrice: initialData?.originalPrice || 0
       },
       details: {
-        publisher: initialData?.details.publisher || '',
-        publishingHouse: initialData?.details.publishingHouse || '',
-        bookVersion: initialData?.details.bookVersion || '',
-        publishDate: new Date(initialData?.details.publishDate || Date.now()),
-        dimensions: initialData?.details.dimensions || '',
-        translator: initialData?.details.translator || '',
-        coverType: initialData?.details.coverType || '',
-        pageCount: initialData?.details.pageCount || ''
+        publisher: initialData?.specifications?.find((s) => s.code === 'publisher')?.value || '',
+        publishingHouse: initialData?.specifications?.find((s) => s.code === 'publishingHouse')?.value || '',
+        bookVersion: initialData?.specifications?.find((s) => s.code === 'bookVersion')?.value || undefined,
+        publishDate: initialData ? new Date(initialData.createdAt) : undefined,
+        dimensions: initialData?.specifications?.find((s) => s.code === 'dimensions')?.value || '',
+        translator: initialData?.specifications?.find((s) => s.code === 'translator')?.value || undefined,
+        coverType: initialData?.specifications?.find((s) => s.code === 'coverType')?.value || '',
+        pageCount: initialData?.specifications?.find((s) => s.code === 'pageCount')?.value || ''
       },
-      description: initialData?.description || '',
-      categoryId: initialData?.categoryId || ''
-    }),
-    [initialData]
-  )
+      categoryId: initialData?.categoryId || '',
+      description: initialData?.description || ''
+    }
+  }, [initialData])
 
   const form = useForm<z.infer<typeof productSchema>>({
     resolver: zodResolver(productSchema),
@@ -205,7 +204,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, pageTitle, categ
                       </FormControl>
                       <SelectContent>
                         {categories.map((category) => (
-                          <SelectItem value={category.categoryId} key={category.categoryId}>
+                          <SelectItem value={category.id} key={category.id}>
                             {category.name}
                           </SelectItem>
                         ))}

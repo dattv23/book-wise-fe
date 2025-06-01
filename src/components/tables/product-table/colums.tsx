@@ -26,8 +26,8 @@ export const columns: ColumnDef<Product>[] = [
     enableHiding: false
   },
   {
-    accessorKey: 'bookId',
-    header: 'Book ID'
+    accessorKey: 'productId',
+    header: 'Product ID'
   },
   {
     accessorKey: 'Category.name',
@@ -44,12 +44,12 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: 'info.currentPrice',
     header: 'Current Price',
-    cell: ({ row }) => `${row.original.info.currentPrice.toLocaleString('vi-VN')} đ`
+    cell: ({ row }) => `${row.original.originalPrice.toLocaleString('vi-VN')} đ`
   },
   {
     accessorKey: 'info.originalPrice',
     header: 'Original Price',
-    cell: ({ row }) => `${row.original.info.originalPrice.toLocaleString('vi-VN')} đ`
+    cell: ({ row }) => `${row.original.originalPrice.toLocaleString('vi-VN')} đ`
   },
   {
     id: 'actions',

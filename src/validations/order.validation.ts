@@ -2,7 +2,7 @@ import { PaymentMethod } from '@/@types'
 import { z } from 'zod'
 
 const itemSchema = z.object({
-  bookId: z.string(),
+  productId: z.string(),
   quantity: z.number().int().positive()
 })
 

@@ -1,9 +1,13 @@
-import type { Author } from '@/@types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 type AuthorCardProps = {
-  data: Author
+  data: {
+    id: string
+    name: string
+    imageUrl: string
+    yearOfBirth: number
+  }
 }
 
 export default function AuthorCard({ data }: AuthorCardProps) {

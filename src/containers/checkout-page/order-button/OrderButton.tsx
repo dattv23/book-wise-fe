@@ -16,7 +16,7 @@ export default function OrderButton() {
   const router = useRouter()
   const { cart, removeAll } = useCartStore()
   const items = cart.map((c) => ({
-    bookId: c.product.bookId,
+    productId: c.product.id,
     quantity: c.quantity
   }))
   const { address, phoneNumber } = useShippingInfoStore()
@@ -27,7 +27,7 @@ export default function OrderButton() {
     return PaymentMethod.COD
   })()
   const shippingCost = 50000
-  const subTotal = cart.reduce((acc, curr) => acc + curr.product.info.currentPrice * curr.quantity, 0)
+  const subTotal = cart.reduce((acc, curr) => acc + curr.product.originalPrice * curr.quantity, 0)
   const handleOrder = async () => {
     const order = {
       items,

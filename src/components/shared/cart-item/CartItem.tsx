@@ -9,12 +9,11 @@ import { useCartStore } from '@/store/cart.store'
 import { toast } from '@/hooks/use-toast'
 
 type CartItemProps = {
-  product: Pick<Product, 'bookId' | 'info'>
+  product: Product
   quantity: number
 }
 
 const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
-  const { info } = product
   const { removeItem, updateQuantity } = useCartStore()
 
   const handleDecrease = () => {
@@ -25,7 +24,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
       })
       return
     }
-    updateQuantity(product.bookId, quantity - 1)
+    updateQuantity(product.id, quantity - 1)
   }
 
   const handleIncrease = () => {
@@ -36,25 +35,31 @@ const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
       })
       return
     }
-    updateQuantity(product.bookId, quantity + 1)
+    updateQuantity(product.id, quantity + 1)
   }
 
   return (
     <div className='flex gap-3'>
-      <Image width={80} height={64} src={info.imageUrl} alt={info.title} className='h-16 w-20 rounded object-cover' />
+      <Image
+        width={80}
+        height={64}
+        src={product.thumbnailUrl}
+        alt={product.name}
+        className='h-16 w-20 rounded object-cover'
+      />
       <div className='flex-1'>
         <div className='flex justify-between'>
           <div>
-            <h3 className='font-medium'>{info.title}</h3>
+            <h3 className='font-medium'>{product.name}</h3>
           </div>
-          <p className='font-medium text-primary'>{(+info.currentPrice).toLocaleString('vi-VN')} đ</p>
+          <p className='font-medium text-primary'>{(+product.originalPrice).toLocaleString('vi-VN')} đ</p>
         </div>
         <div className='mt-2 flex items-center justify-between'>
           <div className='space-x-2'>
             <Button variant='ghost' size='icon' className='h-8 w-8'>
               <Heart size={16} />
             </Button>
-            <Button variant='ghost' size='icon' className='h-8 w-8' onClick={() => removeItem(product.bookId)}>
+            <Button variant='ghost' size='icon' className='h-8 w-8' onClick={() => removeItem(product.id)}>
               <Trash2 size={16} />
             </Button>
           </div>

@@ -21,7 +21,7 @@ import { useCartStore } from '@/store/cart.store'
 const CartDrawer: React.FC = () => {
   const { cart } = useCartStore()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const subTotal = cart.reduce((acc, curr) => acc + +curr.product.info.currentPrice * curr.quantity, 0)
+  const subTotal = cart.reduce((acc, curr) => acc + +curr.product.originalPrice * curr.quantity, 0)
   const shippingCosts = 50000
 
   const handleDrawerClose = () => setIsDrawerOpen(false)
@@ -54,7 +54,7 @@ const CartDrawer: React.FC = () => {
                   <span> - </span>
                   <span>
                     {cart
-                      .reduce((acc, curr) => acc + +curr.product.info.currentPrice * curr.quantity, 0)
+                      .reduce((acc, curr) => acc + +curr.product.originalPrice * curr.quantity, 0)
                       .toLocaleString('vi-VN')}{' '}
                     đ
                   </span>

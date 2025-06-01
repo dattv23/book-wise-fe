@@ -15,7 +15,7 @@ const CartButton: React.FC<CartButtonProps> = ({ children, product, ...props }) 
   const { toast } = useToast()
 
   const handleAddProductToCart = () => {
-    if (checkIsExist(product.bookId)) {
+    if (checkIsExist(product.id)) {
       toast({
         title: 'Sản phẩm đã nằm trong giỏ hàng',
         variant: 'destructive'

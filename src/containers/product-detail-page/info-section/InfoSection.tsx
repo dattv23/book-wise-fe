@@ -7,7 +7,7 @@ import CartButton from '@/components/shared/cart-button'
 import ExpandableText from '@/components/shared/expandable-text'
 
 const InfoSection: React.FC<Product> = (product) => {
-  const { authors, thumbnailUrl, name, originalPrice, discount, description } = product
+  const { authors, thumbnailUrl, name, originalPrice, description } = product
 
   return (
     <section className='mx-4 mt-8 flex flex-wrap justify-center gap-6 py-8 md:mx-14'>
@@ -26,7 +26,7 @@ const InfoSection: React.FC<Product> = (product) => {
           <span className='text-primary'>Còn hàng</span>
         </p>
         <RatingStars rating={5} />
-        <span className='text-3xl text-primary'>{(originalPrice * discount).toLocaleString('vi-VN')} đ</span>
+        <span className='text-3xl text-primary'>{originalPrice.toLocaleString('vi-VN')} đ</span>
         <div className='flex gap-2'>
           <CartButton product={product} variant={'outline'} className='border-primary text-primary'>
             Thêm vào giỏ

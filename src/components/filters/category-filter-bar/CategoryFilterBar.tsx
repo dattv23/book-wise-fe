@@ -20,7 +20,7 @@ const CategoryFilterBar: React.FC<CategoryFilterBarProps> = ({ data }) => {
         <Button variant={!slug ? 'default' : 'outline'}>Tất cả</Button>
       </Link>
       {data.map((item) => (
-        <Link href={`/categories/${item.slug}`} key={item.categoryId}>
+        <Link href={`/categories/${item.slug}`} key={item.id}>
           <Button variant={pathName.includes(item.slug) ? 'default' : 'outline'}>{item.name}</Button>
         </Link>
       ))}

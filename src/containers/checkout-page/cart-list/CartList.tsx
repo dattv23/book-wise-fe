@@ -10,7 +10,7 @@ export default function CartList() {
   return (
     <div className='space-y-4 rounded-lg bg-[#f4f3f8] p-6'>
       {cart.map((item) => (
-        <CartItem product={item.product} quantity={item.quantity} key={item.product.bookId} />
+        <CartItem product={item.product} quantity={item.quantity} key={item.product.id} />
       ))}
       <br />
       <hr />

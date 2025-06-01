@@ -28,12 +28,12 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onConfirm = async () => {
     setLoading(true)
     try {
-      const result = await deleteProduct(data.bookId)
+      const result = await deleteProduct(data.id)
       if (!result.success) {
         toast.error(result.error || 'Đã có lỗi hệ thống!')
         return
       }
-      toast.success(`Xóa ${data.info.title} thành công!`)
+      toast.success(`Xóa ${data.name} thành công!`)
       router.refresh()
     } catch {
       toast.error('Đã có lỗi hệ thống!')
@@ -55,7 +55,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align='end'>
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-          <DropdownMenuItem onClick={() => router.push(`/admin/products/${data.bookId}`)}>
+          <DropdownMenuItem onClick={() => router.push(`/admin/products/${data.id}`)}>
             <Edit className='mr-2 h-4 w-4' /> Update
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 export type Order = {
   items: {
-    bookId: string
+    productId: string
     quantity: number
   }[]
   orderId: string
