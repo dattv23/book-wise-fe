@@ -11,12 +11,14 @@ const ExpandableText: React.FC<ExpandableTextProps> = ({ text, maxLength = 255 }
   const [isExpanded, setIsExpanded] = useState(false)
 
   if (text.length <= maxLength) {
-    return <div>{text}</div>
+    return <div dangerouslySetInnerHTML={{ __html: text }} />
   }
+
+  const displayedText = isExpanded ? text : text.slice(0, maxLength) + '...'
 
   return (
     <div>
-      {isExpanded ? text : `${text.slice(0, maxLength)}...`}
+      <div dangerouslySetInnerHTML={{ __html: displayedText }} />
       <button onClick={() => setIsExpanded(!isExpanded)} className='ml-2 text-blue-500 hover:underline'>
         {isExpanded ? 'Thu gọn' : 'Xem thêm'}
       </button>
