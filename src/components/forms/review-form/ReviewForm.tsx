@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button'
 
 import { RadioGroupItem } from '@/components/ui/radio-group'
 import { Textarea } from '@/components/ui/textarea'
-import { reviewAction } from '@/server-actions'
+import { addReview } from '@/server-actions/review.action'
 import { reviewSchema } from '@/validations'
 import { useToast } from '@/hooks/use-toast'
 import { Label } from '@/components/ui/label'
@@ -37,7 +37,7 @@ const ReviewForm: React.FC = () => {
     try {
       setIsLoading(true)
 
-      const result = await reviewAction(values, params.slug as string)
+      const result = await addReview(values, params.slug as string)
 
       if (!result.success) {
         toast({

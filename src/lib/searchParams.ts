@@ -5,7 +5,9 @@ export const searchParams = {
   limit: parseAsInteger.withDefault(10),
   q: parseAsString,
   gender: parseAsString,
-  categories: parseAsString
+  categories: parseAsString,
+  sentiment: parseAsString,
+  isValid: parseAsString
 }
 
 export const searchParamsCache = createSearchParamsCache(searchParams)

@@ -4,20 +4,20 @@ export const getProducts = async ({
   page = 1,
   limit = 10,
   search,
-  categories
+  categoryId
 }: {
   page?: number
   limit?: number
   search?: string
-  categories?: string
+  categoryId?: string
 }) => {
   try {
-    const { data } = await axiosInstance.get('/books', {
+    const { data } = await axiosInstance.get('/products', {
       params: {
         page,
         limit,
         search,
-        categories
+        categoryId
       }
     })
     return data
@@ -28,10 +28,10 @@ export const getProducts = async ({
 
 export const getProductById = async (productId: string) => {
   try {
-    const { data } = await axiosInstance.get(`/books/${productId}`)
+    const { data } = await axiosInstance.get(`/products/${productId}`)
     return data
   } catch (error) {
-    // console.error(`Error fetching product ${productId}:`, error)
+    console.error(`Error fetching product ${productId}:`, error)
     return null
   }
 }

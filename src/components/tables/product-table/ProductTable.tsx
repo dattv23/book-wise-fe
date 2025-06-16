@@ -25,7 +25,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ data, categories, totalData
     setSearchQuery,
     resetFilters
   } = useProductTableFilters()
-  const CATEGORY_OPTIONS = categories.map((category) => ({ label: category.name, value: category.name }))
+  const CATEGORY_OPTIONS = categories.map((category) => ({ label: category.name, value: category.id }))
   return (
     <div className='space-y-4'>
       <div className='flex flex-wrap items-center gap-4'>

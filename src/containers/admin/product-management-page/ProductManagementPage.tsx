@@ -27,8 +27,8 @@ const ProductManagementPage: React.FC = async () => {
   }
 
   const {
-    data: { books, total }
-  } = (await getProducts(filters)) as ApiResponse<{ books: Product[]; total: number; totalPages: number }>
+    data: { products, total }
+  } = (await getProducts(filters)) as ApiResponse<{ products: Product[]; total: number; totalPages: number }>
   const { data: categoriesData } = (await getCategories()) as ApiResponse<Category[]>
 
   return (
@@ -42,7 +42,7 @@ const ProductManagementPage: React.FC = async () => {
           </Link>
         </div>
         <Separator />
-        <ProductTable data={books} totalData={total} categories={categoriesData} />
+        <ProductTable data={products} totalData={total} categories={categoriesData} />
       </div>
     </PageContainer>
   )

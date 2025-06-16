@@ -62,9 +62,9 @@ export const navItemsAdmin: NavItem[] = [
     items: [] // No child items
   },
   {
-    title: 'Warehouse',
-    url: '/admin/warehouse',
-    icon: 'warehouse',
+    title: 'Reviews',
+    url: '/admin/reviews',
+    icon: 'client',
     shortcut: ['w', 'w'],
     isActive: false,
     items: [] // No child items

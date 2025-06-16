@@ -1,11 +1,11 @@
 'use client'
 
-import { Product } from '@/@types'
+import { Review } from '@/@types'
 import { ColumnDef } from '@tanstack/react-table'
 import { CellAction } from './CellAction'
 import { Checkbox } from '@/components/ui/checkbox'
 
-export const columns: ColumnDef<Product>[] = [
+export const columns: ColumnDef<Review>[] = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -26,32 +26,29 @@ export const columns: ColumnDef<Product>[] = [
     enableHiding: false
   },
   {
-    accessorKey: 'id',
+    accessorKey: 'userId',
+    header: 'User ID'
+  },
+  {
+    accessorKey: 'productId',
     header: 'Product ID'
   },
   {
-    accessorKey: 'name',
-    header: 'Name'
+    accessorKey: 'rating',
+    header: 'Rating'
   },
   {
-    accessorKey: 'stockQuantity',
-    header: 'Stock Quantity'
+    accessorKey: 'comment',
+    header: 'Comment'
   },
   {
-    accessorKey: 'dicount',
-    header: 'Discount',
-    cell: ({ row }) => `${row.original.discount}%`
+    accessorKey: 'sentiment',
+    header: 'Sentiment'
   },
   {
-    accessorKey: 'currentPrice',
-    header: 'Current Price',
-    cell: ({ row }) =>
-      `${((row.original.originalPrice * (100 - row.original.discount)) / 100).toLocaleString('vi-VN')} đ`
-  },
-  {
-    accessorKey: 'originalPrice',
-    header: 'Original Price',
-    cell: ({ row }) => `${row.original.originalPrice.toLocaleString('vi-VN')} đ`
+    accessorKey: 'isValid',
+    header: 'Is Valid',
+    cell: ({ row }) => (row.original.isValid ? 'Yes' : 'No')
   },
   {
     id: 'actions',
