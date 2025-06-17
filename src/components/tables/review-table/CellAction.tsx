@@ -48,7 +48,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   return (
     <>
       <AlertDialog isOpen={open} onClose={() => setOpen(false)} onConfirm={onConfirm} loading={loading} />
-      <ReviewEditDialog review={data} open={editOpen} onOpenChange={setEditOpen} onUpdated={() => router.refresh()} />
+      {editOpen && (
+        <ReviewEditDialog review={data} open={editOpen} onOpenChange={setEditOpen} onUpdated={() => router.refresh()} />
+      )}
 
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>

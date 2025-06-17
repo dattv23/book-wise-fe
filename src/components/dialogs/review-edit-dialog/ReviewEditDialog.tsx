@@ -1,6 +1,5 @@
 'use client'
 
-import { Review } from '@/@types'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -9,6 +8,11 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@
 import { Textarea } from '@/components/ui/textarea'
 import { useState } from 'react'
 import { toast } from 'sonner'
+import { updateReview } from '@/server-actions/review.action'
+import { reviewSchema } from '@/validations'
+import { z } from 'zod'
+import { useRouter } from 'next/navigation'
+import { Review } from '@/@types'
 
 interface ReviewEditDialogProps {
   review: Review
@@ -18,21 +22,28 @@ interface ReviewEditDialogProps {
 }
 
 export default function ReviewEditDialog({ review, open, onOpenChange, onUpdated }: ReviewEditDialogProps) {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<z.infer<typeof reviewSchema>>({
     rating: review.rating.toString(),
     comment: review.comment,
     sentiment: review.sentiment,
-    isValid: review.isValid ? 'true' : 'false'
+    isValid: review.isValid
   })
 
   const [loading, setLoading] = useState(false)
 
+  const router = useRouter()
+
   const handleUpdate = async () => {
     setLoading(true)
     try {
-      // Replace with your actual API call
-      console.log('Sending update for:', review.id, form)
+      const result = await updateReview(form, review.id)
 
+      if (!result.success) {
+        toast.error(result.error || 'Đã có lỗi hệ thống!')
+        return
+      }
+
+      router.refresh()
       toast.success('Review updated successfully!')
       onOpenChange(false)
       onUpdated?.()
@@ -66,7 +77,10 @@ export default function ReviewEditDialog({ review, open, onOpenChange, onUpdated
           </div>
           <div className='space-y-2'>
             <Label>Sentiment</Label>
-            <Select value={form.sentiment} onValueChange={(value) => setForm({ ...form, sentiment: value })}>
+            <Select
+              value={form.sentiment}
+              onValueChange={(value) => setForm({ ...form, sentiment: value as 'pos' | 'neg' | 'neu' })}
+            >
               <SelectTrigger>
                 <SelectValue placeholder='Select sentiment' />
               </SelectTrigger>
@@ -79,7 +93,10 @@ export default function ReviewEditDialog({ review, open, onOpenChange, onUpdated
           </div>
           <div className='space-y-2'>
             <Label>Validity</Label>
-            <Select value={form.isValid} onValueChange={(value) => setForm({ ...form, isValid: value })}>
+            <Select
+              value={form.isValid ? 'true' : 'false'}
+              onValueChange={(value) => setForm({ ...form, isValid: value === 'true' })}
+            >
               <SelectTrigger>
                 <SelectValue placeholder='Select status' />
               </SelectTrigger>

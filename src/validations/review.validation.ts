@@ -8,4 +8,5 @@ export const reviewSchema = z.object({
     .enum(['true', 'false'])
     .default('true')
     .transform((val) => val === 'true')
+    .optional()
 })
