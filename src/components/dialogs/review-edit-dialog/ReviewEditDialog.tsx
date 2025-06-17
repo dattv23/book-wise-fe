@@ -12,10 +12,12 @@ import { updateReview } from '@/server-actions/review.action'
 import { reviewSchema } from '@/validations'
 import { z } from 'zod'
 import { useRouter } from 'next/navigation'
+import { Review } from '@/@types'
 
 interface ReviewEditDialogProps {
-  review: z.infer<typeof reviewSchema> & { id: string }
+  review: Review
   open: boolean
+  // eslint-disable-next-line no-unused-vars
   onOpenChange: (open: boolean) => void
   onUpdated?: () => void
 }
