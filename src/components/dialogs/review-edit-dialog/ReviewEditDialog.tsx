@@ -12,10 +12,9 @@ import { updateReview } from '@/server-actions/review.action'
 import { reviewSchema } from '@/validations'
 import { z } from 'zod'
 import { useRouter } from 'next/navigation'
-import { Review } from '@/@types'
 
 interface ReviewEditDialogProps {
-  review: Review
+  review: z.infer<typeof reviewSchema> & { id: string }
   open: boolean
   onOpenChange: (open: boolean) => void
   onUpdated?: () => void
