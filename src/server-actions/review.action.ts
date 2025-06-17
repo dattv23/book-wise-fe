@@ -52,7 +52,10 @@ const updateReview = async (
   reviewId: string
 ): Promise<ActionResponse<Review>> => {
   try {
-    const { data: resData } = await axiosInstance.patch(`/reviews/${reviewId}`, JSON.stringify(formData))
+    const { data: resData } = await axiosInstance.patch(
+      `/reviews/${reviewId}`,
+      JSON.stringify({ ...formData, isValid: formData.isValid ? 'true' : 'false' })
+    )
 
     const result = resData as ApiResponse<Review>
     const { statusCode, message } = result

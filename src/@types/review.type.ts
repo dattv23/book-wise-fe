@@ -4,7 +4,7 @@ export type Review = {
   id: string
   rating: number
   comment?: string
-  sentiment?: string
+  sentiment?: 'pos' | 'neg' | 'neu'
   isValid: boolean
   userId: string
   productId: string
