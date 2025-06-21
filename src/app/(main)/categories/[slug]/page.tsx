@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation'
 const ProductCategoryPage = dynamic(() => import('@/containers/product-category-page'))
 
 async function getProducts(slug: string, page: number) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/categories/${slug}/books?page=${page}`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/categories/${slug}/books?page=${page}`)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -17,7 +17,7 @@ async function getProducts(slug: string, page: number) {
 }
 
 async function getCategories() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/categories`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/categories`)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary

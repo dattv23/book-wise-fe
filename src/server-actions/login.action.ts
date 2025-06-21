@@ -9,7 +9,7 @@ import { ActionResponse, LoginResponse } from '@/@types'
 
 const loginAction = async (formData: z.infer<typeof loginSchema>): Promise<ActionResponse<LoginResponse>> => {
   try {
-    const res = await fetch(`${envServerConfig.DOMAIN_API}/auth/login`, {
+    const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

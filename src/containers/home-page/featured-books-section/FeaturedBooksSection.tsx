@@ -6,7 +6,7 @@ import ProductGridSkeleton from '@/components/skeletons/product-grid-skeleton'
 import { envServerConfig } from '@/lib/envServer'
 
 async function getFeaturedBooksData() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/products`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/products`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')

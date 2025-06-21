@@ -17,7 +17,7 @@ const logoutAction = async (): Promise<ActionResponse<object>> => {
       }
     }
 
-    const res = await fetch(`${envServerConfig.DOMAIN_API}/auth/logout`, {
+    const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/auth/logout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

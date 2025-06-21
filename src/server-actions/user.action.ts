@@ -7,7 +7,7 @@ import type { z } from 'zod'
 
 const addUser = async (formData: z.infer<typeof registerSchema>): Promise<ActionResponse<User>> => {
   try {
-    const { data: resData } = await axiosInstance.post('/users', JSON.stringify(formData))
+    const { data: resData } = await axiosInstance.post('/api/v1/users', JSON.stringify(formData))
 
     const result = resData as ApiResponse<User>
     const { statusCode, message } = result
@@ -33,7 +33,7 @@ const addUser = async (formData: z.infer<typeof registerSchema>): Promise<Action
 
 const updateUser = async (formData: z.infer<typeof registerSchema>, userId: string): Promise<ActionResponse<User>> => {
   try {
-    const { data: resData } = await axiosInstance.patch(`/users/${userId}`, JSON.stringify(formData))
+    const { data: resData } = await axiosInstance.patch(`/api/v1/users/${userId}`, JSON.stringify(formData))
 
     const result = resData as ApiResponse<User>
     const { statusCode, message } = result
@@ -59,7 +59,7 @@ const updateUser = async (formData: z.infer<typeof registerSchema>, userId: stri
 
 const deleteUser = async (userId: string): Promise<ActionResponse<User>> => {
   try {
-    const { data: resData } = await axiosInstance.delete(`/users/${userId}`)
+    const { data: resData } = await axiosInstance.delete(`/api/v1/users/${userId}`)
 
     const result = resData as ApiResponse<User>
 

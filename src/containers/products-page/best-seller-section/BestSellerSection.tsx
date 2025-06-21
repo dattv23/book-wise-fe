@@ -3,7 +3,7 @@ import ProductGrid from '@/components/grids/product-grid'
 import { envServerConfig } from '@/lib/envServer'
 
 async function getBestSeller() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations/products/popular`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/recommendations/products/popular`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')

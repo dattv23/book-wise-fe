@@ -6,7 +6,7 @@ import { envServerConfig } from '@/lib/envServer'
 const CategoriesPage = dynamic(() => import('@/containers/categories-page'))
 
 async function getCategories() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/categories`, {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/categories`, {
     cache: 'no-cache'
   })
 
@@ -19,7 +19,7 @@ async function getCategories() {
 }
 
 async function getProducts(page: number) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/products?page=${page}`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/products?page=${page}`)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary

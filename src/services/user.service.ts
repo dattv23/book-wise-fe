@@ -10,7 +10,7 @@ export const getUsers = async ({
   search?: string
 }) => {
   try {
-    const { data } = await axiosInstance.get('/users', {
+    const { data } = await axiosInstance.get('/api/v1/users', {
       params: {
         page,
         limit,
@@ -25,7 +25,7 @@ export const getUsers = async ({
 
 export const getUserById = async (userId: string) => {
   try {
-    const { data } = await axiosInstance.get(`/users/${userId}`)
+    const { data } = await axiosInstance.get(`/api/v1/users/${userId}`)
     return data
   } catch (error) {
     return null

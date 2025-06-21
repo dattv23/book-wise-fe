@@ -10,7 +10,7 @@ export const getOrders = async ({
   search?: string
 }) => {
   try {
-    const { data } = await axiosInstance.get('/orders', {
+    const { data } = await axiosInstance.get('/api/v1/orders', {
       params: {
         page,
         limit,
@@ -25,7 +25,7 @@ export const getOrders = async ({
 
 export const getOrderById = async (orderId: string) => {
   try {
-    const { data } = await axiosInstance.get(`/orders/${orderId}`)
+    const { data } = await axiosInstance.get(`/api/v1/orders/${orderId}`)
     return data
   } catch (error) {
     // console.error(`Error fetching order ${orderId}:`, error)

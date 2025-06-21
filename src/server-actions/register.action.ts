@@ -9,7 +9,7 @@ import { registerSchema } from '@/validations/auth.validation'
 
 const registerAction = async (formData: z.infer<typeof registerSchema>): Promise<ActionResponse<LoginResponse>> => {
   try {
-    const res = await fetch(`${envServerConfig.DOMAIN_API}/auth/register`, {
+    const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

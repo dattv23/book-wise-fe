@@ -15,7 +15,7 @@ const addReview = async (
   try {
     const cookieStore = cookies()
     const token = cookieStore.get('access_token')
-    const res = await fetch(`${envServerConfig.DOMAIN_API}/reviews`, {
+    const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/reviews`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const updateReview = async (
 ): Promise<ActionResponse<Review>> => {
   try {
     const { data: resData } = await axiosInstance.patch(
-      `/reviews/${reviewId}`,
+      `/api/v1/reviews/${reviewId}`,
       JSON.stringify({ ...formData, isValid: formData.isValid ? 'true' : 'false' })
     )
 
@@ -81,7 +81,7 @@ const updateReview = async (
 
 const deleteReview = async (reviewId: string): Promise<ActionResponse<Review>> => {
   try {
-    const { data: resData } = await axiosInstance.delete(`/reviews/${reviewId}`)
+    const { data: resData } = await axiosInstance.delete(`/api/v1/reviews/${reviewId}`)
 
     const result = resData as ApiResponse<Review>
 

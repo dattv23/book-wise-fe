@@ -14,7 +14,7 @@ type ReviewSectionProps = {
 }
 
 async function getReviews(bookId: string, page: number) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/products/${bookId}/reviews?page=${page}`, {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/products/${bookId}/reviews?page=${page}`, {
     cache: 'no-cache'
   })
 
@@ -27,7 +27,7 @@ async function getReviews(bookId: string, page: number) {
 }
 
 async function getAverageRating(bookId: string) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/products/${bookId}/reviews/average`, {
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/products/${bookId}/reviews/average`, {
     cache: 'no-cache'
   })
 

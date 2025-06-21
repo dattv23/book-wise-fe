@@ -9,7 +9,7 @@ const SearchForm = () => {
     'use server'
     const value = formData.get('searchValue')?.toString()
     if (!value) return
-    const res = await fetch(`${envServerConfig.DOMAIN_API}/products?search=${value}`, {
+    const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/products?search=${value}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

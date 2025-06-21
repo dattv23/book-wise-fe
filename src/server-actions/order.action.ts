@@ -8,7 +8,7 @@ import { Order, orderSchema } from '@/validations/order.validation'
 
 export const createOrder = async (formData: Order): Promise<ActionResponse<Order | string>> => {
   try {
-    const { data: resData } = await axiosInstance.post('/orders', JSON.stringify(formData))
+    const { data: resData } = await axiosInstance.post('/api/v1/orders', JSON.stringify(formData))
 
     const result = resData as ApiResponse<Order>
     const { statusCode, message } = result
@@ -34,7 +34,7 @@ export const createOrder = async (formData: Order): Promise<ActionResponse<Order
 
 export const deleteOrder = async (): Promise<ActionResponse<null>> => {
   try {
-    const { data: resData } = await axiosInstance.delete('/orders')
+    const { data: resData } = await axiosInstance.delete('/api/v1/orders')
 
     const result = resData
     const { statusCode, message } = result
@@ -62,7 +62,7 @@ export const updateOrder = async (
   orderId: string
 ): Promise<ActionResponse<Order>> => {
   try {
-    const { data: resData } = await axiosInstance.patch(`/orders/${orderId}`, JSON.stringify(formData))
+    const { data: resData } = await axiosInstance.patch(`/api/v1/orders/${orderId}`, JSON.stringify(formData))
 
     const result = resData as ApiResponse<Order>
     const { statusCode, message } = result

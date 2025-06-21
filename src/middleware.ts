@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
-    const response = await fetch(`${envServerConfig.DOMAIN_API}/auth/profile`, {
+    const response = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/auth/profile`, {
       headers: {
         Authorization: `Bearer ${token.value}`
       },

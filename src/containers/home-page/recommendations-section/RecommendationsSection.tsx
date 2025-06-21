@@ -13,13 +13,13 @@ async function getRecommendations() {
 
   let res
   if (token && token.value) {
-    res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations/personalized`, {
+    res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/recommendations/personalized`, {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
     })
   } else {
-    res = await fetch(`${envServerConfig.DOMAIN_API}/recommendations/products/popular`)
+    res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/recommendations/products/popular`)
   }
 
   if (!res.ok) {

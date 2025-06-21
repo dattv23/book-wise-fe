@@ -9,7 +9,7 @@ const configClientSchema = z.object({
 
 // Validate client-side environment variables
 const configClient = configClientSchema.safeParse({
-  DOMAIN_API: process.env.NEXT_PUBLIC_APP_URL
+  DOMAIN_API: process.env.NEXT_PUBLIC_DOMAIN_API
 })
 
 // Check for client-side environment variable validation errors

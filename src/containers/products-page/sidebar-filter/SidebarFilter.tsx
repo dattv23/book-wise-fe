@@ -6,7 +6,7 @@ import RatingsFilter from '@/components/filters/ratings-filter'
 import YearsFilter from '@/components/filters/years-filter'
 
 async function getCategories() {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/categories`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/categories`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')

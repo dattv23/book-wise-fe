@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation'
 const ProductDetailPage = dynamic(() => import('@/containers/product-detail-page'))
 
 async function getProductData(slug: string) {
-  const res = await fetch(`${envServerConfig.DOMAIN_API}/products/${slug}`)
+  const res = await fetch(`${envServerConfig.DOMAIN_API}/api/v1/products/${slug}`)
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
