@@ -21,7 +21,7 @@ const UserViewPage: React.FC<UserViewPageProps> = async ({ userId }) => {
     pageTitle = PageTitle.edit
   }
 
-  return <UserForm initialData={user} pageTitle={pageTitle} userId={user ? user.userId : ''} />
+  return <UserForm initialData={user} pageTitle={pageTitle} userId={user ? user.id : ''} />
 }
 
 export default UserViewPage

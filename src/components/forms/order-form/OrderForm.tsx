@@ -27,7 +27,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ initialData, pageTitle, orderId }
     () => ({
       items: initialData?.items || [],
       status: initialData?.status || OrderStatus.PENDING,
-      userId: user?.userId || '',
+      userId: user?.id || '',
       subTotal: initialData?.subTotal || 0,
       shippingCost: initialData?.shippingCost || 0,
       total: initialData?.total || 0,
